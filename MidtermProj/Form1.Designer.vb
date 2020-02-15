@@ -36,7 +36,6 @@ Partial Class Login
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -74,7 +73,6 @@ Partial Class Login
         Me.Panel1.Controls.Add(Me.TextBox2)
         Me.Panel1.Controls.Add(Me.Label6)
         Me.Panel1.Controls.Add(Me.Label5)
-        Me.Panel1.Controls.Add(Me.ComboBox1)
         Me.Panel1.Controls.Add(Me.Label4)
         Me.Panel1.Controls.Add(Me.PictureBox3)
         Me.Panel1.Controls.Add(Me.Button1)
@@ -83,19 +81,20 @@ Partial Class Login
         Me.Panel1.Controls.Add(Me.PictureBox4)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Location = New System.Drawing.Point(-11, -2)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Panel1.Location = New System.Drawing.Point(-8, -2)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(767, 567)
+        Me.Panel1.Size = New System.Drawing.Size(575, 461)
         Me.Panel1.TabIndex = 0
         '
         'Label13
         '
         Me.Label13.AutoSize = True
         Me.Label13.ForeColor = System.Drawing.Color.White
-        Me.Label13.Location = New System.Drawing.Point(21, 409)
+        Me.Label13.Location = New System.Drawing.Point(16, 332)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(291, 17)
+        Me.Label13.Size = New System.Drawing.Size(216, 13)
         Me.Label13.TabIndex = 6
         Me.Label13.Text = "so as to act rightly and serve humanity justly."
         '
@@ -103,9 +102,10 @@ Partial Class Login
         '
         Me.Label12.AutoSize = True
         Me.Label12.ForeColor = System.Drawing.Color.White
-        Me.Label12.Location = New System.Drawing.Point(21, 391)
+        Me.Label12.Location = New System.Drawing.Point(16, 318)
+        Me.Label12.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(309, 17)
+        Me.Label12.Size = New System.Drawing.Size(230, 13)
         Me.Label12.TabIndex = 6
         Me.Label12.Text = "and it trains men and women to think rigorously,"
         '
@@ -113,9 +113,10 @@ Partial Class Login
         '
         Me.Label11.AutoSize = True
         Me.Label11.ForeColor = System.Drawing.Color.White
-        Me.Label11.Location = New System.Drawing.Point(21, 375)
+        Me.Label11.Location = New System.Drawing.Point(16, 305)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(341, 17)
+        Me.Label11.Size = New System.Drawing.Size(259, 13)
         Me.Label11.TabIndex = 6
         Me.Label11.Text = "and communication of knowledge and human values;"
         '
@@ -123,9 +124,10 @@ Partial Class Login
         '
         Me.Label10.AutoSize = True
         Me.Label10.ForeColor = System.Drawing.Color.White
-        Me.Label10.Location = New System.Drawing.Point(21, 359)
+        Me.Label10.Location = New System.Drawing.Point(16, 292)
+        Me.Label10.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(351, 17)
+        Me.Label10.Size = New System.Drawing.Size(263, 13)
         Me.Label10.TabIndex = 6
         Me.Label10.Text = "it is dedicated to the renewal, discovery, safeguarding,"
         '
@@ -133,9 +135,10 @@ Partial Class Login
         '
         Me.Label9.AutoSize = True
         Me.Label9.ForeColor = System.Drawing.Color.White
-        Me.Label9.Location = New System.Drawing.Point(19, 342)
+        Me.Label9.Location = New System.Drawing.Point(14, 278)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(204, 17)
+        Me.Label9.Size = New System.Drawing.Size(153, 13)
         Me.Label9.TabIndex = 6
         Me.Label9.Text = " research and social outreach; "
         '
@@ -143,9 +146,10 @@ Partial Class Login
         '
         Me.Label8.AutoSize = True
         Me.Label8.ForeColor = System.Drawing.Color.White
-        Me.Label8.Location = New System.Drawing.Point(21, 325)
+        Me.Label8.Location = New System.Drawing.Point(16, 264)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(315, 17)
+        Me.Label8.Size = New System.Drawing.Size(234, 13)
         Me.Label8.TabIndex = 6
         Me.Label8.Text = "search for the truth through teaching, formation, "
         '
@@ -153,9 +157,10 @@ Partial Class Login
         '
         Me.Label7.AutoSize = True
         Me.Label7.ForeColor = System.Drawing.Color.White
-        Me.Label7.Location = New System.Drawing.Point(23, 306)
+        Me.Label7.Location = New System.Drawing.Point(17, 249)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(310, 17)
+        Me.Label7.Size = New System.Drawing.Size(233, 13)
         Me.Label7.TabIndex = 6
         Me.Label7.Text = "As a University, Xavier engages in the authentic"
         '
@@ -166,12 +171,12 @@ Partial Class Login
         Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox1.ForeColor = System.Drawing.Color.Black
-        Me.TextBox1.Location = New System.Drawing.Point(479, 226)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TextBox1.Location = New System.Drawing.Point(359, 184)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.TextBox1.MaxLength = 10
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(199, 23)
+        Me.TextBox1.Size = New System.Drawing.Size(149, 19)
         Me.TextBox1.TabIndex = 1
         Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -182,21 +187,22 @@ Partial Class Login
         Me.TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox2.ForeColor = System.Drawing.Color.Black
-        Me.TextBox2.Location = New System.Drawing.Point(471, 300)
-        Me.TextBox2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TextBox2.Location = New System.Drawing.Point(353, 244)
+        Me.TextBox2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.TextBox2.MaxLength = 10
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.TextBox2.Size = New System.Drawing.Size(208, 23)
+        Me.TextBox2.Size = New System.Drawing.Size(156, 19)
         Me.TextBox2.TabIndex = 1
         Me.TextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(376, 498)
+        Me.Label6.Location = New System.Drawing.Point(282, 405)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(57, 17)
+        Me.Label6.Size = New System.Drawing.Size(43, 13)
         Me.Label6.TabIndex = 5
         Me.Label6.Text = "Starting"
         Me.Label6.Visible = False
@@ -204,30 +210,21 @@ Partial Class Login
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(349, 502)
+        Me.Label5.Location = New System.Drawing.Point(262, 408)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(119, 17)
+        Me.Label5.Size = New System.Drawing.Size(90, 13)
         Me.Label5.TabIndex = 4
         Me.Label5.Text = "Encrpyting data..."
         Me.Label5.Visible = False
         '
-        'ComboBox1
-        '
-        Me.ComboBox1.Enabled = False
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Receiver", "Director"})
-        Me.ComboBox1.Location = New System.Drawing.Point(464, 332)
-        Me.ComboBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(121, 24)
-        Me.ComboBox1.TabIndex = 3
-        '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(363, 502)
+        Me.Label4.Location = New System.Drawing.Point(272, 408)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(90, 17)
+        Me.Label4.Size = New System.Drawing.Size(68, 13)
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "Processing..."
         Me.Label4.Visible = False
@@ -236,10 +233,10 @@ Partial Class Login
         '
         Me.PictureBox3.BackgroundImage = CType(resources.GetObject("PictureBox3.BackgroundImage"), System.Drawing.Image)
         Me.PictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox3.Location = New System.Drawing.Point(479, 34)
-        Me.PictureBox3.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.PictureBox3.Location = New System.Drawing.Point(359, 28)
+        Me.PictureBox3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(180, 103)
+        Me.PictureBox3.Size = New System.Drawing.Size(135, 84)
         Me.PictureBox3.TabIndex = 5
         Me.PictureBox3.TabStop = False
         '
@@ -249,20 +246,20 @@ Partial Class Login
         Me.Button1.BackgroundImage = CType(resources.GetObject("Button1.BackgroundImage"), System.Drawing.Image)
         Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(454, 374)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Button1.Location = New System.Drawing.Point(340, 304)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(131, 86)
+        Me.Button1.Size = New System.Drawing.Size(98, 70)
         Me.Button1.TabIndex = 2
         Me.Button1.Text = " "
         Me.Button1.UseVisualStyleBackColor = False
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(109, 518)
-        Me.ProgressBar1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.ProgressBar1.Location = New System.Drawing.Point(82, 421)
+        Me.ProgressBar1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(584, 23)
+        Me.ProgressBar1.Size = New System.Drawing.Size(438, 19)
         Me.ProgressBar1.TabIndex = 1
         Me.ProgressBar1.Visible = False
         '
@@ -270,9 +267,10 @@ Partial Class Login
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft New Tai Lue", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(460, 265)
+        Me.Label3.Location = New System.Drawing.Point(345, 215)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(71, 20)
+        Me.Label3.Size = New System.Drawing.Size(58, 17)
         Me.Label3.TabIndex = 0
         Me.Label3.Text = "Password"
         '
@@ -280,10 +278,10 @@ Partial Class Login
         '
         Me.PictureBox4.BackgroundImage = CType(resources.GetObject("PictureBox4.BackgroundImage"), System.Drawing.Image)
         Me.PictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox4.Location = New System.Drawing.Point(3, 2)
-        Me.PictureBox4.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.PictureBox4.Location = New System.Drawing.Point(2, 2)
+        Me.PictureBox4.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.PictureBox4.Name = "PictureBox4"
-        Me.PictureBox4.Size = New System.Drawing.Size(376, 300)
+        Me.PictureBox4.Size = New System.Drawing.Size(282, 244)
         Me.PictureBox4.TabIndex = 2
         Me.PictureBox4.TabStop = False
         '
@@ -291,9 +289,10 @@ Partial Class Login
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft New Tai Lue", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(456, 194)
+        Me.Label2.Location = New System.Drawing.Point(342, 158)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(75, 20)
+        Me.Label2.Size = New System.Drawing.Size(61, 17)
         Me.Label2.TabIndex = 0
         Me.Label2.Text = "Username"
         '
@@ -301,9 +300,10 @@ Partial Class Login
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft New Tai Lue", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(427, 142)
+        Me.Label1.Location = New System.Drawing.Point(320, 115)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(252, 32)
+        Me.Label1.Size = New System.Drawing.Size(198, 25)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Login to your Account"
         '
@@ -331,12 +331,12 @@ Partial Class Login
         '
         'Login
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(749, 554)
+        Me.ClientSize = New System.Drawing.Size(562, 450)
         Me.Controls.Add(Me.Panel1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "Login"
         Me.Text = "Kinaadman University Research Office"
         Me.Panel1.ResumeLayout(False)
@@ -351,7 +351,6 @@ Partial Class Login
     End Sub
 
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Button1 As Button
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label

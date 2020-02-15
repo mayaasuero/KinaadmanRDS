@@ -28,7 +28,13 @@ Public Class Form2
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles feedback_btn.Click
         Panel4.Visible = True
         Panel2.Visible = False
-        TextBox6.Text = Form3.notApproved
+        'TextBox6.Text = Form3.notApproved
+    End Sub
+
+    Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'Database1DataSet.Thesis' table. You can move, or remove it, as needed.
+        Me.ThesisTableAdapter.Fill(Me.Database1DataSet.Thesis)
+
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
@@ -52,7 +58,7 @@ Public Class Form2
 
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles sendToDirector_btn.Click
         pdffile = Path.GetDirectoryName(OpenFileDialog1.FileName)
         pdffilename = Path.GetFileName(OpenFileDialog1.FileName)
         fullpath = pdffile & "\" & pdffilename
@@ -72,11 +78,9 @@ Public Class Form2
 
             If File.Exists(destination) And Not File.Exists(newname) Then
                 File.Move(destination, newname)
-                Dim newThesis As Thesis
-                newThesis = New Thesis()
-                newThesis.createThesis(TextBox5.Text, TextBox2.Text, pdffilename, TextBox4.Text, CInt(TextBox3.Text))
-                Form3.thesislist(nextAvailable) = newThesis
-                Form3.reviewList.Items.Add(TextBox5.Text)
+                'FIX: to add thesis
+                'Form3.thesislist(nextAvailable) = newThesis
+                'Form3.reviewList.Items.Add(TextBox5.Text)
 
                 nextAvailable += 1
                 MsgBox("File successfully added!")
