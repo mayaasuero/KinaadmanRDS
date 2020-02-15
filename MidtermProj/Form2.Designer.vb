@@ -36,7 +36,7 @@ Partial Class Form2
         Me.TextBox5 = New System.Windows.Forms.TextBox()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.sendToDirector_btn = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -51,6 +51,10 @@ Partial Class Form2
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.thesisNumber = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Database1DataSet = New MidtermProj.Database1DataSet()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
+        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.StatusDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TitleDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AuthorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -59,10 +63,6 @@ Partial Class Form2
         Me.DateReceivedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReceivedByDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ThesisBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Database1DataSet = New MidtermProj.Database1DataSet()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
-        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.ThesisBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ThesisTableAdapter = New MidtermProj.Database1DataSetTableAdapters.ThesisTableAdapter()
         Me.Panel1.SuspendLayout()
@@ -72,8 +72,8 @@ Partial Class Form2
         CType(Me.AxAcroPDF1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel4.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ThesisBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Database1DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ThesisBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ThesisBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -153,7 +153,7 @@ Partial Class Form2
         Me.Panel3.Controls.Add(Me.TextBox5)
         Me.Panel3.Controls.Add(Me.TextBox3)
         Me.Panel3.Controls.Add(Me.TextBox2)
-        Me.Panel3.Controls.Add(Me.sendToDirector_btn)
+        Me.Panel3.Controls.Add(Me.Button4)
         Me.Panel3.Controls.Add(Me.TextBox1)
         Me.Panel3.Controls.Add(Me.Label5)
         Me.Panel3.Controls.Add(Me.Label4)
@@ -225,17 +225,17 @@ Partial Class Form2
         Me.TextBox2.Size = New System.Drawing.Size(177, 24)
         Me.TextBox2.TabIndex = 4
         '
-        'sendToDirector_btn
+        'Button4
         '
-        Me.sendToDirector_btn.BackColor = System.Drawing.Color.LightBlue
-        Me.sendToDirector_btn.BackgroundImage = CType(resources.GetObject("sendToDirector_btn.BackgroundImage"), System.Drawing.Image)
-        Me.sendToDirector_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.sendToDirector_btn.Location = New System.Drawing.Point(579, 354)
-        Me.sendToDirector_btn.Margin = New System.Windows.Forms.Padding(2)
-        Me.sendToDirector_btn.Name = "sendToDirector_btn"
-        Me.sendToDirector_btn.Size = New System.Drawing.Size(91, 47)
-        Me.sendToDirector_btn.TabIndex = 0
-        Me.sendToDirector_btn.UseVisualStyleBackColor = False
+        Me.Button4.BackColor = System.Drawing.Color.LightBlue
+        Me.Button4.BackgroundImage = CType(resources.GetObject("Button4.BackgroundImage"), System.Drawing.Image)
+        Me.Button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Button4.Location = New System.Drawing.Point(579, 354)
+        Me.Button4.Margin = New System.Windows.Forms.Padding(2)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(91, 47)
+        Me.Button4.TabIndex = 0
+        Me.Button4.UseVisualStyleBackColor = False
         '
         'TextBox1
         '
@@ -384,6 +384,34 @@ Partial Class Form2
         Me.thesisNumber.HeaderText = "ID"
         Me.thesisNumber.Name = "thesisNumber"
         '
+        'Database1DataSet
+        '
+        Me.Database1DataSet.DataSetName = "Database1DataSet"
+        Me.Database1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.BackColor = System.Drawing.Color.Transparent
+        Me.Label8.Location = New System.Drawing.Point(17, 43)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(72, 13)
+        Me.Label8.TabIndex = 3
+        Me.Label8.Text = "Select a Date"
+        '
+        'DateTimePicker2
+        '
+        Me.DateTimePicker2.Location = New System.Drawing.Point(17, 60)
+        Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(2)
+        Me.DateTimePicker2.Name = "DateTimePicker2"
+        Me.DateTimePicker2.Size = New System.Drawing.Size(290, 20)
+        Me.DateTimePicker2.TabIndex = 2
+        '
+        'OpenFileDialog1
+        '
+        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+        '
         'StatusDataGridViewTextBoxColumn
         '
         Me.StatusDataGridViewTextBoxColumn.DataPropertyName = "status"
@@ -431,34 +459,6 @@ Partial Class Form2
         Me.ThesisBindingSource1.DataMember = "Thesis"
         Me.ThesisBindingSource1.DataSource = Me.Database1DataSet
         '
-        'Database1DataSet
-        '
-        Me.Database1DataSet.DataSetName = "Database1DataSet"
-        Me.Database1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.BackColor = System.Drawing.Color.Transparent
-        Me.Label8.Location = New System.Drawing.Point(17, 43)
-        Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(72, 13)
-        Me.Label8.TabIndex = 3
-        Me.Label8.Text = "Select a Date"
-        '
-        'DateTimePicker2
-        '
-        Me.DateTimePicker2.Location = New System.Drawing.Point(17, 60)
-        Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(2)
-        Me.DateTimePicker2.Name = "DateTimePicker2"
-        Me.DateTimePicker2.Size = New System.Drawing.Size(290, 20)
-        Me.DateTimePicker2.TabIndex = 2
-        '
-        'OpenFileDialog1
-        '
-        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
-        '
         'ThesisBindingSource
         '
         Me.ThesisBindingSource.DataMember = "Thesis"
@@ -489,8 +489,8 @@ Partial Class Form2
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ThesisBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Database1DataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ThesisBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ThesisBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -503,7 +503,7 @@ Partial Class Form2
     Friend WithEvents Button3 As Button
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
     Friend WithEvents AxAcroPDF1 As AxAcroPDFLib.AxAcroPDF
-    Friend WithEvents sendToDirector_btn As Button
+    Friend WithEvents Button4 As Button
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Panel3 As Panel

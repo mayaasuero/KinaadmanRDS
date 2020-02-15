@@ -58,7 +58,7 @@ Public Class Form2
 
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles sendToDirector_btn.Click
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         pdffile = Path.GetDirectoryName(OpenFileDialog1.FileName)
         pdffilename = Path.GetFileName(OpenFileDialog1.FileName)
         fullpath = pdffile & "\" & pdffilename
@@ -79,6 +79,7 @@ Public Class Form2
             If File.Exists(destination) And Not File.Exists(newname) Then
                 File.Move(destination, newname)
                 'FIX: to add thesis
+                Dim idNum As Integer = Convert.ToInt32(Me.ThesisTableAdapter.countThesis()) + 1
                 'Form3.thesislist(nextAvailable) = newThesis
                 'Form3.reviewList.Items.Add(TextBox5.Text)
 
