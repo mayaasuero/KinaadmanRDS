@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29509.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MidtermProj", "MidtermProj\MidtermProj.vbproj", "{345A76B7-5B0C-4644-B470-23281428A7FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DDD5EE84-ED44-413D-B49B-F61D144ABA4F}"
+	ProjectSection(SolutionItems) = preProject
+		MidtermProj\Thesis.vb = MidtermProj\Thesis.vb
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{345A76B7-5B0C-4644-B470-23281428A7FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{345A76B7-5B0C-4644-B470-23281428A7FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{345A76B7-5B0C-4644-B470-23281428A7FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{345A76B7-5B0C-4644-B470-23281428A7FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FE29D79D-0E38-4562-ABD8-18BE93710CE8}
+	EndGlobalSection
+EndGlobal
