@@ -58,6 +58,11 @@ Public Class Form2
 
     End Sub
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         pdffile = Path.GetDirectoryName(OpenFileDialog1.FileName)
         pdffilename = Path.GetFileName(OpenFileDialog1.FileName)
