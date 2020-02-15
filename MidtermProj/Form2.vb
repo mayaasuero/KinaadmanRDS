@@ -25,19 +25,17 @@ Public Class Form2
     End Sub
 
 
-    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles feedback_btn.Click
         Panel4.Visible = True
         Panel2.Visible = False
         TextBox6.Text = Form3.notApproved
     End Sub
 
-
-
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         Panel3.Visible = True
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles receive_btn.Click
         Panel4.Visible = False
         Panel2.Visible = True
 
