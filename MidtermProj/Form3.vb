@@ -8,19 +8,24 @@
     Private Sub toReview_Click(sender As Object, e As EventArgs) Handles toReview.Click
         welcomePanel.Visible = False
         forReviewPanel.Visible = True
+        manageUsers_Panel.Visible = False
         collectionPanel.Visible = False
     End Sub
 
     Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'Database1DataSet.Table' table. You can move, or remove it, as needed.
+        Me.TableTableAdapter.Fill(Me.Database1DataSet.Table)
         welcomePanel.Visible = True
         forReviewPanel.Visible = False
         collectionPanel.Visible = False
+        manageUsers_Panel.Visible = False
 
     End Sub
 
     Private Sub collection_Click(sender As Object, e As EventArgs) Handles collection.Click
         approvedlist.Text = approved
         welcomePanel.Visible = False
+
         collectionPanel.Visible = True
         forReviewPanel.Visible = False
     End Sub
@@ -28,6 +33,7 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Login.Show()
         Me.Hide()
+        manageUsers_Panel.Visible = False
         welcomePanel.Visible = True
         forReviewPanel.Visible = False
         collectionPanel.Visible = False
@@ -88,5 +94,42 @@
         reviewList.Items.RemoveAt(pointer)
         fillIn()
         reviewList.Text = ""
+    End Sub
+
+    Private Sub addStaff_btn_Click(sender As Object, e As EventArgs) Handles manageUsers.Click
+        manageUsers_Panel.Visible = True
+        welcomePanel.Visible = False
+        collectionPanel.Visible = False
+        forReviewPanel.Visible = False
+        'usersDataGridView = TableTableAdapter.getStaffList("staff").
+
+    End Sub
+
+    Private Sub addUser_Btn_Click(sender As Object, e As EventArgs) Handles addUser_Btn.Click
+        If newPassword.Text = retypeNewPassword.Text And Me.TableTableAdapter.findUsername(newUsername.Text) = 0 Then
+            Me.TableTableAdapter.insertNewUser(newUsername.Text, newPassword.Text, newPosition.Text)
+            MsgBox("User successfully added.")
+            newUsername.Text = ""
+            newPassword.Text = ""
+            retypeNewPassword.Text = ""
+            newPosition.ResetText()
+            usersDataGridView.DataSource = Me.TableTableAdapter.getStaffList("staff")
+        ElseIf Not newPassword.Text = retypeNewPassword.Text Then
+            MsgBox("Passwords do not match. Try again.")
+            newPassword.Text = ""
+            retypeNewPassword.Text = ""
+        Else
+            MsgBox("User already exists.")
+            newUsername.Text = ""
+            newPassword.Text = ""
+            retypeNewPassword.Text = ""
+            newPosition.ResetText()
+
+        End If
+
+    End Sub
+
+    Private Sub deleteUser_btn_Click(sender As Object, e As EventArgs) Handles deleteUser_btn.Click
+        'Me.TableTableAdapter.DeleteQuery(usersDataGridView.Select())
     End Sub
 End Class

@@ -22,8 +22,10 @@ Partial Class Form3
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form3))
         Me.menu = New System.Windows.Forms.Panel()
+        Me.manageUsers = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.collection = New System.Windows.Forms.Button()
@@ -48,9 +50,35 @@ Partial Class Form3
         Me.collectionPanel = New System.Windows.Forms.Panel()
         Me.approvedlist = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.manageUsers_Panel = New System.Windows.Forms.Panel()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.deleteUser_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.deleteUser_btn = New System.Windows.Forms.Button()
+        Me.usersDataGridView = New System.Windows.Forms.DataGridView()
+        Me.UsernameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Position = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TableBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Database1DataSet = New MidtermProj.Database1DataSet()
+        Me.addUser_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.addUser_Btn = New System.Windows.Forms.Button()
+        Me.newPosition = New System.Windows.Forms.ComboBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.retypeNewPassword = New System.Windows.Forms.TextBox()
+        Me.newPassword = New System.Windows.Forms.TextBox()
+        Me.newUsername = New System.Windows.Forms.TextBox()
+        Me.TableTableAdapter = New MidtermProj.Database1DataSetTableAdapters.TableTableAdapter()
         Me.menu.SuspendLayout()
         Me.forReviewPanel.SuspendLayout()
         Me.collectionPanel.SuspendLayout()
+        Me.manageUsers_Panel.SuspendLayout()
+        Me.deleteUser_GroupBox.SuspendLayout()
+        CType(Me.usersDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TableBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Database1DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.addUser_GroupBox.SuspendLayout()
         Me.SuspendLayout()
         '
         'menu
@@ -58,6 +86,7 @@ Partial Class Form3
         Me.menu.BackColor = System.Drawing.SystemColors.Control
         Me.menu.BackgroundImage = CType(resources.GetObject("menu.BackgroundImage"), System.Drawing.Image)
         Me.menu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.menu.Controls.Add(Me.manageUsers)
         Me.menu.Controls.Add(Me.Button1)
         Me.menu.Controls.Add(Me.Panel2)
         Me.menu.Controls.Add(Me.collection)
@@ -66,6 +95,15 @@ Partial Class Form3
         Me.menu.Name = "menu"
         Me.menu.Size = New System.Drawing.Size(168, 369)
         Me.menu.TabIndex = 0
+        '
+        'manageUsers
+        '
+        Me.manageUsers.Location = New System.Drawing.Point(28, 119)
+        Me.manageUsers.Name = "manageUsers"
+        Me.manageUsers.Size = New System.Drawing.Size(101, 23)
+        Me.manageUsers.TabIndex = 8
+        Me.manageUsers.Text = "Manage Users"
+        Me.manageUsers.UseVisualStyleBackColor = True
         '
         'Button1
         '
@@ -87,9 +125,9 @@ Partial Class Form3
         '
         'collection
         '
-        Me.collection.Location = New System.Drawing.Point(37, 175)
+        Me.collection.Location = New System.Drawing.Point(28, 178)
         Me.collection.Name = "collection"
-        Me.collection.Size = New System.Drawing.Size(75, 23)
+        Me.collection.Size = New System.Drawing.Size(101, 23)
         Me.collection.TabIndex = 1
         Me.collection.Text = "Collection"
         Me.collection.UseVisualStyleBackColor = True
@@ -97,9 +135,9 @@ Partial Class Form3
         'toReview
         '
         Me.toReview.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.toReview.Location = New System.Drawing.Point(37, 146)
+        Me.toReview.Location = New System.Drawing.Point(28, 149)
         Me.toReview.Name = "toReview"
-        Me.toReview.Size = New System.Drawing.Size(75, 23)
+        Me.toReview.Size = New System.Drawing.Size(101, 23)
         Me.toReview.TabIndex = 1
         Me.toReview.Text = "For Review"
         Me.toReview.UseVisualStyleBackColor = True
@@ -301,11 +339,203 @@ Partial Class Form3
         Me.Label6.TabIndex = 0
         Me.Label6.Text = "Approved Thesis"
         '
+        'manageUsers_Panel
+        '
+        Me.manageUsers_Panel.Controls.Add(Me.Label11)
+        Me.manageUsers_Panel.Controls.Add(Me.deleteUser_GroupBox)
+        Me.manageUsers_Panel.Controls.Add(Me.addUser_GroupBox)
+        Me.manageUsers_Panel.Location = New System.Drawing.Point(174, 0)
+        Me.manageUsers_Panel.Name = "manageUsers_Panel"
+        Me.manageUsers_Panel.Size = New System.Drawing.Size(627, 369)
+        Me.manageUsers_Panel.TabIndex = 8
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(237, 23)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(169, 29)
+        Me.Label11.TabIndex = 11
+        Me.Label11.Text = "Manage Users"
+        '
+        'deleteUser_GroupBox
+        '
+        Me.deleteUser_GroupBox.Controls.Add(Me.deleteUser_btn)
+        Me.deleteUser_GroupBox.Controls.Add(Me.usersDataGridView)
+        Me.deleteUser_GroupBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.deleteUser_GroupBox.Location = New System.Drawing.Point(332, 73)
+        Me.deleteUser_GroupBox.Name = "deleteUser_GroupBox"
+        Me.deleteUser_GroupBox.Size = New System.Drawing.Size(277, 270)
+        Me.deleteUser_GroupBox.TabIndex = 10
+        Me.deleteUser_GroupBox.TabStop = False
+        Me.deleteUser_GroupBox.Text = "Delete User"
+        '
+        'deleteUser_btn
+        '
+        Me.deleteUser_btn.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.deleteUser_btn.Location = New System.Drawing.Point(101, 230)
+        Me.deleteUser_btn.Name = "deleteUser_btn"
+        Me.deleteUser_btn.Size = New System.Drawing.Size(92, 27)
+        Me.deleteUser_btn.TabIndex = 11
+        Me.deleteUser_btn.Text = "Delete User"
+        Me.deleteUser_btn.UseVisualStyleBackColor = True
+        '
+        'usersDataGridView
+        '
+        Me.usersDataGridView.AllowUserToAddRows = False
+        Me.usersDataGridView.AllowUserToResizeColumns = False
+        Me.usersDataGridView.AllowUserToResizeRows = False
+        Me.usersDataGridView.AutoGenerateColumns = False
+        Me.usersDataGridView.ColumnHeadersHeight = 27
+        Me.usersDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.UsernameDataGridViewTextBoxColumn, Me.Position})
+        Me.usersDataGridView.DataSource = Me.TableBindingSource
+        Me.usersDataGridView.Location = New System.Drawing.Point(15, 41)
+        Me.usersDataGridView.Name = "usersDataGridView"
+        Me.usersDataGridView.ReadOnly = True
+        Me.usersDataGridView.RowHeadersWidth = 45
+        Me.usersDataGridView.Size = New System.Drawing.Size(249, 168)
+        Me.usersDataGridView.TabIndex = 0
+        '
+        'UsernameDataGridViewTextBoxColumn
+        '
+        Me.UsernameDataGridViewTextBoxColumn.DataPropertyName = "Username"
+        Me.UsernameDataGridViewTextBoxColumn.HeaderText = "Username"
+        Me.UsernameDataGridViewTextBoxColumn.Name = "UsernameDataGridViewTextBoxColumn"
+        Me.UsernameDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'Position
+        '
+        Me.Position.DataPropertyName = "position"
+        Me.Position.HeaderText = "Position"
+        Me.Position.Name = "Position"
+        Me.Position.ReadOnly = True
+        '
+        'TableBindingSource
+        '
+        Me.TableBindingSource.DataMember = "Table"
+        Me.TableBindingSource.DataSource = Me.Database1DataSet
+        '
+        'Database1DataSet
+        '
+        Me.Database1DataSet.DataSetName = "Database1DataSet"
+        Me.Database1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'addUser_GroupBox
+        '
+        Me.addUser_GroupBox.Controls.Add(Me.addUser_Btn)
+        Me.addUser_GroupBox.Controls.Add(Me.newPosition)
+        Me.addUser_GroupBox.Controls.Add(Me.Label10)
+        Me.addUser_GroupBox.Controls.Add(Me.Label9)
+        Me.addUser_GroupBox.Controls.Add(Me.Label8)
+        Me.addUser_GroupBox.Controls.Add(Me.Label7)
+        Me.addUser_GroupBox.Controls.Add(Me.retypeNewPassword)
+        Me.addUser_GroupBox.Controls.Add(Me.newPassword)
+        Me.addUser_GroupBox.Controls.Add(Me.newUsername)
+        Me.addUser_GroupBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.addUser_GroupBox.Location = New System.Drawing.Point(13, 70)
+        Me.addUser_GroupBox.Name = "addUser_GroupBox"
+        Me.addUser_GroupBox.Size = New System.Drawing.Size(282, 270)
+        Me.addUser_GroupBox.TabIndex = 9
+        Me.addUser_GroupBox.TabStop = False
+        Me.addUser_GroupBox.Text = "Add User"
+        '
+        'addUser_Btn
+        '
+        Me.addUser_Btn.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.addUser_Btn.Location = New System.Drawing.Point(95, 233)
+        Me.addUser_Btn.Name = "addUser_Btn"
+        Me.addUser_Btn.Size = New System.Drawing.Size(85, 27)
+        Me.addUser_Btn.TabIndex = 11
+        Me.addUser_Btn.Text = "Add User"
+        Me.addUser_Btn.UseVisualStyleBackColor = True
+        '
+        'newPosition
+        '
+        Me.newPosition.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.newPosition.FormattingEnabled = True
+        Me.newPosition.Items.AddRange(New Object() {"Admin", "Staff"})
+        Me.newPosition.Location = New System.Drawing.Point(128, 161)
+        Me.newPosition.Name = "newPosition"
+        Me.newPosition.Size = New System.Drawing.Size(141, 24)
+        Me.newPosition.TabIndex = 2
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(17, 162)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(51, 15)
+        Me.Label10.TabIndex = 1
+        Me.Label10.Text = "Position"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(17, 126)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(102, 15)
+        Me.Label9.TabIndex = 1
+        Me.Label9.Text = "Retype Password"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(17, 91)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(61, 15)
+        Me.Label8.TabIndex = 1
+        Me.Label8.Text = "Password"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(17, 53)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(65, 15)
+        Me.Label7.TabIndex = 1
+        Me.Label7.Text = "Username"
+        '
+        'retypeNewPassword
+        '
+        Me.retypeNewPassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.retypeNewPassword.Location = New System.Drawing.Point(128, 125)
+        Me.retypeNewPassword.Name = "retypeNewPassword"
+        Me.retypeNewPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.retypeNewPassword.Size = New System.Drawing.Size(141, 22)
+        Me.retypeNewPassword.TabIndex = 0
+        '
+        'newPassword
+        '
+        Me.newPassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.newPassword.Location = New System.Drawing.Point(128, 89)
+        Me.newPassword.Name = "newPassword"
+        Me.newPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.newPassword.Size = New System.Drawing.Size(141, 22)
+        Me.newPassword.TabIndex = 0
+        '
+        'newUsername
+        '
+        Me.newUsername.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.newUsername.Location = New System.Drawing.Point(128, 54)
+        Me.newUsername.Name = "newUsername"
+        Me.newUsername.Size = New System.Drawing.Size(141, 22)
+        Me.newUsername.TabIndex = 0
+        '
+        'TableTableAdapter
+        '
+        Me.TableTableAdapter.ClearBeforeFill = True
+        '
         'Form3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(804, 366)
+        Me.Controls.Add(Me.manageUsers_Panel)
         Me.Controls.Add(Me.forReviewPanel)
         Me.Controls.Add(Me.welcomePanel)
         Me.Controls.Add(Me.menu)
@@ -319,6 +549,14 @@ Partial Class Form3
         Me.forReviewPanel.PerformLayout()
         Me.collectionPanel.ResumeLayout(False)
         Me.collectionPanel.PerformLayout()
+        Me.manageUsers_Panel.ResumeLayout(False)
+        Me.manageUsers_Panel.PerformLayout()
+        Me.deleteUser_GroupBox.ResumeLayout(False)
+        CType(Me.usersDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TableBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Database1DataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.addUser_GroupBox.ResumeLayout(False)
+        Me.addUser_GroupBox.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -348,4 +586,25 @@ Partial Class Form3
     Friend WithEvents collectionPanel As Panel
     Friend WithEvents approvedlist As TextBox
     Friend WithEvents Label6 As Label
+    Friend WithEvents manageUsers As Button
+    Friend WithEvents manageUsers_Panel As Panel
+    Friend WithEvents deleteUser_GroupBox As GroupBox
+    Friend WithEvents addUser_GroupBox As GroupBox
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents retypeNewPassword As TextBox
+    Friend WithEvents newPassword As TextBox
+    Friend WithEvents newUsername As TextBox
+    Friend WithEvents Label10 As Label
+    Friend WithEvents newPosition As ComboBox
+    Friend WithEvents usersDataGridView As DataGridView
+    Friend WithEvents addUser_Btn As Button
+    Friend WithEvents Database1DataSet As Database1DataSet
+    Friend WithEvents TableBindingSource As BindingSource
+    Friend WithEvents TableTableAdapter As Database1DataSetTableAdapters.TableTableAdapter
+    Friend WithEvents UsernameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Position As DataGridViewTextBoxColumn
+    Friend WithEvents Label11 As Label
+    Friend WithEvents deleteUser_btn As Button
 End Class
