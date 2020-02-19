@@ -24,9 +24,9 @@ Partial Class Form3
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form3))
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.menu = New System.Windows.Forms.Panel()
-        Me.manageUsers = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.collection = New System.Windows.Forms.Button()
         Me.toReview = New System.Windows.Forms.Button()
@@ -53,12 +53,12 @@ Partial Class Form3
         Me.manageUsers_Panel = New System.Windows.Forms.Panel()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.deleteUser_GroupBox = New System.Windows.Forms.GroupBox()
-        Me.deleteUser_btn = New System.Windows.Forms.Button()
-        Me.usersDataGridView = New System.Windows.Forms.DataGridView()
-        Me.UsernameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Position = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.usersDataGrid = New Bunifu.Framework.UI.BunifuCustomDataGrid()
+        Me.UsernameDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PositionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TableBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Database1DataSet = New MidtermProj.Database1DataSet()
+        Me.deleteUser_btn = New System.Windows.Forms.Button()
         Me.addUser_GroupBox = New System.Windows.Forms.GroupBox()
         Me.addUser_Btn = New System.Windows.Forms.Button()
         Me.newPosition = New System.Windows.Forms.ComboBox()
@@ -70,12 +70,19 @@ Partial Class Form3
         Me.newPassword = New System.Windows.Forms.TextBox()
         Me.newUsername = New System.Windows.Forms.TextBox()
         Me.TableTableAdapter = New MidtermProj.Database1DataSetTableAdapters.TableTableAdapter()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.manageUsers = New System.Windows.Forms.Button()
+        Me.BottomToolStripPanel = New System.Windows.Forms.ToolStripPanel()
+        Me.TopToolStripPanel = New System.Windows.Forms.ToolStripPanel()
+        Me.RightToolStripPanel = New System.Windows.Forms.ToolStripPanel()
+        Me.LeftToolStripPanel = New System.Windows.Forms.ToolStripPanel()
+        Me.ContentPanel = New System.Windows.Forms.ToolStripContentPanel()
         Me.menu.SuspendLayout()
         Me.forReviewPanel.SuspendLayout()
         Me.collectionPanel.SuspendLayout()
         Me.manageUsers_Panel.SuspendLayout()
         Me.deleteUser_GroupBox.SuspendLayout()
-        CType(Me.usersDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.usersDataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TableBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Database1DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.addUser_GroupBox.SuspendLayout()
@@ -95,25 +102,6 @@ Partial Class Form3
         Me.menu.Name = "menu"
         Me.menu.Size = New System.Drawing.Size(168, 369)
         Me.menu.TabIndex = 0
-        '
-        'manageUsers
-        '
-        Me.manageUsers.Location = New System.Drawing.Point(28, 119)
-        Me.manageUsers.Name = "manageUsers"
-        Me.manageUsers.Size = New System.Drawing.Size(101, 23)
-        Me.manageUsers.TabIndex = 8
-        Me.manageUsers.Text = "Manage Users"
-        Me.manageUsers.UseVisualStyleBackColor = True
-        '
-        'Button1
-        '
-        Me.Button1.BackgroundImage = CType(resources.GetObject("Button1.BackgroundImage"), System.Drawing.Image)
-        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button1.Location = New System.Drawing.Point(12, 303)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 40)
-        Me.Button1.TabIndex = 0
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'Panel2
         '
@@ -361,8 +349,8 @@ Partial Class Form3
         '
         'deleteUser_GroupBox
         '
+        Me.deleteUser_GroupBox.Controls.Add(Me.usersDataGrid)
         Me.deleteUser_GroupBox.Controls.Add(Me.deleteUser_btn)
-        Me.deleteUser_GroupBox.Controls.Add(Me.usersDataGridView)
         Me.deleteUser_GroupBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.deleteUser_GroupBox.Location = New System.Drawing.Point(332, 73)
         Me.deleteUser_GroupBox.Name = "deleteUser_GroupBox"
@@ -371,45 +359,50 @@ Partial Class Form3
         Me.deleteUser_GroupBox.TabStop = False
         Me.deleteUser_GroupBox.Text = "Delete User"
         '
-        'deleteUser_btn
+        'usersDataGrid
         '
-        Me.deleteUser_btn.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.deleteUser_btn.Location = New System.Drawing.Point(101, 230)
-        Me.deleteUser_btn.Name = "deleteUser_btn"
-        Me.deleteUser_btn.Size = New System.Drawing.Size(92, 27)
-        Me.deleteUser_btn.TabIndex = 11
-        Me.deleteUser_btn.Text = "Delete User"
-        Me.deleteUser_btn.UseVisualStyleBackColor = True
+        Me.usersDataGrid.AllowUserToAddRows = False
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.usersDataGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+        Me.usersDataGrid.AutoGenerateColumns = False
+        Me.usersDataGrid.BackgroundColor = System.Drawing.Color.Gainsboro
+        Me.usersDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.usersDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkViolet
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.usersDataGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+        Me.usersDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.usersDataGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.UsernameDataGridViewTextBoxColumn1, Me.PositionDataGridViewTextBoxColumn})
+        Me.usersDataGrid.DataSource = Me.TableBindingSource
+        Me.usersDataGrid.DoubleBuffered = True
+        Me.usersDataGrid.EnableHeadersVisualStyles = False
+        Me.usersDataGrid.HeaderBgColor = System.Drawing.Color.DarkViolet
+        Me.usersDataGrid.HeaderForeColor = System.Drawing.Color.White
+        Me.usersDataGrid.Location = New System.Drawing.Point(17, 32)
+        Me.usersDataGrid.Name = "usersDataGrid"
+        Me.usersDataGrid.ReadOnly = True
+        Me.usersDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.usersDataGrid.Size = New System.Drawing.Size(240, 177)
+        Me.usersDataGrid.TabIndex = 12
         '
-        'usersDataGridView
+        'UsernameDataGridViewTextBoxColumn1
         '
-        Me.usersDataGridView.AllowUserToAddRows = False
-        Me.usersDataGridView.AllowUserToResizeColumns = False
-        Me.usersDataGridView.AllowUserToResizeRows = False
-        Me.usersDataGridView.AutoGenerateColumns = False
-        Me.usersDataGridView.ColumnHeadersHeight = 27
-        Me.usersDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.UsernameDataGridViewTextBoxColumn, Me.Position})
-        Me.usersDataGridView.DataSource = Me.TableBindingSource
-        Me.usersDataGridView.Location = New System.Drawing.Point(15, 41)
-        Me.usersDataGridView.Name = "usersDataGridView"
-        Me.usersDataGridView.ReadOnly = True
-        Me.usersDataGridView.RowHeadersWidth = 45
-        Me.usersDataGridView.Size = New System.Drawing.Size(249, 168)
-        Me.usersDataGridView.TabIndex = 0
+        Me.UsernameDataGridViewTextBoxColumn1.DataPropertyName = "Username"
+        Me.UsernameDataGridViewTextBoxColumn1.HeaderText = "Username"
+        Me.UsernameDataGridViewTextBoxColumn1.Name = "UsernameDataGridViewTextBoxColumn1"
+        Me.UsernameDataGridViewTextBoxColumn1.ReadOnly = True
         '
-        'UsernameDataGridViewTextBoxColumn
+        'PositionDataGridViewTextBoxColumn
         '
-        Me.UsernameDataGridViewTextBoxColumn.DataPropertyName = "Username"
-        Me.UsernameDataGridViewTextBoxColumn.HeaderText = "Username"
-        Me.UsernameDataGridViewTextBoxColumn.Name = "UsernameDataGridViewTextBoxColumn"
-        Me.UsernameDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'Position
-        '
-        Me.Position.DataPropertyName = "position"
-        Me.Position.HeaderText = "Position"
-        Me.Position.Name = "Position"
-        Me.Position.ReadOnly = True
+        Me.PositionDataGridViewTextBoxColumn.DataPropertyName = "position"
+        Me.PositionDataGridViewTextBoxColumn.HeaderText = "Position"
+        Me.PositionDataGridViewTextBoxColumn.Name = "PositionDataGridViewTextBoxColumn"
+        Me.PositionDataGridViewTextBoxColumn.ReadOnly = True
         '
         'TableBindingSource
         '
@@ -420,6 +413,16 @@ Partial Class Form3
         '
         Me.Database1DataSet.DataSetName = "Database1DataSet"
         Me.Database1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'deleteUser_btn
+        '
+        Me.deleteUser_btn.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.deleteUser_btn.Location = New System.Drawing.Point(101, 230)
+        Me.deleteUser_btn.Name = "deleteUser_btn"
+        Me.deleteUser_btn.Size = New System.Drawing.Size(92, 27)
+        Me.deleteUser_btn.TabIndex = 11
+        Me.deleteUser_btn.Text = "Delete User"
+        Me.deleteUser_btn.UseVisualStyleBackColor = True
         '
         'addUser_GroupBox
         '
@@ -520,6 +523,7 @@ Partial Class Form3
         '
         'newUsername
         '
+        Me.newUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.newUsername.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.newUsername.Location = New System.Drawing.Point(128, 54)
         Me.newUsername.Name = "newUsername"
@@ -529,6 +533,61 @@ Partial Class Form3
         'TableTableAdapter
         '
         Me.TableTableAdapter.ClearBeforeFill = True
+        '
+        'Button1
+        '
+        Me.Button1.BackgroundImage = CType(resources.GetObject("Button1.BackgroundImage"), System.Drawing.Image)
+        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button1.Location = New System.Drawing.Point(12, 303)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 40)
+        Me.Button1.TabIndex = 0
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'manageUsers
+        '
+        Me.manageUsers.Location = New System.Drawing.Point(28, 119)
+        Me.manageUsers.Name = "manageUsers"
+        Me.manageUsers.Size = New System.Drawing.Size(101, 23)
+        Me.manageUsers.TabIndex = 8
+        Me.manageUsers.Text = "Manage Users"
+        Me.manageUsers.UseVisualStyleBackColor = True
+        '
+        'BottomToolStripPanel
+        '
+        Me.BottomToolStripPanel.Location = New System.Drawing.Point(0, 0)
+        Me.BottomToolStripPanel.Name = "BottomToolStripPanel"
+        Me.BottomToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal
+        Me.BottomToolStripPanel.RowMargin = New System.Windows.Forms.Padding(3, 0, 0, 0)
+        Me.BottomToolStripPanel.Size = New System.Drawing.Size(0, 0)
+        '
+        'TopToolStripPanel
+        '
+        Me.TopToolStripPanel.Location = New System.Drawing.Point(0, 0)
+        Me.TopToolStripPanel.Name = "TopToolStripPanel"
+        Me.TopToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal
+        Me.TopToolStripPanel.RowMargin = New System.Windows.Forms.Padding(3, 0, 0, 0)
+        Me.TopToolStripPanel.Size = New System.Drawing.Size(0, 0)
+        '
+        'RightToolStripPanel
+        '
+        Me.RightToolStripPanel.Location = New System.Drawing.Point(0, 0)
+        Me.RightToolStripPanel.Name = "RightToolStripPanel"
+        Me.RightToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal
+        Me.RightToolStripPanel.RowMargin = New System.Windows.Forms.Padding(3, 0, 0, 0)
+        Me.RightToolStripPanel.Size = New System.Drawing.Size(0, 0)
+        '
+        'LeftToolStripPanel
+        '
+        Me.LeftToolStripPanel.Location = New System.Drawing.Point(0, 0)
+        Me.LeftToolStripPanel.Name = "LeftToolStripPanel"
+        Me.LeftToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal
+        Me.LeftToolStripPanel.RowMargin = New System.Windows.Forms.Padding(3, 0, 0, 0)
+        Me.LeftToolStripPanel.Size = New System.Drawing.Size(0, 0)
+        '
+        'ContentPanel
+        '
+        Me.ContentPanel.Size = New System.Drawing.Size(150, 150)
         '
         'Form3
         '
@@ -540,6 +599,7 @@ Partial Class Form3
         Me.Controls.Add(Me.welcomePanel)
         Me.Controls.Add(Me.menu)
         Me.Controls.Add(Me.collectionPanel)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "Form3"
@@ -552,7 +612,7 @@ Partial Class Form3
         Me.manageUsers_Panel.ResumeLayout(False)
         Me.manageUsers_Panel.PerformLayout()
         Me.deleteUser_GroupBox.ResumeLayout(False)
-        CType(Me.usersDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.usersDataGrid, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TableBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Database1DataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.addUser_GroupBox.ResumeLayout(False)
@@ -566,7 +626,6 @@ Partial Class Form3
     Friend WithEvents collection As Button
     Friend WithEvents toReview As Button
     Friend WithEvents welcomePanel As Panel
-    Friend WithEvents Button1 As Button
     Friend WithEvents forReviewPanel As Panel
     Friend WithEvents forRevLabel As Label
     Friend WithEvents viewAuthor As TextBox
@@ -586,7 +645,6 @@ Partial Class Form3
     Friend WithEvents collectionPanel As Panel
     Friend WithEvents approvedlist As TextBox
     Friend WithEvents Label6 As Label
-    Friend WithEvents manageUsers As Button
     Friend WithEvents manageUsers_Panel As Panel
     Friend WithEvents deleteUser_GroupBox As GroupBox
     Friend WithEvents addUser_GroupBox As GroupBox
@@ -598,13 +656,20 @@ Partial Class Form3
     Friend WithEvents newUsername As TextBox
     Friend WithEvents Label10 As Label
     Friend WithEvents newPosition As ComboBox
-    Friend WithEvents usersDataGridView As DataGridView
     Friend WithEvents addUser_Btn As Button
     Friend WithEvents Database1DataSet As Database1DataSet
     Friend WithEvents TableBindingSource As BindingSource
     Friend WithEvents TableTableAdapter As Database1DataSetTableAdapters.TableTableAdapter
-    Friend WithEvents UsernameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents Position As DataGridViewTextBoxColumn
     Friend WithEvents Label11 As Label
     Friend WithEvents deleteUser_btn As Button
+    Friend WithEvents usersDataGrid As Bunifu.Framework.UI.BunifuCustomDataGrid
+    Friend WithEvents UsernameDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents PositionDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents manageUsers As Button
+    Friend WithEvents Button1 As Button
+    Friend WithEvents BottomToolStripPanel As ToolStripPanel
+    Friend WithEvents TopToolStripPanel As ToolStripPanel
+    Friend WithEvents RightToolStripPanel As ToolStripPanel
+    Friend WithEvents LeftToolStripPanel As ToolStripPanel
+    Friend WithEvents ContentPanel As ToolStripContentPanel
 End Class

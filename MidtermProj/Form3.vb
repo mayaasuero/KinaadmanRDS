@@ -101,7 +101,6 @@
         welcomePanel.Visible = False
         collectionPanel.Visible = False
         forReviewPanel.Visible = False
-        'usersDataGridView = TableTableAdapter.getStaffList("staff").
 
     End Sub
 
@@ -113,7 +112,9 @@
             newPassword.Text = ""
             retypeNewPassword.Text = ""
             newPosition.ResetText()
-            usersDataGridView.DataSource = Me.TableTableAdapter.getStaffList("staff")
+            usersDataGrid.Update()
+            Me.TableTableAdapter.Fill(Me.Database1DataSet.Table)
+
         ElseIf Not newPassword.Text = retypeNewPassword.Text Then
             MsgBox("Passwords do not match. Try again.")
             newPassword.Text = ""
@@ -130,6 +131,12 @@
     End Sub
 
     Private Sub deleteUser_btn_Click(sender As Object, e As EventArgs) Handles deleteUser_btn.Click
+        If usersDataGrid.SelectedRows.Count > 0 Then
+            usersDataGrid.Rows.RemoveAt(usersDataGrid.CurrentRow.Index)
+            usersDataGrid.Update()
+        Else
+            MessageBox.Show("No selected user.")
+        End If
         'Me.TableTableAdapter.DeleteQuery(usersDataGridView.Select())
     End Sub
 End Class
