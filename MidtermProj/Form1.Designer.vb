@@ -83,7 +83,7 @@ Partial Class Login
         Me.Panel1.Controls.Add(Me.PictureBox4)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Location = New System.Drawing.Point(3, -1)
+        Me.Panel1.Location = New System.Drawing.Point(-1, -1)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(575, 461)
@@ -95,6 +95,7 @@ Partial Class Login
         Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox2.Location = New System.Drawing.Point(355, 253)
         Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.TextBox2.Size = New System.Drawing.Size(160, 17)
         Me.TextBox2.TabIndex = 9
         '
@@ -128,7 +129,7 @@ Partial Class Login
         Me.Button1.IconVisible = True
         Me.Button1.IconZoom = 90.0R
         Me.Button1.IsTab = False
-        Me.Button1.Location = New System.Drawing.Point(379, 303)
+        Me.Button1.Location = New System.Drawing.Point(379, 308)
         Me.Button1.Name = "Button1"
         Me.Button1.Normalcolor = System.Drawing.Color.DarkOrchid
         Me.Button1.OnHovercolor = System.Drawing.Color.MediumPurple

@@ -24,6 +24,8 @@ Partial Class Form2
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form2))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.feedback_btn = New System.Windows.Forms.Button()
         Me.receive_btn = New System.Windows.Forms.Button()
@@ -49,21 +51,20 @@ Partial Class Form2
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.thesisNumber = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BunifuCustomDataGrid1 = New Bunifu.Framework.UI.BunifuCustomDataGrid()
+        Me.FeedbackIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ThesisNumberDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TitleDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AuthorsDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MessageDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.status = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FeedbackBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Database1DataSet = New MidtermProj.Database1DataSet()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
+        Me.HasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.StatusDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TitleDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AuthorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.YearLvlDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DescriptionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DateReceivedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ReceivedByDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ThesisBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ThesisBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.FeedbackTableAdapter = New MidtermProj.Database1DataSetTableAdapters.FeedbackTableAdapter()
         Me.ThesisTableAdapter = New MidtermProj.Database1DataSetTableAdapters.ThesisTableAdapter()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -71,10 +72,10 @@ Partial Class Form2
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AxAcroPDF1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel4.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BunifuCustomDataGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FeedbackBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Database1DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ThesisBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ThesisBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.HasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -356,7 +357,7 @@ Partial Class Form2
         Me.Panel4.BackColor = System.Drawing.Color.Snow
         Me.Panel4.BackgroundImage = CType(resources.GetObject("Panel4.BackgroundImage"), System.Drawing.Image)
         Me.Panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Panel4.Controls.Add(Me.DataGridView1)
+        Me.Panel4.Controls.Add(Me.BunifuCustomDataGrid1)
         Me.Panel4.Controls.Add(Me.Label8)
         Me.Panel4.Controls.Add(Me.DateTimePicker2)
         Me.Panel4.Location = New System.Drawing.Point(156, 2)
@@ -366,34 +367,99 @@ Partial Class Form2
         Me.Panel4.TabIndex = 5
         Me.Panel4.Visible = False
         '
-        'DataGridView1
+        'BunifuCustomDataGrid1
         '
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.AutoGenerateColumns = False
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.thesisNumber, Me.StatusDataGridViewTextBoxColumn, Me.TitleDataGridViewTextBoxColumn, Me.AuthorDataGridViewTextBoxColumn, Me.YearLvlDataGridViewTextBoxColumn, Me.DescriptionDataGridViewTextBoxColumn, Me.DateReceivedDataGridViewTextBoxColumn, Me.ReceivedByDataGridViewTextBoxColumn})
-        Me.DataGridView1.DataSource = Me.ThesisBindingSource1
-        Me.DataGridView1.Location = New System.Drawing.Point(1, 95)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(844, 308)
-        Me.DataGridView1.TabIndex = 5
+        Me.BunifuCustomDataGrid1.AllowUserToAddRows = False
+        Me.BunifuCustomDataGrid1.AllowUserToDeleteRows = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.BunifuCustomDataGrid1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.BunifuCustomDataGrid1.AutoGenerateColumns = False
+        Me.BunifuCustomDataGrid1.BackgroundColor = System.Drawing.Color.Gainsboro
+        Me.BunifuCustomDataGrid1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.BunifuCustomDataGrid1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.BunifuCustomDataGrid1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.Indigo
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 10.5!)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.SeaShell
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.BunifuCustomDataGrid1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.BunifuCustomDataGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.BunifuCustomDataGrid1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.FeedbackIDDataGridViewTextBoxColumn, Me.ThesisNumberDataGridViewTextBoxColumn, Me.TitleDataGridViewTextBoxColumn, Me.AuthorsDataGridViewTextBoxColumn, Me.MessageDataGridViewTextBoxColumn, Me.status})
+        Me.BunifuCustomDataGrid1.DataSource = Me.FeedbackBindingSource
+        Me.BunifuCustomDataGrid1.DoubleBuffered = True
+        Me.BunifuCustomDataGrid1.EnableHeadersVisualStyles = False
+        Me.BunifuCustomDataGrid1.HeaderBgColor = System.Drawing.Color.Indigo
+        Me.BunifuCustomDataGrid1.HeaderForeColor = System.Drawing.Color.SeaShell
+        Me.BunifuCustomDataGrid1.Location = New System.Drawing.Point(28, 76)
+        Me.BunifuCustomDataGrid1.Name = "BunifuCustomDataGrid1"
+        Me.BunifuCustomDataGrid1.ReadOnly = True
+        Me.BunifuCustomDataGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.BunifuCustomDataGrid1.Size = New System.Drawing.Size(797, 327)
+        Me.BunifuCustomDataGrid1.TabIndex = 4
         '
-        'thesisNumber
+        'FeedbackIDDataGridViewTextBoxColumn
         '
-        Me.thesisNumber.DataPropertyName = "thesisNumber"
-        Me.thesisNumber.HeaderText = "ID"
-        Me.thesisNumber.Name = "thesisNumber"
+        Me.FeedbackIDDataGridViewTextBoxColumn.DataPropertyName = "feedbackID"
+        Me.FeedbackIDDataGridViewTextBoxColumn.HeaderText = "ID"
+        Me.FeedbackIDDataGridViewTextBoxColumn.Name = "FeedbackIDDataGridViewTextBoxColumn"
+        Me.FeedbackIDDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ThesisNumberDataGridViewTextBoxColumn
+        '
+        Me.ThesisNumberDataGridViewTextBoxColumn.DataPropertyName = "thesisNumber"
+        Me.ThesisNumberDataGridViewTextBoxColumn.HeaderText = "Thesis Number"
+        Me.ThesisNumberDataGridViewTextBoxColumn.Name = "ThesisNumberDataGridViewTextBoxColumn"
+        Me.ThesisNumberDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ThesisNumberDataGridViewTextBoxColumn.Width = 150
+        '
+        'TitleDataGridViewTextBoxColumn
+        '
+        Me.TitleDataGridViewTextBoxColumn.DataPropertyName = "title"
+        Me.TitleDataGridViewTextBoxColumn.HeaderText = "Title"
+        Me.TitleDataGridViewTextBoxColumn.Name = "TitleDataGridViewTextBoxColumn"
+        Me.TitleDataGridViewTextBoxColumn.ReadOnly = True
+        Me.TitleDataGridViewTextBoxColumn.Width = 200
+        '
+        'AuthorsDataGridViewTextBoxColumn
+        '
+        Me.AuthorsDataGridViewTextBoxColumn.DataPropertyName = "authors"
+        Me.AuthorsDataGridViewTextBoxColumn.HeaderText = "Author"
+        Me.AuthorsDataGridViewTextBoxColumn.Name = "AuthorsDataGridViewTextBoxColumn"
+        Me.AuthorsDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'MessageDataGridViewTextBoxColumn
+        '
+        Me.MessageDataGridViewTextBoxColumn.DataPropertyName = "message"
+        Me.MessageDataGridViewTextBoxColumn.HeaderText = "Comment"
+        Me.MessageDataGridViewTextBoxColumn.Name = "MessageDataGridViewTextBoxColumn"
+        Me.MessageDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'status
+        '
+        Me.status.DataPropertyName = "status"
+        Me.status.HeaderText = "Status"
+        Me.status.Name = "status"
+        Me.status.ReadOnly = True
+        '
+        'FeedbackBindingSource
+        '
+        Me.FeedbackBindingSource.DataMember = "Feedback"
+        Me.FeedbackBindingSource.DataSource = Me.Database1DataSet
         '
         'Database1DataSet
         '
         Me.Database1DataSet.DataSetName = "Database1DataSet"
+        Me.Database1DataSet.EnforceConstraints = False
         Me.Database1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Label8
         '
         Me.Label8.AutoSize = True
         Me.Label8.BackColor = System.Drawing.Color.Transparent
-        Me.Label8.Location = New System.Drawing.Point(17, 43)
+        Me.Label8.Location = New System.Drawing.Point(28, 23)
         Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(72, 13)
@@ -402,7 +468,7 @@ Partial Class Form2
         '
         'DateTimePicker2
         '
-        Me.DateTimePicker2.Location = New System.Drawing.Point(17, 60)
+        Me.DateTimePicker2.Location = New System.Drawing.Point(28, 40)
         Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(2)
         Me.DateTimePicker2.Name = "DateTimePicker2"
         Me.DateTimePicker2.Size = New System.Drawing.Size(290, 20)
@@ -412,57 +478,9 @@ Partial Class Form2
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
-        'StatusDataGridViewTextBoxColumn
+        'FeedbackTableAdapter
         '
-        Me.StatusDataGridViewTextBoxColumn.DataPropertyName = "status"
-        Me.StatusDataGridViewTextBoxColumn.HeaderText = "Status"
-        Me.StatusDataGridViewTextBoxColumn.Name = "StatusDataGridViewTextBoxColumn"
-        '
-        'TitleDataGridViewTextBoxColumn
-        '
-        Me.TitleDataGridViewTextBoxColumn.DataPropertyName = "title"
-        Me.TitleDataGridViewTextBoxColumn.HeaderText = "Title"
-        Me.TitleDataGridViewTextBoxColumn.Name = "TitleDataGridViewTextBoxColumn"
-        '
-        'AuthorDataGridViewTextBoxColumn
-        '
-        Me.AuthorDataGridViewTextBoxColumn.DataPropertyName = "author"
-        Me.AuthorDataGridViewTextBoxColumn.HeaderText = "Author/s"
-        Me.AuthorDataGridViewTextBoxColumn.Name = "AuthorDataGridViewTextBoxColumn"
-        '
-        'YearLvlDataGridViewTextBoxColumn
-        '
-        Me.YearLvlDataGridViewTextBoxColumn.DataPropertyName = "yearLvl"
-        Me.YearLvlDataGridViewTextBoxColumn.HeaderText = "Year Level"
-        Me.YearLvlDataGridViewTextBoxColumn.Name = "YearLvlDataGridViewTextBoxColumn"
-        '
-        'DescriptionDataGridViewTextBoxColumn
-        '
-        Me.DescriptionDataGridViewTextBoxColumn.DataPropertyName = "description"
-        Me.DescriptionDataGridViewTextBoxColumn.HeaderText = "Description"
-        Me.DescriptionDataGridViewTextBoxColumn.Name = "DescriptionDataGridViewTextBoxColumn"
-        '
-        'DateReceivedDataGridViewTextBoxColumn
-        '
-        Me.DateReceivedDataGridViewTextBoxColumn.DataPropertyName = "dateReceived"
-        Me.DateReceivedDataGridViewTextBoxColumn.HeaderText = "Date Received"
-        Me.DateReceivedDataGridViewTextBoxColumn.Name = "DateReceivedDataGridViewTextBoxColumn"
-        '
-        'ReceivedByDataGridViewTextBoxColumn
-        '
-        Me.ReceivedByDataGridViewTextBoxColumn.DataPropertyName = "receivedBy"
-        Me.ReceivedByDataGridViewTextBoxColumn.HeaderText = "Received By"
-        Me.ReceivedByDataGridViewTextBoxColumn.Name = "ReceivedByDataGridViewTextBoxColumn"
-        '
-        'ThesisBindingSource1
-        '
-        Me.ThesisBindingSource1.DataMember = "Thesis"
-        Me.ThesisBindingSource1.DataSource = Me.Database1DataSet
-        '
-        'ThesisBindingSource
-        '
-        Me.ThesisBindingSource.DataMember = "Thesis"
-        Me.ThesisBindingSource.DataSource = Me.Database1DataSet
+        Me.FeedbackTableAdapter.ClearBeforeFill = True
         '
         'ThesisTableAdapter
         '
@@ -474,8 +492,8 @@ Partial Class Form2
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1003, 453)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel4)
+        Me.Controls.Add(Me.Panel2)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "Form2"
@@ -488,10 +506,10 @@ Partial Class Form2
         CType(Me.AxAcroPDF1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BunifuCustomDataGrid1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FeedbackBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Database1DataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ThesisBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ThesisBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.HasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -525,16 +543,15 @@ Partial Class Form2
     Friend WithEvents Label8 As Label
     Friend WithEvents DateTimePicker2 As DateTimePicker
     Friend WithEvents Database1DataSet As Database1DataSet
-    Friend WithEvents ThesisBindingSource As BindingSource
+    Friend WithEvents BunifuCustomDataGrid1 As Bunifu.Framework.UI.BunifuCustomDataGrid
+    Friend WithEvents HasBindingSource As BindingSource
+    Friend WithEvents FeedbackTableAdapter As Database1DataSetTableAdapters.FeedbackTableAdapter
     Friend WithEvents ThesisTableAdapter As Database1DataSetTableAdapters.ThesisTableAdapter
-    Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents ThesisBindingSource1 As BindingSource
-    Friend WithEvents thesisNumber As DataGridViewTextBoxColumn
-    Friend WithEvents StatusDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FeedbackBindingSource As BindingSource
+    Friend WithEvents FeedbackIDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ThesisNumberDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents TitleDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents AuthorDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents YearLvlDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents DescriptionDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents DateReceivedDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ReceivedByDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents AuthorsDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents MessageDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents status As DataGridViewTextBoxColumn
 End Class

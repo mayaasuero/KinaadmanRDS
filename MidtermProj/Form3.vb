@@ -15,15 +15,14 @@
     Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'Database1DataSet.Table' table. You can move, or remove it, as needed.
         Me.TableTableAdapter.Fill(Me.Database1DataSet.Table)
+        Me.ThesisTableAdapter1.Fill(Me.ThesisTableAdapter1.getThesisTitle("Pending"))
         welcomePanel.Visible = True
         forReviewPanel.Visible = False
         collectionPanel.Visible = False
         manageUsers_Panel.Visible = False
-
     End Sub
 
     Private Sub collection_Click(sender As Object, e As EventArgs) Handles collection.Click
-        approvedlist.Text = approved
         welcomePanel.Visible = False
 
         collectionPanel.Visible = True
@@ -130,9 +129,9 @@
 
     End Sub
 
+    'wala pa ni nahuman
     Private Sub deleteUser_btn_Click(sender As Object, e As EventArgs) Handles deleteUser_btn.Click
         If usersDataGrid.SelectedRows.Count > 0 Then
-            usersDataGrid.Rows.RemoveAt(usersDataGrid.CurrentRow.Index)
             usersDataGrid.Update()
         Else
             MessageBox.Show("No selected user.")

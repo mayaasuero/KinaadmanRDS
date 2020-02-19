@@ -11,7 +11,7 @@ Public Class Form2
         'oForm = New Login()
         Login.Show()
         'oForm = Nothing
-        Me.Hide()
+        Me.Close()
         TextBox5.Text = ""
         TextBox2.Text = ""
         pdffilename = ""
@@ -21,7 +21,7 @@ Public Class Form2
 
 
     Private Sub Panel3_Paint(sender As Object, e As PaintEventArgs) Handles Panel3.Paint
-        Label7.Text = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")
+        Label7.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")
     End Sub
 
 
@@ -32,9 +32,9 @@ Public Class Form2
     End Sub
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'Database1DataSet.Thesis' table. You can move, or remove it, as needed.
-        Me.ThesisTableAdapter.Fill(Me.Database1DataSet.Thesis)
-
+        Me.FeedbackTableAdapter.Fill(Me.Database1DataSet.Feedback)
+        Me.Visible = True
+        Me.Show()
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click

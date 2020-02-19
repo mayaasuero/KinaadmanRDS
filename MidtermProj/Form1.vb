@@ -18,7 +18,7 @@
             Label6.Visible = True
         End If
         If ProgressBar1.Value = 100 Then
-            If Me.TableTableAdapter.getPosition1(TextBox1.Text, TextBox2.Text).ToString() = "staff" Then
+            If Me.TableTableAdapter.getPosition1(TextBox1.Text, TextBox2.Text).ToString() = "Staff" Then
                 Timer1.Stop()
                 Me.Hide()
                 Form2.Show()
@@ -27,7 +27,7 @@
                 TextBox1.Text = ""
                 TextBox2.Text = ""
 
-            ElseIf Me.TableTableAdapter.getPosition1(TextBox1.Text, TextBox2.Text).ToString() = "director" Then
+            ElseIf Me.TableTableAdapter.getPosition1(TextBox1.Text, TextBox2.Text).ToString() = "Director" Then
                 Timer1.Stop()
                 Me.Hide()
                 Form3.Show()
@@ -36,7 +36,7 @@
                 TextBox1.Text = ""
                 TextBox2.Text = ""
             Else
-                MsgBox("Can't run")
+                MsgBox("Error. Exit application and restart.")
             End If
         End If
 
