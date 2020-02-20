@@ -13,9 +13,11 @@
     End Sub
 
     Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'Database1DataSet.Feedback' table. You can move, or remove it, as needed.
+        Me.FeedbackTableAdapter.Fill(Me.Database1DataSet.Feedback)
         'TODO: This line of code loads data into the 'Database1DataSet.Table' table. You can move, or remove it, as needed.
         Me.TableTableAdapter.Fill(Me.Database1DataSet.Table)
-        Me.ThesisTableAdapter1.Fill(Me.ThesisTableAdapter1.getThesisTitle("Pending"))
+        Me.ThesisTableAdapter1.Fill(Me.Database1DataSet.Thesis)
         welcomePanel.Visible = True
         forReviewPanel.Visible = False
         collectionPanel.Visible = False
@@ -40,35 +42,29 @@
 
 
     Private Sub selectThesis_Click(sender As Object, e As EventArgs) Handles selectThesis.Click
-        For i = 0 To 5
-            If reviewList.SelectedItem = thesislist(i).title Then
-                viewAuthor.Text = thesislist(i).author
-                viewTitle.Text = thesislist(i).title
-                viewDescription.Text = thesislist(i).description
-                pointer = i
-                Exit For
-            End If
-        Next i
-
+        Dim key As String = reviewList.SelectedValue
+        MsgBox(key)
+        viewAuthor.Text = ThesisTableAdapter1.getAuthor(key)
+        viewTitle.Text = ThesisTableAdapter1.getThesisTitle(key)
+        viewDescription.Text = ThesisTableAdapter1.getDescription(key)
+        Me.ThesisTableAdapter1.Fill(Me.Database1DataSet.Thesis)
     End Sub
 
+
+    'TO FIX: key not refering to SeletedValue
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles approve.Click
-        approved = approved & "Title: " & thesislist(pointer).title & vbCrLf & "Author: " & thesislist(pointer).author & vbCrLf & "Description: " & thesislist(pointer).description & vbCrLf & "File name: " & thesislist(pointer).file & vbCrLf & vbCrLf
-        MessageBox.Show(thesislist(pointer).Title & " has been approved.")
-        viewAuthor.Text = ""
-        viewTitle.Text = ""
-        viewDescription.Text = ""
-        thesislist(pointer) = Nothing
-        reviewList.Items.RemoveAt(pointer)
-        fillIn()
-        reviewList.Text = ""
-    End Sub
+        'Try
+        Dim key As String = reviewList.SelectedValue
+        Dim feedbackID As Integer = Me.ThesisTableAdapter1.selectThesisID(key) & Int(Date.Today.Year)
+        Me.ThesisTableAdapter1.UpdateStatus("Approved", key)
+        MsgBox(key & " " & feedbackID)
+        Me.ThesisTableAdapter1.Fill(Me.Database1DataSet.Thesis)
+        Me.FeedbackTableAdapter.insertFeedback(feedbackID, Me.ThesisTableAdapter1.selectThesisID(key), Me.ThesisTableAdapter1.getThesisTitle(key), Me.ThesisTableAdapter1.getAuthor(key), TextBox1.Text, Me.ThesisTableAdapter1.getStatus(key))
+        MsgBox(ThesisTableAdapter1.selectThesisID(key) & " has been approved.")
+        'Catch ex As Exception
+        'MsgBox("Error found.")
+        'End Try
 
-    Private Sub fillIn()
-        For i = pointer To 4
-            thesislist(i) = thesislist(i + 1)
-        Next
-        thesislist(5) = Nothing
     End Sub
 
     Private Sub reject_Click(sender As Object, e As EventArgs) Handles reject.Click
@@ -79,7 +75,7 @@
         viewDescription.Text = ""
         thesislist(pointer) = Nothing
         reviewList.Items.RemoveAt(pointer)
-        fillIn()
+        'fillIn()
         reviewList.Text = ""
     End Sub
 
@@ -91,7 +87,7 @@
         viewDescription.Text = ""
         thesislist(pointer) = Nothing
         reviewList.Items.RemoveAt(pointer)
-        fillIn()
+        'fillIn()
         reviewList.Text = ""
     End Sub
 

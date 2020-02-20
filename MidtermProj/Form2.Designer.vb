@@ -66,6 +66,9 @@ Partial Class Form2
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.FeedbackTableAdapter = New MidtermProj.Database1DataSetTableAdapters.FeedbackTableAdapter()
         Me.ThesisTableAdapter = New MidtermProj.Database1DataSetTableAdapters.ThesisTableAdapter()
+        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.search_Btn = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -357,6 +360,9 @@ Partial Class Form2
         Me.Panel4.BackColor = System.Drawing.Color.Snow
         Me.Panel4.BackgroundImage = CType(resources.GetObject("Panel4.BackgroundImage"), System.Drawing.Image)
         Me.Panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Panel4.Controls.Add(Me.search_Btn)
+        Me.Panel4.Controls.Add(Me.Label9)
+        Me.Panel4.Controls.Add(Me.TextBox6)
         Me.Panel4.Controls.Add(Me.BunifuCustomDataGrid1)
         Me.Panel4.Controls.Add(Me.Label8)
         Me.Panel4.Controls.Add(Me.DateTimePicker2)
@@ -486,6 +492,32 @@ Partial Class Form2
         '
         Me.ThesisTableAdapter.ClearBeforeFill = True
         '
+        'TextBox6
+        '
+        Me.TextBox6.Location = New System.Drawing.Point(440, 40)
+        Me.TextBox6.Name = "TextBox6"
+        Me.TextBox6.Size = New System.Drawing.Size(238, 20)
+        Me.TextBox6.TabIndex = 5
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.BackColor = System.Drawing.Color.Transparent
+        Me.Label9.Location = New System.Drawing.Point(437, 23)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(41, 13)
+        Me.Label9.TabIndex = 6
+        Me.Label9.Text = "Search"
+        '
+        'search_Btn
+        '
+        Me.search_Btn.Location = New System.Drawing.Point(686, 38)
+        Me.search_Btn.Name = "search_Btn"
+        Me.search_Btn.Size = New System.Drawing.Size(75, 23)
+        Me.search_Btn.TabIndex = 7
+        Me.search_Btn.Text = "Search"
+        Me.search_Btn.UseVisualStyleBackColor = True
+        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -554,4 +586,7 @@ Partial Class Form2
     Friend WithEvents AuthorsDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents MessageDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents status As DataGridViewTextBoxColumn
+    Friend WithEvents search_Btn As Button
+    Friend WithEvents Label9 As Label
+    Friend WithEvents TextBox6 As TextBox
 End Class
