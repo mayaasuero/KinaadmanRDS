@@ -24,13 +24,15 @@ Partial Class Form2
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form2))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.feedback_btn = New System.Windows.Forms.Button()
         Me.receive_btn = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
@@ -48,16 +50,19 @@ Partial Class Form2
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.AxAcroPDF1 = New AxAcroPDFLib.AxAcroPDF()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
         Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.BunifuCustomDataGrid1 = New Bunifu.Framework.UI.BunifuCustomDataGrid()
-        Me.FeedbackIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FilterLabel = New System.Windows.Forms.Label()
+        Me.filterComboBox = New System.Windows.Forms.ComboBox()
+        Me.refresh = New System.Windows.Forms.Button()
+        Me.search_Btn = New System.Windows.Forms.Button()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.searchBox = New System.Windows.Forms.TextBox()
+        Me.feedbackDataGrid = New Bunifu.Framework.UI.BunifuCustomDataGrid()
         Me.ThesisNumberDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TitleDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AuthorsDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MessageDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.status = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.message = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FeedbackBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Database1DataSet = New MidtermProj.Database1DataSet()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -66,16 +71,13 @@ Partial Class Form2
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.FeedbackTableAdapter = New MidtermProj.Database1DataSetTableAdapters.FeedbackTableAdapter()
         Me.ThesisTableAdapter = New MidtermProj.Database1DataSetTableAdapters.ThesisTableAdapter()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.search_Btn = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AxAcroPDF1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel4.SuspendLayout()
-        CType(Me.BunifuCustomDataGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.feedbackDataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FeedbackBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Database1DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.HasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -95,11 +97,11 @@ Partial Class Form2
         '
         'feedback_btn
         '
-        Me.feedback_btn.BackColor = System.Drawing.Color.PowderBlue
+        Me.feedback_btn.BackColor = System.Drawing.Color.WhiteSmoke
         Me.feedback_btn.BackgroundImage = CType(resources.GetObject("feedback_btn.BackgroundImage"), System.Drawing.Image)
         Me.feedback_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.feedback_btn.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.feedback_btn.Location = New System.Drawing.Point(22, 139)
+        Me.feedback_btn.Location = New System.Drawing.Point(22, 191)
         Me.feedback_btn.Margin = New System.Windows.Forms.Padding(2)
         Me.feedback_btn.Name = "feedback_btn"
         Me.feedback_btn.Size = New System.Drawing.Size(112, 38)
@@ -108,10 +110,10 @@ Partial Class Form2
         '
         'receive_btn
         '
-        Me.receive_btn.BackColor = System.Drawing.Color.PowderBlue
+        Me.receive_btn.BackColor = System.Drawing.Color.WhiteSmoke
         Me.receive_btn.BackgroundImage = CType(resources.GetObject("receive_btn.BackgroundImage"), System.Drawing.Image)
         Me.receive_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.receive_btn.Location = New System.Drawing.Point(22, 94)
+        Me.receive_btn.Location = New System.Drawing.Point(22, 146)
         Me.receive_btn.Margin = New System.Windows.Forms.Padding(2)
         Me.receive_btn.Name = "receive_btn"
         Me.receive_btn.Size = New System.Drawing.Size(112, 38)
@@ -121,26 +123,25 @@ Partial Class Form2
         '
         'Button1
         '
-        Me.Button1.BackColor = System.Drawing.Color.PowderBlue
+        Me.Button1.BackColor = System.Drawing.Color.WhiteSmoke
         Me.Button1.BackgroundImage = CType(resources.GetObject("Button1.BackgroundImage"), System.Drawing.Image)
         Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Button1.Location = New System.Drawing.Point(14, 408)
+        Me.Button1.Location = New System.Drawing.Point(22, 236)
         Me.Button1.Margin = New System.Windows.Forms.Padding(2)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(70, 32)
+        Me.Button1.Size = New System.Drawing.Size(112, 32)
         Me.Button1.TabIndex = 0
         Me.Button1.Text = " "
         Me.Button1.UseVisualStyleBackColor = False
         '
         'Panel2
         '
-        Me.Panel2.BackColor = System.Drawing.Color.Silver
-        Me.Panel2.BackgroundImage = CType(resources.GetObject("Panel2.BackgroundImage"), System.Drawing.Image)
+        Me.Panel2.BackColor = System.Drawing.Color.WhiteSmoke
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel2.Controls.Add(Me.Panel3)
-        Me.Panel2.Controls.Add(Me.AxAcroPDF1)
         Me.Panel2.Controls.Add(Me.Button5)
         Me.Panel2.Controls.Add(Me.Button3)
+        Me.Panel2.Controls.Add(Me.Panel3)
+        Me.Panel2.Controls.Add(Me.AxAcroPDF1)
         Me.Panel2.Location = New System.Drawing.Point(153, 4)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel2.Name = "Panel2"
@@ -148,9 +149,34 @@ Partial Class Form2
         Me.Panel2.TabIndex = 1
         Me.Panel2.Visible = False
         '
+        'Button5
+        '
+        Me.Button5.BackColor = System.Drawing.Color.LightBlue
+        Me.Button5.BackgroundImage = CType(resources.GetObject("Button5.BackgroundImage"), System.Drawing.Image)
+        Me.Button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Button5.Location = New System.Drawing.Point(19, 229)
+        Me.Button5.Margin = New System.Windows.Forms.Padding(2)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(90, 41)
+        Me.Button5.TabIndex = 0
+        Me.Button5.UseVisualStyleBackColor = False
+        '
+        'Button3
+        '
+        Me.Button3.BackColor = System.Drawing.Color.LightBlue
+        Me.Button3.BackgroundImage = CType(resources.GetObject("Button3.BackgroundImage"), System.Drawing.Image)
+        Me.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Button3.Location = New System.Drawing.Point(19, 160)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(2)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(90, 64)
+        Me.Button3.TabIndex = 0
+        Me.Button3.Text = " "
+        Me.Button3.UseVisualStyleBackColor = False
+        '
         'Panel3
         '
-        Me.Panel3.BackColor = System.Drawing.Color.AliceBlue
+        Me.Panel3.BackColor = System.Drawing.Color.WhiteSmoke
         Me.Panel3.Controls.Add(Me.PictureBox1)
         Me.Panel3.Controls.Add(Me.DateTimePicker1)
         Me.Panel3.Controls.Add(Me.TextBox4)
@@ -245,8 +271,8 @@ Partial Class Form2
         '
         Me.TextBox1.Location = New System.Drawing.Point(453, 369)
         Me.TextBox1.Margin = New System.Windows.Forms.Padding(2)
-        Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.ReadOnly = True
         Me.TextBox1.Size = New System.Drawing.Size(113, 20)
         Me.TextBox1.TabIndex = 2
         '
@@ -330,40 +356,18 @@ Partial Class Form2
         Me.AxAcroPDF1.Size = New System.Drawing.Size(619, 437)
         Me.AxAcroPDF1.TabIndex = 1
         '
-        'Button5
-        '
-        Me.Button5.BackColor = System.Drawing.Color.LightBlue
-        Me.Button5.BackgroundImage = CType(resources.GetObject("Button5.BackgroundImage"), System.Drawing.Image)
-        Me.Button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Button5.Location = New System.Drawing.Point(19, 229)
-        Me.Button5.Margin = New System.Windows.Forms.Padding(2)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(90, 41)
-        Me.Button5.TabIndex = 0
-        Me.Button5.UseVisualStyleBackColor = False
-        '
-        'Button3
-        '
-        Me.Button3.BackColor = System.Drawing.Color.LightBlue
-        Me.Button3.BackgroundImage = CType(resources.GetObject("Button3.BackgroundImage"), System.Drawing.Image)
-        Me.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Button3.Location = New System.Drawing.Point(19, 160)
-        Me.Button3.Margin = New System.Windows.Forms.Padding(2)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(90, 64)
-        Me.Button3.TabIndex = 0
-        Me.Button3.Text = " "
-        Me.Button3.UseVisualStyleBackColor = False
-        '
         'Panel4
         '
         Me.Panel4.BackColor = System.Drawing.Color.Snow
         Me.Panel4.BackgroundImage = CType(resources.GetObject("Panel4.BackgroundImage"), System.Drawing.Image)
         Me.Panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Panel4.Controls.Add(Me.FilterLabel)
+        Me.Panel4.Controls.Add(Me.filterComboBox)
+        Me.Panel4.Controls.Add(Me.refresh)
         Me.Panel4.Controls.Add(Me.search_Btn)
         Me.Panel4.Controls.Add(Me.Label9)
-        Me.Panel4.Controls.Add(Me.TextBox6)
-        Me.Panel4.Controls.Add(Me.BunifuCustomDataGrid1)
+        Me.Panel4.Controls.Add(Me.searchBox)
+        Me.Panel4.Controls.Add(Me.feedbackDataGrid)
         Me.Panel4.Controls.Add(Me.Label8)
         Me.Panel4.Controls.Add(Me.DateTimePicker2)
         Me.Panel4.Location = New System.Drawing.Point(156, 2)
@@ -373,53 +377,100 @@ Partial Class Form2
         Me.Panel4.TabIndex = 5
         Me.Panel4.Visible = False
         '
-        'BunifuCustomDataGrid1
+        'FilterLabel
         '
-        Me.BunifuCustomDataGrid1.AllowUserToAddRows = False
-        Me.BunifuCustomDataGrid1.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.BunifuCustomDataGrid1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.BunifuCustomDataGrid1.AutoGenerateColumns = False
-        Me.BunifuCustomDataGrid1.BackgroundColor = System.Drawing.Color.Gainsboro
-        Me.BunifuCustomDataGrid1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.BunifuCustomDataGrid1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.BunifuCustomDataGrid1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.Indigo
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 10.5!)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.SeaShell
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.BunifuCustomDataGrid1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
-        Me.BunifuCustomDataGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.BunifuCustomDataGrid1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.FeedbackIDDataGridViewTextBoxColumn, Me.ThesisNumberDataGridViewTextBoxColumn, Me.TitleDataGridViewTextBoxColumn, Me.AuthorsDataGridViewTextBoxColumn, Me.MessageDataGridViewTextBoxColumn, Me.status})
-        Me.BunifuCustomDataGrid1.DataSource = Me.FeedbackBindingSource
-        Me.BunifuCustomDataGrid1.DoubleBuffered = True
-        Me.BunifuCustomDataGrid1.EnableHeadersVisualStyles = False
-        Me.BunifuCustomDataGrid1.HeaderBgColor = System.Drawing.Color.Indigo
-        Me.BunifuCustomDataGrid1.HeaderForeColor = System.Drawing.Color.SeaShell
-        Me.BunifuCustomDataGrid1.Location = New System.Drawing.Point(28, 76)
-        Me.BunifuCustomDataGrid1.Name = "BunifuCustomDataGrid1"
-        Me.BunifuCustomDataGrid1.ReadOnly = True
-        Me.BunifuCustomDataGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        Me.BunifuCustomDataGrid1.Size = New System.Drawing.Size(797, 327)
-        Me.BunifuCustomDataGrid1.TabIndex = 4
+        Me.FilterLabel.AutoSize = True
+        Me.FilterLabel.BackColor = System.Drawing.Color.Transparent
+        Me.FilterLabel.Location = New System.Drawing.Point(591, 23)
+        Me.FilterLabel.Name = "FilterLabel"
+        Me.FilterLabel.Size = New System.Drawing.Size(29, 13)
+        Me.FilterLabel.TabIndex = 9
+        Me.FilterLabel.Text = "Filter"
         '
-        'FeedbackIDDataGridViewTextBoxColumn
+        'filterComboBox
         '
-        Me.FeedbackIDDataGridViewTextBoxColumn.DataPropertyName = "feedbackID"
-        Me.FeedbackIDDataGridViewTextBoxColumn.HeaderText = "ID"
-        Me.FeedbackIDDataGridViewTextBoxColumn.Name = "FeedbackIDDataGridViewTextBoxColumn"
-        Me.FeedbackIDDataGridViewTextBoxColumn.ReadOnly = True
+        Me.filterComboBox.FormattingEnabled = True
+        Me.filterComboBox.Items.AddRange(New Object() {"Thesis ID", "Title", "Author", "Status"})
+        Me.filterComboBox.Location = New System.Drawing.Point(591, 39)
+        Me.filterComboBox.Name = "filterComboBox"
+        Me.filterComboBox.Size = New System.Drawing.Size(144, 21)
+        Me.filterComboBox.TabIndex = 8
+        '
+        'refresh
+        '
+        Me.refresh.Location = New System.Drawing.Point(741, 13)
+        Me.refresh.Name = "refresh"
+        Me.refresh.Size = New System.Drawing.Size(75, 23)
+        Me.refresh.TabIndex = 7
+        Me.refresh.Text = "Refresh"
+        Me.refresh.UseVisualStyleBackColor = True
+        '
+        'search_Btn
+        '
+        Me.search_Btn.Location = New System.Drawing.Point(741, 40)
+        Me.search_Btn.Name = "search_Btn"
+        Me.search_Btn.Size = New System.Drawing.Size(75, 23)
+        Me.search_Btn.TabIndex = 7
+        Me.search_Btn.Text = "Search"
+        Me.search_Btn.UseVisualStyleBackColor = True
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.BackColor = System.Drawing.Color.Transparent
+        Me.Label9.Location = New System.Drawing.Point(346, 23)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(41, 13)
+        Me.Label9.TabIndex = 6
+        Me.Label9.Text = "Search"
+        '
+        'searchBox
+        '
+        Me.searchBox.Location = New System.Drawing.Point(345, 39)
+        Me.searchBox.Name = "searchBox"
+        Me.searchBox.Size = New System.Drawing.Size(238, 20)
+        Me.searchBox.TabIndex = 5
+        '
+        'feedbackDataGrid
+        '
+        Me.feedbackDataGrid.AllowUserToAddRows = False
+        Me.feedbackDataGrid.AllowUserToDeleteRows = False
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.feedbackDataGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
+        Me.feedbackDataGrid.AutoGenerateColumns = False
+        Me.feedbackDataGrid.BackgroundColor = System.Drawing.Color.Gainsboro
+        Me.feedbackDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.feedbackDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.feedbackDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.Indigo
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 10.5!)
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.SeaShell
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.feedbackDataGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        Me.feedbackDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.feedbackDataGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ThesisNumberDataGridViewTextBoxColumn, Me.TitleDataGridViewTextBoxColumn, Me.AuthorsDataGridViewTextBoxColumn, Me.status, Me.message})
+        Me.feedbackDataGrid.DataSource = Me.FeedbackBindingSource
+        Me.feedbackDataGrid.DoubleBuffered = True
+        Me.feedbackDataGrid.EnableHeadersVisualStyles = False
+        Me.feedbackDataGrid.HeaderBgColor = System.Drawing.Color.Indigo
+        Me.feedbackDataGrid.HeaderForeColor = System.Drawing.Color.SeaShell
+        Me.feedbackDataGrid.Location = New System.Drawing.Point(28, 76)
+        Me.feedbackDataGrid.Name = "feedbackDataGrid"
+        Me.feedbackDataGrid.ReadOnly = True
+        Me.feedbackDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.feedbackDataGrid.Size = New System.Drawing.Size(797, 327)
+        Me.feedbackDataGrid.TabIndex = 4
         '
         'ThesisNumberDataGridViewTextBoxColumn
         '
         Me.ThesisNumberDataGridViewTextBoxColumn.DataPropertyName = "thesisNumber"
-        Me.ThesisNumberDataGridViewTextBoxColumn.HeaderText = "Thesis Number"
+        Me.ThesisNumberDataGridViewTextBoxColumn.HeaderText = "Thesis ID"
         Me.ThesisNumberDataGridViewTextBoxColumn.Name = "ThesisNumberDataGridViewTextBoxColumn"
         Me.ThesisNumberDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ThesisNumberDataGridViewTextBoxColumn.Width = 150
+        Me.ThesisNumberDataGridViewTextBoxColumn.Width = 90
         '
         'TitleDataGridViewTextBoxColumn
         '
@@ -427,7 +478,7 @@ Partial Class Form2
         Me.TitleDataGridViewTextBoxColumn.HeaderText = "Title"
         Me.TitleDataGridViewTextBoxColumn.Name = "TitleDataGridViewTextBoxColumn"
         Me.TitleDataGridViewTextBoxColumn.ReadOnly = True
-        Me.TitleDataGridViewTextBoxColumn.Width = 200
+        Me.TitleDataGridViewTextBoxColumn.Width = 280
         '
         'AuthorsDataGridViewTextBoxColumn
         '
@@ -435,13 +486,7 @@ Partial Class Form2
         Me.AuthorsDataGridViewTextBoxColumn.HeaderText = "Author"
         Me.AuthorsDataGridViewTextBoxColumn.Name = "AuthorsDataGridViewTextBoxColumn"
         Me.AuthorsDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'MessageDataGridViewTextBoxColumn
-        '
-        Me.MessageDataGridViewTextBoxColumn.DataPropertyName = "message"
-        Me.MessageDataGridViewTextBoxColumn.HeaderText = "Comment"
-        Me.MessageDataGridViewTextBoxColumn.Name = "MessageDataGridViewTextBoxColumn"
-        Me.MessageDataGridViewTextBoxColumn.ReadOnly = True
+        Me.AuthorsDataGridViewTextBoxColumn.Width = 175
         '
         'status
         '
@@ -449,6 +494,14 @@ Partial Class Form2
         Me.status.HeaderText = "Status"
         Me.status.Name = "status"
         Me.status.ReadOnly = True
+        '
+        'message
+        '
+        Me.message.DataPropertyName = "message"
+        Me.message.HeaderText = "Remarks"
+        Me.message.Name = "message"
+        Me.message.ReadOnly = True
+        Me.message.Width = 105
         '
         'FeedbackBindingSource
         '
@@ -492,32 +545,6 @@ Partial Class Form2
         '
         Me.ThesisTableAdapter.ClearBeforeFill = True
         '
-        'TextBox6
-        '
-        Me.TextBox6.Location = New System.Drawing.Point(440, 40)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(238, 20)
-        Me.TextBox6.TabIndex = 5
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.BackColor = System.Drawing.Color.Transparent
-        Me.Label9.Location = New System.Drawing.Point(437, 23)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(41, 13)
-        Me.Label9.TabIndex = 6
-        Me.Label9.Text = "Search"
-        '
-        'search_Btn
-        '
-        Me.search_Btn.Location = New System.Drawing.Point(686, 38)
-        Me.search_Btn.Name = "search_Btn"
-        Me.search_Btn.Size = New System.Drawing.Size(75, 23)
-        Me.search_Btn.TabIndex = 7
-        Me.search_Btn.Text = "Search"
-        Me.search_Btn.UseVisualStyleBackColor = True
-        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -538,7 +565,7 @@ Partial Class Form2
         CType(Me.AxAcroPDF1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
-        CType(Me.BunifuCustomDataGrid1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.feedbackDataGrid, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FeedbackBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Database1DataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.HasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -575,18 +602,20 @@ Partial Class Form2
     Friend WithEvents Label8 As Label
     Friend WithEvents DateTimePicker2 As DateTimePicker
     Friend WithEvents Database1DataSet As Database1DataSet
-    Friend WithEvents BunifuCustomDataGrid1 As Bunifu.Framework.UI.BunifuCustomDataGrid
+    Friend WithEvents feedbackDataGrid As Bunifu.Framework.UI.BunifuCustomDataGrid
     Friend WithEvents HasBindingSource As BindingSource
     Friend WithEvents FeedbackTableAdapter As Database1DataSetTableAdapters.FeedbackTableAdapter
     Friend WithEvents ThesisTableAdapter As Database1DataSetTableAdapters.ThesisTableAdapter
     Friend WithEvents FeedbackBindingSource As BindingSource
-    Friend WithEvents FeedbackIDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents search_Btn As Button
+    Friend WithEvents Label9 As Label
+    Friend WithEvents searchBox As TextBox
+    Friend WithEvents refresh As Button
+    Friend WithEvents FilterLabel As Label
+    Friend WithEvents filterComboBox As ComboBox
     Friend WithEvents ThesisNumberDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents TitleDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents AuthorsDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents MessageDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents status As DataGridViewTextBoxColumn
-    Friend WithEvents search_Btn As Button
-    Friend WithEvents Label9 As Label
-    Friend WithEvents TextBox6 As TextBox
+    Friend WithEvents message As DataGridViewTextBoxColumn
 End Class

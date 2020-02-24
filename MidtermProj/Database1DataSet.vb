@@ -12,3 +12,7 @@ Namespace Database1DataSetTableAdapters
     Partial Public Class TableTableAdapter
     End Class
 End Namespace
+
+
+Partial Public Class Database1DataSet
+End Class
