@@ -6,6 +6,12 @@ Public Class Form3
         forReviewPanel.Visible = True
         manageUsers_Panel.Visible = False
         collectionPanel.Visible = False
+
+        Dim newFeedbackAdapter As New Database1DataSetTableAdapters.ThesisTableAdapter
+        Dim newFeedbackDataset As New Database1DataSet.ThesisDataTable
+        newFeedbackDataset = newFeedbackAdapter.getThesisTitleBasedOnStatus("Pending")
+        reviewList.DataSource = newFeedbackDataset
+        reviewList.Update()
     End Sub
 
     Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -18,12 +24,6 @@ Public Class Form3
         forReviewPanel.Visible = False
         collectionPanel.Visible = False
         manageUsers_Panel.Visible = False
-
-        Dim newFeedbackAdapter As New Database1DataSetTableAdapters.ThesisTableAdapter
-        Dim newFeedbackDataset As New Database1DataSet.ThesisDataTable
-        newFeedbackDataset = newFeedbackAdapter.getThesisTitleBasedOnStatus("Pending")
-        reviewList.DataSource = newFeedbackDataset
-        reviewList.Update()
     End Sub
 
     Private Sub collection_Click(sender As Object, e As EventArgs) Handles collection.Click
@@ -64,11 +64,12 @@ Public Class Form3
         Me.ThesisTableAdapter1.Fill(Me.Database1DataSet.Thesis)
         Me.FeedbackTableAdapter.insertFeedback(feedbackID, Me.ThesisTableAdapter1.selectThesisID(key), Me.ThesisTableAdapter1.getThesisTitle(key), Me.ThesisTableAdapter1.getAuthor(key), TextBox1.Text, Me.ThesisTableAdapter1.getStatus(key))
         MsgBox(ThesisTableAdapter1.getThesisTitle(key) & " has been approved.")
+        reviewList.ResetText()
         viewAuthor.Text = ""
         viewDescription.Text = ""
         viewAuthor.Text = ""
         TextBox1.Text = ""
-        viewTitle.ResetText()
+        viewTitle.Text = ""
         Dim newFeedbackAdapter As New Database1DataSetTableAdapters.ThesisTableAdapter
         Dim newDataset As New Database1DataSet.ThesisDataTable
         newDataset = newFeedbackAdapter.getThesisTitleBasedOnStatus("Pending")

@@ -39,6 +39,8 @@ Public Class Form2
     Private Sub refresh_Click(sender As Object, e As EventArgs) Handles refresh.Click
         feedbackDataGrid.DataSource = Me.FeedbackTableAdapter.Fill(Me.Database1DataSet.Feedback)
         feedbackDataGrid.Update()
+        searchBox.Text = ""
+        filterComboBox.ResetText()
     End Sub
 
     Private Sub search_Btn_Click(sender As Object, e As EventArgs) Handles search_Btn.Click
