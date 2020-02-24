@@ -24,8 +24,8 @@ Partial Class Form2
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form2))
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.feedback_btn = New System.Windows.Forms.Button()
         Me.receive_btn = New System.Windows.Forms.Button()
@@ -58,17 +58,15 @@ Partial Class Form2
         Me.Label9 = New System.Windows.Forms.Label()
         Me.searchBox = New System.Windows.Forms.TextBox()
         Me.feedbackDataGrid = New Bunifu.Framework.UI.BunifuCustomDataGrid()
+        Me.status = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.message = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.HasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.ThesisNumberDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TitleDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AuthorsDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.status = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.message = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FeedbackBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Database1DataSet = New MidtermProj.Database1DataSet()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
-        Me.HasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.FeedbackTableAdapter = New MidtermProj.Database1DataSetTableAdapters.FeedbackTableAdapter()
         Me.ThesisTableAdapter = New MidtermProj.Database1DataSetTableAdapters.ThesisTableAdapter()
         Me.Panel1.SuspendLayout()
@@ -78,9 +76,9 @@ Partial Class Form2
         CType(Me.AxAcroPDF1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel4.SuspendLayout()
         CType(Me.feedbackDataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.HasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FeedbackBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Database1DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.HasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -129,7 +127,7 @@ Partial Class Form2
         Me.Button1.Location = New System.Drawing.Point(22, 236)
         Me.Button1.Margin = New System.Windows.Forms.Padding(2)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(112, 32)
+        Me.Button1.Size = New System.Drawing.Size(112, 36)
         Me.Button1.TabIndex = 0
         Me.Button1.Text = " "
         Me.Button1.UseVisualStyleBackColor = False
@@ -368,8 +366,6 @@ Partial Class Form2
         Me.Panel4.Controls.Add(Me.Label9)
         Me.Panel4.Controls.Add(Me.searchBox)
         Me.Panel4.Controls.Add(Me.feedbackDataGrid)
-        Me.Panel4.Controls.Add(Me.Label8)
-        Me.Panel4.Controls.Add(Me.DateTimePicker2)
         Me.Panel4.Location = New System.Drawing.Point(156, 2)
         Me.Panel4.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel4.Name = "Panel4"
@@ -381,7 +377,7 @@ Partial Class Form2
         '
         Me.FilterLabel.AutoSize = True
         Me.FilterLabel.BackColor = System.Drawing.Color.Transparent
-        Me.FilterLabel.Location = New System.Drawing.Point(591, 23)
+        Me.FilterLabel.Location = New System.Drawing.Point(274, 26)
         Me.FilterLabel.Name = "FilterLabel"
         Me.FilterLabel.Size = New System.Drawing.Size(29, 13)
         Me.FilterLabel.TabIndex = 9
@@ -391,14 +387,14 @@ Partial Class Form2
         '
         Me.filterComboBox.FormattingEnabled = True
         Me.filterComboBox.Items.AddRange(New Object() {"Thesis ID", "Title", "Author", "Status"})
-        Me.filterComboBox.Location = New System.Drawing.Point(591, 39)
+        Me.filterComboBox.Location = New System.Drawing.Point(274, 42)
         Me.filterComboBox.Name = "filterComboBox"
         Me.filterComboBox.Size = New System.Drawing.Size(144, 21)
         Me.filterComboBox.TabIndex = 8
         '
         'refresh
         '
-        Me.refresh.Location = New System.Drawing.Point(741, 13)
+        Me.refresh.Location = New System.Drawing.Point(741, 39)
         Me.refresh.Name = "refresh"
         Me.refresh.Size = New System.Drawing.Size(75, 23)
         Me.refresh.TabIndex = 7
@@ -407,7 +403,7 @@ Partial Class Form2
         '
         'search_Btn
         '
-        Me.search_Btn.Location = New System.Drawing.Point(741, 40)
+        Me.search_Btn.Location = New System.Drawing.Point(424, 41)
         Me.search_Btn.Name = "search_Btn"
         Me.search_Btn.Size = New System.Drawing.Size(75, 23)
         Me.search_Btn.TabIndex = 7
@@ -418,7 +414,7 @@ Partial Class Form2
         '
         Me.Label9.AutoSize = True
         Me.Label9.BackColor = System.Drawing.Color.Transparent
-        Me.Label9.Location = New System.Drawing.Point(346, 23)
+        Me.Label9.Location = New System.Drawing.Point(29, 26)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(41, 13)
         Me.Label9.TabIndex = 6
@@ -426,7 +422,7 @@ Partial Class Form2
         '
         'searchBox
         '
-        Me.searchBox.Location = New System.Drawing.Point(345, 39)
+        Me.searchBox.Location = New System.Drawing.Point(28, 42)
         Me.searchBox.Name = "searchBox"
         Me.searchBox.Size = New System.Drawing.Size(238, 20)
         Me.searchBox.TabIndex = 5
@@ -435,21 +431,21 @@ Partial Class Form2
         '
         Me.feedbackDataGrid.AllowUserToAddRows = False
         Me.feedbackDataGrid.AllowUserToDeleteRows = False
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.feedbackDataGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.feedbackDataGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.feedbackDataGrid.AutoGenerateColumns = False
         Me.feedbackDataGrid.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.feedbackDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.feedbackDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.feedbackDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.Indigo
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 10.5!)
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.SeaShell
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.feedbackDataGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.Indigo
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 10.5!)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.SeaShell
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.feedbackDataGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.feedbackDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.feedbackDataGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ThesisNumberDataGridViewTextBoxColumn, Me.TitleDataGridViewTextBoxColumn, Me.AuthorsDataGridViewTextBoxColumn, Me.status, Me.message})
         Me.feedbackDataGrid.DataSource = Me.FeedbackBindingSource
@@ -463,6 +459,25 @@ Partial Class Form2
         Me.feedbackDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         Me.feedbackDataGrid.Size = New System.Drawing.Size(797, 327)
         Me.feedbackDataGrid.TabIndex = 4
+        '
+        'status
+        '
+        Me.status.DataPropertyName = "status"
+        Me.status.HeaderText = "Status"
+        Me.status.Name = "status"
+        Me.status.ReadOnly = True
+        '
+        'message
+        '
+        Me.message.DataPropertyName = "message"
+        Me.message.HeaderText = "Remarks"
+        Me.message.Name = "message"
+        Me.message.ReadOnly = True
+        Me.message.Width = 105
+        '
+        'OpenFileDialog1
+        '
+        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
         'ThesisNumberDataGridViewTextBoxColumn
         '
@@ -488,21 +503,6 @@ Partial Class Form2
         Me.AuthorsDataGridViewTextBoxColumn.ReadOnly = True
         Me.AuthorsDataGridViewTextBoxColumn.Width = 175
         '
-        'status
-        '
-        Me.status.DataPropertyName = "status"
-        Me.status.HeaderText = "Status"
-        Me.status.Name = "status"
-        Me.status.ReadOnly = True
-        '
-        'message
-        '
-        Me.message.DataPropertyName = "message"
-        Me.message.HeaderText = "Remarks"
-        Me.message.Name = "message"
-        Me.message.ReadOnly = True
-        Me.message.Width = 105
-        '
         'FeedbackBindingSource
         '
         Me.FeedbackBindingSource.DataMember = "Feedback"
@@ -513,29 +513,6 @@ Partial Class Form2
         Me.Database1DataSet.DataSetName = "Database1DataSet"
         Me.Database1DataSet.EnforceConstraints = False
         Me.Database1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.BackColor = System.Drawing.Color.Transparent
-        Me.Label8.Location = New System.Drawing.Point(28, 23)
-        Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(72, 13)
-        Me.Label8.TabIndex = 3
-        Me.Label8.Text = "Select a Date"
-        '
-        'DateTimePicker2
-        '
-        Me.DateTimePicker2.Location = New System.Drawing.Point(28, 40)
-        Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(2)
-        Me.DateTimePicker2.Name = "DateTimePicker2"
-        Me.DateTimePicker2.Size = New System.Drawing.Size(290, 20)
-        Me.DateTimePicker2.TabIndex = 2
-        '
-        'OpenFileDialog1
-        '
-        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
         'FeedbackTableAdapter
         '
@@ -566,9 +543,9 @@ Partial Class Form2
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         CType(Me.feedbackDataGrid, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.HasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FeedbackBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Database1DataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.HasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -599,8 +576,6 @@ Partial Class Form2
     Friend WithEvents Label7 As Label
     Friend WithEvents feedback_btn As Button
     Friend WithEvents Panel4 As Panel
-    Friend WithEvents Label8 As Label
-    Friend WithEvents DateTimePicker2 As DateTimePicker
     Friend WithEvents Database1DataSet As Database1DataSet
     Friend WithEvents feedbackDataGrid As Bunifu.Framework.UI.BunifuCustomDataGrid
     Friend WithEvents HasBindingSource As BindingSource

@@ -1,5 +1,6 @@
 ﻿Option Strict On
 Imports System.IO
+Imports System.Data.SqlClient
 Public Class Form2
     Dim filelocation As String
     Dim pdffile, pdffilename, fullpath, destination, received As String
@@ -36,12 +37,31 @@ Public Class Form2
     End Sub
 
     Private Sub refresh_Click(sender As Object, e As EventArgs) Handles refresh.Click
-        Me.FeedbackTableAdapter.Fill(Me.Database1DataSet.Feedback)
+        feedbackDataGrid.DataSource = Me.FeedbackTableAdapter.Fill(Me.Database1DataSet.Feedback)
+        feedbackDataGrid.Update()
     End Sub
 
     Private Sub search_Btn_Click(sender As Object, e As EventArgs) Handles search_Btn.Click
-        Dim toSearch As String = searchBox.Text
-        Dim filterIn As String = FilterLabel.Text
+        Dim DV As New DataView(Me.Database1DataSet.Feedback)
+        If filterComboBox.Text = "Title" Then
+            DV.RowFilter = String.Format("title Like '%{0}%'", searchBox.Text)
+            feedbackDataGrid.DataSource = DV
+            feedbackDataGrid.Update()
+        ElseIf filterComboBox.Text = "Thesis ID" Then
+            DV.RowFilter = String.Format("Convert(thesisNumber,'System.String') Like '%{0}%'", searchBox.Text)
+            feedbackDataGrid.DataSource = DV
+            feedbackDataGrid.Update()
+        ElseIf filterComboBox.Text = "Author" Then
+            DV.RowFilter = String.Format("authors Like '%{0}%'", searchBox.Text)
+            feedbackDataGrid.DataSource = DV
+            feedbackDataGrid.Update()
+        ElseIf filterComboBox.Text = "Status" Then
+            DV.RowFilter = String.Format("status Like '%{0}%'", searchBox.Text)
+            feedbackDataGrid.DataSource = DV
+            feedbackDataGrid.Update()
+        Else
+            MsgBox("Please select filter to narrow search.")
+        End If
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
@@ -108,26 +128,7 @@ Public Class Form2
     End Sub
 
     Private Sub searchBox_TextChanged(sender As Object, e As EventArgs) Handles searchBox.TextChanged
-        Dim DV As New DataView(Me.Database1DataSet.Feedback)
-        If filterComboBox.Text = "Title" Then
-            DV.RowFilter = String.Format("title Like '%{0}%'", searchBox.Text)
-            feedbackDataGrid.DataSource = DV
-            feedbackDataGrid.Update()
-        ElseIf filterComboBox.Text = "Thesis ID" Then
-            DV.RowFilter = String.Format("thesisNumber Like '%{0}%'", searchBox.Text)
-            feedbackDataGrid.DataSource = DV
-            feedbackDataGrid.Update()
-        ElseIf filterComboBox.Text = "Author" Then
-            DV.RowFilter = String.Format("authors Like '%{0}%'", searchBox.Text)
-            feedbackDataGrid.DataSource = DV
-            feedbackDataGrid.Update()
-        ElseIf filterComboBox.Text = "Status" Then
-            DV.RowFilter = String.Format("status Like '%{0}%'", searchBox.Text)
-            feedbackDataGrid.DataSource = DV
-            feedbackDataGrid.Update()
-        Else
-            ' nothing
-        End If
+
 
     End Sub
 End Class
