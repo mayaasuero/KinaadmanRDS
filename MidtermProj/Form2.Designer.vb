@@ -58,15 +58,15 @@ Partial Class Form2
         Me.Label9 = New System.Windows.Forms.Label()
         Me.searchBox = New System.Windows.Forms.TextBox()
         Me.feedbackDataGrid = New Bunifu.Framework.UI.BunifuCustomDataGrid()
-        Me.status = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.message = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.HasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.ThesisNumberDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TitleDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AuthorsDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.status = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.message = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FeedbackBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Database1DataSet = New MidtermProj.Database1DataSet()
+        Me.HasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.FeedbackTableAdapter = New MidtermProj.Database1DataSetTableAdapters.FeedbackTableAdapter()
         Me.ThesisTableAdapter = New MidtermProj.Database1DataSetTableAdapters.ThesisTableAdapter()
         Me.Panel1.SuspendLayout()
@@ -76,9 +76,9 @@ Partial Class Form2
         CType(Me.AxAcroPDF1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel4.SuspendLayout()
         CType(Me.feedbackDataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.HasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FeedbackBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Database1DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.HasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -460,25 +460,6 @@ Partial Class Form2
         Me.feedbackDataGrid.Size = New System.Drawing.Size(797, 327)
         Me.feedbackDataGrid.TabIndex = 4
         '
-        'status
-        '
-        Me.status.DataPropertyName = "status"
-        Me.status.HeaderText = "Status"
-        Me.status.Name = "status"
-        Me.status.ReadOnly = True
-        '
-        'message
-        '
-        Me.message.DataPropertyName = "message"
-        Me.message.HeaderText = "Remarks"
-        Me.message.Name = "message"
-        Me.message.ReadOnly = True
-        Me.message.Width = 105
-        '
-        'OpenFileDialog1
-        '
-        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
-        '
         'ThesisNumberDataGridViewTextBoxColumn
         '
         Me.ThesisNumberDataGridViewTextBoxColumn.DataPropertyName = "thesisNumber"
@@ -503,6 +484,21 @@ Partial Class Form2
         Me.AuthorsDataGridViewTextBoxColumn.ReadOnly = True
         Me.AuthorsDataGridViewTextBoxColumn.Width = 175
         '
+        'status
+        '
+        Me.status.DataPropertyName = "status"
+        Me.status.HeaderText = "Status"
+        Me.status.Name = "status"
+        Me.status.ReadOnly = True
+        '
+        'message
+        '
+        Me.message.DataPropertyName = "message"
+        Me.message.HeaderText = "Remarks"
+        Me.message.Name = "message"
+        Me.message.ReadOnly = True
+        Me.message.Width = 105
+        '
         'FeedbackBindingSource
         '
         Me.FeedbackBindingSource.DataMember = "Feedback"
@@ -513,6 +509,10 @@ Partial Class Form2
         Me.Database1DataSet.DataSetName = "Database1DataSet"
         Me.Database1DataSet.EnforceConstraints = False
         Me.Database1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'OpenFileDialog1
+        '
+        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
         'FeedbackTableAdapter
         '
@@ -528,8 +528,8 @@ Partial Class Form2
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1003, 453)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Panel2)
+        Me.Controls.Add(Me.Panel4)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "Form2"
@@ -543,9 +543,9 @@ Partial Class Form2
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         CType(Me.feedbackDataGrid, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.HasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FeedbackBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Database1DataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.HasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
