@@ -12,6 +12,7 @@ Public Class Form3
         newFeedbackDataset = newFeedbackAdapter.getThesisTitleBasedOnStatus("Pending")
         reviewList.DataSource = newFeedbackDataset
         reviewList.Update()
+        reviewList.Text = ""
     End Sub
 
     Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -49,51 +50,63 @@ Public Class Form3
 
     Private Sub selectThesis_Click(sender As Object, e As EventArgs) Handles selectThesis.Click
         Dim key As String = reviewList.SelectedValue
-        viewAuthor.Text = ThesisTableAdapter1.getAuthor(key)
-        viewTitle.Text = ThesisTableAdapter1.getThesisTitle(key)
-        viewDescription.Text = ThesisTableAdapter1.getDescription(key)
+        Try
+            viewAuthor.Text = ThesisTableAdapter1.getAuthor(key)
+            viewTitle.Text = ThesisTableAdapter1.getThesisTitle(key)
+            viewDescription.Text = ThesisTableAdapter1.getDescription(key)
+        Catch
+            MsgBox("Error detected. Try Again.")
+        End Try
+
     End Sub
 
 
     'TO FIX: key not refering to SeletedValue
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles approve.Click
-
-        Dim key As String = reviewList.SelectedValue
-        Dim feedbackID As Integer = Me.ThesisTableAdapter1.selectThesisID(key) & Int(Date.Today.Month)
-        Me.ThesisTableAdapter1.UpdateStatus("Approved", key)
-        Me.ThesisTableAdapter1.Fill(Me.Database1DataSet.Thesis)
-        Me.FeedbackTableAdapter.insertFeedback(feedbackID, Me.ThesisTableAdapter1.selectThesisID(key), Me.ThesisTableAdapter1.getThesisTitle(key), Me.ThesisTableAdapter1.getAuthor(key), TextBox1.Text, Me.ThesisTableAdapter1.getStatus(key))
-        MsgBox(ThesisTableAdapter1.getThesisTitle(key) & " has been approved.")
-        reviewList.ResetText()
-        viewAuthor.Text = ""
-        viewDescription.Text = ""
-        viewAuthor.Text = ""
-        TextBox1.Text = ""
-        viewTitle.Text = ""
-        Dim newFeedbackAdapter As New Database1DataSetTableAdapters.ThesisTableAdapter
-        Dim newDataset As New Database1DataSet.ThesisDataTable
-        newDataset = newFeedbackAdapter.getThesisTitleBasedOnStatus("Pending")
-        reviewList.DataSource = newDataset
-        reviewList.Update()
+        Try
+            Dim key As String = reviewList.SelectedValue
+            Dim feedbackID As Integer = Me.ThesisTableAdapter1.selectThesisID(key) & Int(Date.Today.Month)
+            Me.ThesisTableAdapter1.UpdateStatus("Approved", key)
+            Me.ThesisTableAdapter1.Fill(Me.Database1DataSet.Thesis)
+            Me.FeedbackTableAdapter.insertFeedback(feedbackID, Me.ThesisTableAdapter1.selectThesisID(key), Me.ThesisTableAdapter1.getThesisTitle(key), Me.ThesisTableAdapter1.getAuthor(key), TextBox1.Text, Me.ThesisTableAdapter1.getStatus(key))
+            MsgBox(ThesisTableAdapter1.getThesisTitle(key) & " has been approved.")
+            reviewList.ResetText()
+            viewAuthor.Text = ""
+            viewDescription.Text = ""
+            viewAuthor.Text = ""
+            TextBox1.Text = ""
+            viewTitle.Text = ""
+            Dim newFeedbackAdapter As New Database1DataSetTableAdapters.ThesisTableAdapter
+            Dim newDataset As New Database1DataSet.ThesisDataTable
+            newDataset = newFeedbackAdapter.getThesisTitleBasedOnStatus("Pending")
+            reviewList.DataSource = newDataset
+            reviewList.Update()
+        Catch
+            MsgBox("Error detected. Try Again.")
+        End Try
     End Sub
 
     Private Sub reject_Click(sender As Object, e As EventArgs) Handles reject.Click
-        Dim key As String = reviewList.SelectedValue
-        Dim feedbackID As Integer = Me.ThesisTableAdapter1.selectThesisID(key) & Int(Date.Today.Month)
-        Me.ThesisTableAdapter1.UpdateStatus("Rejected", key)
-        Me.ThesisTableAdapter1.Fill(Me.Database1DataSet.Thesis)
-        Me.FeedbackTableAdapter.insertFeedback(feedbackID, Me.ThesisTableAdapter1.selectThesisID(key), Me.ThesisTableAdapter1.getThesisTitle(key), Me.ThesisTableAdapter1.getAuthor(key), TextBox1.Text, Me.ThesisTableAdapter1.getStatus(key))
-        MsgBox(ThesisTableAdapter1.getThesisTitle(key) & " has been rejected.")
-        viewAuthor.Text = ""
-        viewDescription.Text = ""
-        viewAuthor.Text = ""
-        TextBox1.Text = ""
-        viewTitle.ResetText()
-        Dim newFeedbackAdapter As New Database1DataSetTableAdapters.ThesisTableAdapter
-        Dim newDataset As New Database1DataSet.ThesisDataTable
-        newDataset = newFeedbackAdapter.getThesisTitleBasedOnStatus("Pending")
-        reviewList.DataSource = newDataset
-        reviewList.Update()
+        Try
+            Dim key As String = reviewList.SelectedValue
+            Dim feedbackID As Integer = Me.ThesisTableAdapter1.selectThesisID(key) & Int(Date.Today.Month)
+            Me.ThesisTableAdapter1.UpdateStatus("Rejected", key)
+            Me.ThesisTableAdapter1.Fill(Me.Database1DataSet.Thesis)
+            Me.FeedbackTableAdapter.insertFeedback(feedbackID, Me.ThesisTableAdapter1.selectThesisID(key), Me.ThesisTableAdapter1.getThesisTitle(key), Me.ThesisTableAdapter1.getAuthor(key), TextBox1.Text, Me.ThesisTableAdapter1.getStatus(key))
+            MsgBox(ThesisTableAdapter1.getThesisTitle(key) & " has been rejected.")
+            viewAuthor.Text = ""
+            viewDescription.Text = ""
+            viewAuthor.Text = ""
+            TextBox1.Text = ""
+            viewTitle.Text = ""
+            Dim newFeedbackAdapter As New Database1DataSetTableAdapters.ThesisTableAdapter
+            Dim newDataset As New Database1DataSet.ThesisDataTable
+            newDataset = newFeedbackAdapter.getThesisTitleBasedOnStatus("Pending")
+            reviewList.DataSource = newDataset
+            reviewList.Update()
+        Catch
+            MsgBox("Error detected. Try Again.")
+        End Try
     End Sub
 
     Private Sub addStaff_btn_Click(sender As Object, e As EventArgs) Handles manageUsers.Click
@@ -110,7 +123,7 @@ Public Class Form3
     End Sub
 
     Private Sub addUser_Btn_Click(sender As Object, e As EventArgs) Handles addUser_Btn.Click
-        If newPassword.Text = retypeNewPassword.Text And Me.TableTableAdapter.findUsername(newUsername.Text) = 0 Then
+        If newPassword.Text = retypeNewPassword.Text And Me.TableTableAdapter.findUsername(newUsername.Text) = 0 And newUsername IsNot "" Then
             Me.TableTableAdapter.insertNewUser(newUsername.Text, newPassword.Text, newPosition.Text, enableAccess.Text)
             MsgBox("User successfully added.")
             newUsername.Text = ""
@@ -126,7 +139,7 @@ Public Class Form3
             newPassword.Text = ""
             retypeNewPassword.Text = ""
         Else
-            MsgBox("User already exists.")
+            MsgBox("Error detected.")
             newUsername.Text = ""
             newPassword.Text = ""
             retypeNewPassword.Text = ""
@@ -160,10 +173,15 @@ Public Class Form3
     End Sub
 
     Private Sub openFile_Click(sender As Object, e As EventArgs) Handles openFile.Click
-        Dim openThisPath As String = ThesisTableAdapter1.getFilePath(ThesisTableAdapter1.selectThesisID(reviewList.SelectedValue))
-        If File.Exists(openThisPath) Then
-            Process.Start(openThisPath)
-        End If
+        Try
+            Dim openThisPath As String = ThesisTableAdapter1.getFilePath(ThesisTableAdapter1.selectThesisID(reviewList.SelectedValue))
+            If File.Exists(openThisPath) Then
+                Process.Start(openThisPath)
+            End If
+        Catch ex As Exception
+            MsgBox("Eroor detected. Try Again.")
+        End Try
+
     End Sub
 
     Private Sub usersDataGrid_RowHeaderMouseDoubleClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles usersDataGrid.RowHeaderMouseDoubleClick
