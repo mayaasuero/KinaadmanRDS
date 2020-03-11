@@ -332,6 +332,7 @@ Partial Class Login
         'Database1DataSet
         '
         Me.Database1DataSet.DataSetName = "Database1DataSet"
+        Me.Database1DataSet.EnforceConstraints = False
         Me.Database1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'TableTableAdapter
@@ -353,6 +354,7 @@ Partial Class Login
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "Login"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Kinaadman University Research Office"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()

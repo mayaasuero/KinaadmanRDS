@@ -6,7 +6,6 @@ Public Class Form3
     Dim tempPath As String = ""
 
     Private Sub toReview_Click(sender As Object, e As EventArgs) Handles review_btn.Click
-        welcomePanel.Visible = False
         forReviewPanel.Visible = True
         manageUsers_Panel.Visible = True
         collectionPanel.Visible = True
@@ -26,15 +25,13 @@ Public Class Form3
         'TODO: This line of code loads data into the 'Database1DataSet.Table' table. You can move, or remove it, as needed.
         Me.TableTableAdapter.Fill(Me.Database1DataSet.Table)
         Me.ThesisTableAdapter1.Fill(Me.Database1DataSet.Thesis)
-        welcomePanel.Visible = True
         forReviewPanel.Visible = True
         collectionPanel.Visible = True
         manageUsers_Panel.Visible = True
-        welcomePanel.BringToFront()
     End Sub
 
     Private Sub collection_Click(sender As Object, e As EventArgs) Handles collection_btn.Click
-        welcomePanel.Visible = False
+
         collectionPanel.BringToFront()
 
         Dim newFeedbackAdapter As New Database1DataSetTableAdapters.ThesisTableAdapter
@@ -46,11 +43,10 @@ Public Class Form3
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles backToHome_btn.Click
         Login.Show()
         Me.Hide()
-        welcomePanel.Visible = True
         forReviewPanel.Visible = True
         manageUsers_Panel.Visible = True
         collectionPanel.Visible = True
-        welcomePanel.BringToFront()
+        manageUsers_Panel.BringToFront()
     End Sub
 
 
@@ -120,7 +116,6 @@ Public Class Form3
 
     Private Sub addStaff_btn_Click(sender As Object, e As EventArgs) Handles manageUsers_btn.Click
         manageUsers_Panel.BringToFront()
-        welcomePanel.Visible = False
 
         Dim newTableAdapter As New Database1DataSetTableAdapters.TableTableAdapter
         Dim newDataset As New Database1DataSet.TableDataTable
