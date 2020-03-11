@@ -50,6 +50,8 @@ Partial Class Login
         Me.Database1DataSet = New MidtermProj.Database1DataSet()
         Me.TableTableAdapter = New MidtermProj.Database1DataSetTableAdapters.TableTableAdapter()
         Me.BunifuElipse1 = New Bunifu.Framework.UI.BunifuElipse(Me.components)
+        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.contri_btn = New System.Windows.Forms.LinkLabel()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -64,6 +66,7 @@ Partial Class Login
         Me.Panel1.BackgroundImage = CType(resources.GetObject("Panel1.BackgroundImage"), System.Drawing.Image)
         Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.contri_btn)
         Me.Panel1.Controls.Add(Me.TextBox2)
         Me.Panel1.Controls.Add(Me.TextBox1)
         Me.Panel1.Controls.Add(Me.Button1)
@@ -83,7 +86,7 @@ Partial Class Login
         Me.Panel1.Controls.Add(Me.PictureBox4)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Location = New System.Drawing.Point(-1, -1)
+        Me.Panel1.Location = New System.Drawing.Point(-2, -2)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(575, 461)
@@ -129,7 +132,7 @@ Partial Class Login
         Me.Button1.IconVisible = True
         Me.Button1.IconZoom = 90.0R
         Me.Button1.IsTab = False
-        Me.Button1.Location = New System.Drawing.Point(379, 308)
+        Me.Button1.Location = New System.Drawing.Point(387, 304)
         Me.Button1.Name = "Button1"
         Me.Button1.Normalcolor = System.Drawing.Color.DarkOrchid
         Me.Button1.OnHovercolor = System.Drawing.Color.MediumPurple
@@ -256,7 +259,7 @@ Partial Class Login
         '
         Me.PictureBox3.BackgroundImage = CType(resources.GetObject("PictureBox3.BackgroundImage"), System.Drawing.Image)
         Me.PictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox3.Location = New System.Drawing.Point(361, 37)
+        Me.PictureBox3.Location = New System.Drawing.Point(366, 37)
         Me.PictureBox3.Margin = New System.Windows.Forms.Padding(2)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(135, 84)
@@ -309,7 +312,7 @@ Partial Class Login
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft New Tai Lue", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(330, 123)
+        Me.Label1.Location = New System.Drawing.Point(335, 123)
         Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(198, 25)
@@ -332,6 +335,7 @@ Partial Class Login
         'Database1DataSet
         '
         Me.Database1DataSet.DataSetName = "Database1DataSet"
+        Me.Database1DataSet.EnforceConstraints = False
         Me.Database1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'TableTableAdapter
@@ -342,6 +346,20 @@ Partial Class Login
         '
         Me.BunifuElipse1.ElipseRadius = 15
         Me.BunifuElipse1.TargetControl = Me.Button1
+        '
+        'contri_btn
+        '
+        Me.contri_btn.ActiveLinkColor = System.Drawing.Color.Indigo
+        Me.contri_btn.AutoSize = True
+        Me.contri_btn.Font = New System.Drawing.Font("Microsoft Tai Le", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.contri_btn.LinkColor = System.Drawing.Color.Indigo
+        Me.contri_btn.Location = New System.Drawing.Point(363, 343)
+        Me.contri_btn.Name = "contri_btn"
+        Me.contri_btn.Size = New System.Drawing.Size(147, 16)
+        Me.contri_btn.TabIndex = 11
+        Me.contri_btn.TabStop = True
+        Me.contri_btn.Text = "Continue as Contributor"
+        Me.contri_btn.VisitedLinkColor = System.Drawing.Color.Indigo
         '
         'Login
         '
@@ -391,4 +409,6 @@ Partial Class Login
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Button1 As Bunifu.Framework.UI.BunifuFlatButton
     Friend WithEvents BunifuElipse1 As Bunifu.Framework.UI.BunifuElipse
+    Friend WithEvents Timer2 As Timer
+    Friend WithEvents contri_btn As LinkLabel
 End Class

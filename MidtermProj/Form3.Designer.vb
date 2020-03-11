@@ -24,12 +24,12 @@ Partial Class Form3
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form3))
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.directorMenu = New System.Windows.Forms.Panel()
         Me.manageUsers = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -92,7 +92,24 @@ Partial Class Form3
         Me.TableTableAdapter = New MidtermProj.Database1DataSetTableAdapters.TableTableAdapter()
         Me.ThesisTableAdapter1 = New MidtermProj.Database1DataSetTableAdapters.ThesisTableAdapter()
         Me.FeedbackTableAdapter = New MidtermProj.Database1DataSetTableAdapters.FeedbackTableAdapter()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Label18 = New System.Windows.Forms.Label()
         Me.directorMenu.SuspendLayout()
+        Me.welcomePanel.SuspendLayout()
         Me.forReviewPanel.SuspendLayout()
         CType(Me.ThesisBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Database1DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -102,6 +119,7 @@ Partial Class Form3
         Me.manageUsers_Panel.SuspendLayout()
         CType(Me.usersDataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TableBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'directorMenu
@@ -169,6 +187,7 @@ Partial Class Form3
         '
         Me.welcomePanel.BackgroundImage = CType(resources.GetObject("welcomePanel.BackgroundImage"), System.Drawing.Image)
         Me.welcomePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.welcomePanel.Controls.Add(Me.Panel1)
         Me.welcomePanel.Location = New System.Drawing.Point(174, 0)
         Me.welcomePanel.Name = "welcomePanel"
         Me.welcomePanel.Size = New System.Drawing.Size(627, 366)
@@ -261,7 +280,7 @@ Partial Class Form3
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(105, 276)
+        Me.Label5.Location = New System.Drawing.Point(91, 273)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(63, 16)
         Me.Label5.TabIndex = 3
@@ -280,7 +299,7 @@ Partial Class Form3
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(92, 176)
+        Me.Label4.Location = New System.Drawing.Point(78, 175)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(76, 16)
         Me.Label4.TabIndex = 3
@@ -291,7 +310,7 @@ Partial Class Form3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(122, 119)
+        Me.Label3.Location = New System.Drawing.Point(108, 119)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(46, 16)
         Me.Label3.TabIndex = 3
@@ -301,7 +320,7 @@ Partial Class Form3
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(122, 149)
+        Me.Label2.Location = New System.Drawing.Point(120, 148)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(34, 16)
         Me.Label2.TabIndex = 3
@@ -311,11 +330,11 @@ Partial Class Form3
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(32, 91)
+        Me.Label1.Location = New System.Drawing.Point(14, 90)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(146, 16)
+        Me.Label1.Size = New System.Drawing.Size(140, 16)
         Me.Label1.TabIndex = 3
-        Me.Label1.Text = "Select thesis to review: "
+        Me.Label1.Text = "Select thesis to review" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'reviewList
         '
@@ -344,7 +363,7 @@ Partial Class Form3
         '
         Me.forRevLabel.AutoSize = True
         Me.forRevLabel.Font = New System.Drawing.Font("Tahoma", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.forRevLabel.Location = New System.Drawing.Point(19, 32)
+        Me.forRevLabel.Location = New System.Drawing.Point(179, 29)
         Me.forRevLabel.Name = "forRevLabel"
         Me.forRevLabel.Size = New System.Drawing.Size(275, 35)
         Me.forRevLabel.TabIndex = 0
@@ -363,31 +382,31 @@ Partial Class Form3
         '
         Me.approvedThesis.AllowUserToAddRows = False
         Me.approvedThesis.AllowUserToDeleteRows = False
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.approvedThesis.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.approvedThesis.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.approvedThesis.AutoGenerateColumns = False
         Me.approvedThesis.BackgroundColor = System.Drawing.Color.WhiteSmoke
         Me.approvedThesis.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.approvedThesis.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.Indigo
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Century Gothic", 10.0!)
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.approvedThesis.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.Indigo
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 10.0!)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.approvedThesis.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.approvedThesis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.approvedThesis.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.thesisNumber, Me.TitleDataGridViewTextBoxColumn, Me.description, Me.author, Me.yearLvl, Me.dateReceived})
         Me.approvedThesis.DataSource = Me.ThesisBindingSource
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.approvedThesis.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.approvedThesis.DefaultCellStyle = DataGridViewCellStyle3
         Me.approvedThesis.DoubleBuffered = True
         Me.approvedThesis.EnableHeadersVisualStyles = False
         Me.approvedThesis.GridColor = System.Drawing.SystemColors.ControlDarkDark
@@ -397,14 +416,14 @@ Partial Class Form3
         Me.approvedThesis.Name = "approvedThesis"
         Me.approvedThesis.ReadOnly = True
         Me.approvedThesis.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.approvedThesis.RowHeadersDefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.approvedThesis.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.approvedThesis.RowHeadersVisible = False
         Me.approvedThesis.Size = New System.Drawing.Size(593, 265)
         Me.approvedThesis.TabIndex = 2
@@ -493,7 +512,7 @@ Partial Class Form3
         'addUser_Btn
         '
         Me.addUser_Btn.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.addUser_Btn.Location = New System.Drawing.Point(200, 309)
+        Me.addUser_Btn.Location = New System.Drawing.Point(111, 303)
         Me.addUser_Btn.Name = "addUser_Btn"
         Me.addUser_Btn.Size = New System.Drawing.Size(85, 27)
         Me.addUser_Btn.TabIndex = 11
@@ -503,17 +522,17 @@ Partial Class Form3
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(237, 23)
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(232, 29)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(169, 29)
+        Me.Label11.Size = New System.Drawing.Size(181, 29)
         Me.Label11.TabIndex = 11
         Me.Label11.Text = "Manage Users"
         '
         'updateUser
         '
         Me.updateUser.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.updateUser.Location = New System.Drawing.Point(307, 309)
+        Me.updateUser.Location = New System.Drawing.Point(418, 303)
         Me.updateUser.Name = "updateUser"
         Me.updateUser.Size = New System.Drawing.Size(99, 27)
         Me.updateUser.TabIndex = 11
@@ -525,9 +544,9 @@ Partial Class Form3
         Me.enableAccess.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.enableAccess.FormattingEnabled = True
         Me.enableAccess.Items.AddRange(New Object() {"Disabled", "Enabled"})
-        Me.enableAccess.Location = New System.Drawing.Point(144, 241)
+        Me.enableAccess.Location = New System.Drawing.Point(125, 241)
         Me.enableAccess.Name = "enableAccess"
-        Me.enableAccess.Size = New System.Drawing.Size(141, 24)
+        Me.enableAccess.Size = New System.Drawing.Size(160, 24)
         Me.enableAccess.TabIndex = 2
         '
         'newPosition
@@ -535,16 +554,16 @@ Partial Class Form3
         Me.newPosition.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.newPosition.FormattingEnabled = True
         Me.newPosition.Items.AddRange(New Object() {"Admin", "Staff"})
-        Me.newPosition.Location = New System.Drawing.Point(144, 204)
+        Me.newPosition.Location = New System.Drawing.Point(125, 204)
         Me.newPosition.Name = "newPosition"
-        Me.newPosition.Size = New System.Drawing.Size(141, 24)
+        Me.newPosition.Size = New System.Drawing.Size(160, 24)
         Me.newPosition.TabIndex = 2
         '
         'Label12
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(33, 244)
+        Me.Label12.Location = New System.Drawing.Point(14, 244)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(87, 15)
         Me.Label12.TabIndex = 1
@@ -553,20 +572,20 @@ Partial Class Form3
         'usersDataGrid
         '
         Me.usersDataGrid.AllowUserToAddRows = False
-        DataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.usersDataGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.usersDataGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
         Me.usersDataGrid.AutoGenerateColumns = False
         Me.usersDataGrid.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.usersDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.usersDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle12.BackColor = System.Drawing.Color.DarkViolet
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.usersDataGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkViolet
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.usersDataGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.usersDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.usersDataGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.UsernameDataGridViewTextBoxColumn, Me.PositionDataGridViewTextBoxColumn, Me.IsEnabled})
         Me.usersDataGrid.DataSource = Me.TableBindingSource
@@ -574,7 +593,7 @@ Partial Class Form3
         Me.usersDataGrid.EnableHeadersVisualStyles = False
         Me.usersDataGrid.HeaderBgColor = System.Drawing.Color.DarkViolet
         Me.usersDataGrid.HeaderForeColor = System.Drawing.Color.White
-        Me.usersDataGrid.Location = New System.Drawing.Point(307, 91)
+        Me.usersDataGrid.Location = New System.Drawing.Point(317, 90)
         Me.usersDataGrid.Name = "usersDataGrid"
         Me.usersDataGrid.ReadOnly = True
         Me.usersDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
@@ -613,7 +632,7 @@ Partial Class Form3
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(33, 205)
+        Me.Label10.Location = New System.Drawing.Point(14, 205)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(51, 15)
         Me.Label10.TabIndex = 1
@@ -622,17 +641,17 @@ Partial Class Form3
         'retypeNewPassword
         '
         Me.retypeNewPassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.retypeNewPassword.Location = New System.Drawing.Point(144, 168)
+        Me.retypeNewPassword.Location = New System.Drawing.Point(125, 168)
         Me.retypeNewPassword.Name = "retypeNewPassword"
         Me.retypeNewPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.retypeNewPassword.Size = New System.Drawing.Size(141, 22)
+        Me.retypeNewPassword.Size = New System.Drawing.Size(160, 22)
         Me.retypeNewPassword.TabIndex = 0
         '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(33, 96)
+        Me.Label7.Location = New System.Drawing.Point(14, 96)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(65, 15)
         Me.Label7.TabIndex = 1
@@ -642,7 +661,7 @@ Partial Class Form3
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(33, 169)
+        Me.Label9.Location = New System.Drawing.Point(14, 169)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(102, 15)
         Me.Label9.TabIndex = 1
@@ -651,26 +670,26 @@ Partial Class Form3
         'newPassword
         '
         Me.newPassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.newPassword.Location = New System.Drawing.Point(144, 132)
+        Me.newPassword.Location = New System.Drawing.Point(125, 132)
         Me.newPassword.Name = "newPassword"
         Me.newPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.newPassword.Size = New System.Drawing.Size(141, 22)
+        Me.newPassword.Size = New System.Drawing.Size(160, 22)
         Me.newPassword.TabIndex = 0
         '
         'newUsername
         '
         Me.newUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.newUsername.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.newUsername.Location = New System.Drawing.Point(144, 97)
+        Me.newUsername.Location = New System.Drawing.Point(125, 97)
         Me.newUsername.Name = "newUsername"
-        Me.newUsername.Size = New System.Drawing.Size(141, 22)
+        Me.newUsername.Size = New System.Drawing.Size(160, 22)
         Me.newUsername.TabIndex = 0
         '
         'Label8
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(33, 134)
+        Me.Label8.Location = New System.Drawing.Point(14, 134)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(61, 15)
         Me.Label8.TabIndex = 1
@@ -724,22 +743,186 @@ Partial Class Form3
         '
         Me.FeedbackTableAdapter.ClearBeforeFill = True
         '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.Button2)
+        Me.Panel1.Controls.Add(Me.Button3)
+        Me.Panel1.Controls.Add(Me.Button4)
+        Me.Panel1.Controls.Add(Me.Button5)
+        Me.Panel1.Controls.Add(Me.TextBox2)
+        Me.Panel1.Controls.Add(Me.TextBox3)
+        Me.Panel1.Controls.Add(Me.TextBox4)
+        Me.Panel1.Controls.Add(Me.Label13)
+        Me.Panel1.Controls.Add(Me.TextBox5)
+        Me.Panel1.Controls.Add(Me.Label14)
+        Me.Panel1.Controls.Add(Me.Label15)
+        Me.Panel1.Controls.Add(Me.Label16)
+        Me.Panel1.Controls.Add(Me.Label17)
+        Me.Panel1.Controls.Add(Me.ComboBox1)
+        Me.Panel1.Controls.Add(Me.Label18)
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(627, 369)
+        Me.Panel1.TabIndex = 0
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(514, 124)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 7
+        Me.Button2.Text = "Open File"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(514, 313)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 23)
+        Me.Button3.TabIndex = 6
+        Me.Button3.Text = "Reject"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(514, 284)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(75, 23)
+        Me.Button4.TabIndex = 6
+        Me.Button4.Text = "Approve"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(514, 91)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(75, 23)
+        Me.Button5.TabIndex = 5
+        Me.Button5.Text = "Select"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(184, 273)
+        Me.TextBox2.Multiline = True
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(310, 72)
+        Me.TextBox2.TabIndex = 4
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Location = New System.Drawing.Point(184, 175)
+        Me.TextBox3.Multiline = True
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.ReadOnly = True
+        Me.TextBox3.Size = New System.Drawing.Size(310, 91)
+        Me.TextBox3.TabIndex = 4
+        '
+        'TextBox4
+        '
+        Me.TextBox4.Location = New System.Drawing.Point(184, 148)
+        Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.ReadOnly = True
+        Me.TextBox4.Size = New System.Drawing.Size(310, 20)
+        Me.TextBox4.TabIndex = 4
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(91, 273)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(63, 16)
+        Me.Label13.TabIndex = 3
+        Me.Label13.Text = "Remarks"
+        Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'TextBox5
+        '
+        Me.TextBox5.Location = New System.Drawing.Point(184, 119)
+        Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.ReadOnly = True
+        Me.TextBox5.Size = New System.Drawing.Size(310, 20)
+        Me.TextBox5.TabIndex = 4
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(78, 175)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(76, 16)
+        Me.Label14.TabIndex = 3
+        Me.Label14.Text = "Description"
+        Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(108, 119)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(46, 16)
+        Me.Label15.TabIndex = 3
+        Me.Label15.Text = "Author"
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Location = New System.Drawing.Point(120, 148)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(34, 16)
+        Me.Label16.TabIndex = 3
+        Me.Label16.Text = "Title"
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.Location = New System.Drawing.Point(14, 90)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(140, 16)
+        Me.Label17.TabIndex = 3
+        Me.Label17.Text = "Select thesis to review" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.DisplayMember = "title"
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(184, 90)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(310, 21)
+        Me.ComboBox1.TabIndex = 2
+        Me.ComboBox1.ValueMember = "title"
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Font = New System.Drawing.Font("Tahoma", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.Location = New System.Drawing.Point(179, 29)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(275, 35)
+        Me.Label18.TabIndex = 0
+        Me.Label18.Text = "Thesis for Review"
+        '
         'Form3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(804, 369)
         Me.Controls.Add(Me.directorMenu)
-        Me.Controls.Add(Me.manageUsers_Panel)
         Me.Controls.Add(Me.forReviewPanel)
         Me.Controls.Add(Me.welcomePanel)
         Me.Controls.Add(Me.collectionPanel)
+        Me.Controls.Add(Me.manageUsers_Panel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "Form3"
         Me.Text = "Kinaadman University Research Office (Director)"
         Me.directorMenu.ResumeLayout(False)
+        Me.welcomePanel.ResumeLayout(False)
         Me.forReviewPanel.ResumeLayout(False)
         Me.forReviewPanel.PerformLayout()
         CType(Me.ThesisBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -752,6 +935,8 @@ Partial Class Form3
         Me.manageUsers_Panel.PerformLayout()
         CType(Me.usersDataGrid, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TableBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -818,4 +1003,20 @@ Partial Class Form3
     Friend WithEvents UsernameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PositionDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents IsEnabled As DataGridViewTextBoxColumn
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Button3 As Button
+    Friend WithEvents Button4 As Button
+    Friend WithEvents Button5 As Button
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents Label13 As Label
+    Friend WithEvents TextBox5 As TextBox
+    Friend WithEvents Label14 As Label
+    Friend WithEvents Label15 As Label
+    Friend WithEvents Label16 As Label
+    Friend WithEvents Label17 As Label
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents Label18 As Label
 End Class

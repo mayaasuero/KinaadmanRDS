@@ -3229,10 +3229,9 @@ Namespace Database1DataSetTableAdapters
             Me._commandCollection(8) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(8).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.MidtermProj.My.MySettings.Default.Database1ConnectionString)
             Me._commandCollection(8).CommandText = "INSERT INTO [dbo].[Thesis] ([thesisNumber], [author], [yearLvl], [description], ["& _ 
-                "dateReceived], [receivedBy], [title], [status], [filePath]) VALUES (@thesisNumbe"& _ 
-                "r, @author, @yearLvl, @description, @dateReceived, @receivedBy, @title, @status,"& _ 
-                " @file);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT thesisNumber, author, yearLvl, description, dateReceived, recei"& _ 
-                "vedBy, title, status FROM Thesis WHERE (thesisNumber = @thesisNumber)"
+                "dateReceived], [receivedBy], [title], [status], [filePath], [fileName]) VALUES ("& _ 
+                "@thesisNumber, @author, @yearLvl, @description, @dateReceived, @receivedBy, @tit"& _ 
+                "le, @status, @file, @fileName);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)
             Me._commandCollection(8).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@thesisNumber", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "thesisNumber", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@author", Global.System.Data.SqlDbType.VarChar, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "author", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -3242,7 +3241,8 @@ Namespace Database1DataSetTableAdapters
             Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@receivedBy", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "receivedBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@title", Global.System.Data.SqlDbType.VarChar, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "title", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@status", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "status", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@file", Global.System.Data.SqlDbType.VarChar, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "filePath", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@file", Global.System.Data.SqlDbType.[Variant], 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "filePath", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fileName", Global.System.Data.SqlDbType.VarChar, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "fileName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(9) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(9).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.MidtermProj.My.MySettings.Default.Database1ConnectionString)
             Me._commandCollection(9).CommandText = "SELECT thesisNumber "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM Thesis WHERE title = @title"
@@ -3478,7 +3478,7 @@ Namespace Database1DataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, false)>  _
-        Public Overloads Overridable Function insertNewThesis(ByVal thesisNumber As Integer, ByVal author As String, ByVal yearLvl As Integer, ByVal description As String, ByVal dateReceived As String, ByVal receivedBy As String, ByVal title As String, ByVal status As String, ByVal file As String) As Integer
+        Public Overloads Overridable Function insertNewThesis(ByVal thesisNumber As Integer, ByVal author As String, ByVal yearLvl As Integer, ByVal description As String, ByVal dateReceived As String, ByVal receivedBy As String, ByVal title As String, ByVal status As String, ByVal file As Object, ByVal fileName As String) As Integer
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(8)
             command.Parameters(0).Value = CType(thesisNumber,Integer)
             If (author Is Nothing) Then
@@ -3515,7 +3515,12 @@ Namespace Database1DataSetTableAdapters
             If (file Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("file")
             Else
-                command.Parameters(8).Value = CType(file,String)
+                command.Parameters(8).Value = CType(file,Object)
+            End If
+            If (fileName Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("fileName")
+            Else
+                command.Parameters(9).Value = CType(fileName,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _

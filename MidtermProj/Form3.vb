@@ -48,7 +48,7 @@ Public Class Form3
     End Sub
 
 
-    Private Sub selectThesis_Click(sender As Object, e As EventArgs) Handles selectThesis.Click
+    Private Sub selectThesis_Click(sender As Object, e As EventArgs) Handles selectThesis.Click, Button5.Click
         Dim key As String = reviewList.SelectedValue
         Try
             viewAuthor.Text = ThesisTableAdapter1.getAuthor(key)
@@ -62,7 +62,7 @@ Public Class Form3
 
 
     'TO FIX: key not refering to SeletedValue
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles approve.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles approve.Click, Button4.Click
         Try
             Dim key As String = reviewList.SelectedValue
             Dim feedbackID As Integer = Me.ThesisTableAdapter1.selectThesisID(key) & Int(Date.Today.Month)
@@ -86,7 +86,7 @@ Public Class Form3
         End Try
     End Sub
 
-    Private Sub reject_Click(sender As Object, e As EventArgs) Handles reject.Click
+    Private Sub reject_Click(sender As Object, e As EventArgs) Handles reject.Click, Button3.Click
         Try
             Dim key As String = reviewList.SelectedValue
             Dim feedbackID As Integer = Me.ThesisTableAdapter1.selectThesisID(key) & Int(Date.Today.Month)
@@ -172,7 +172,7 @@ Public Class Form3
         nameToUpdate = ""
     End Sub
 
-    Private Sub openFile_Click(sender As Object, e As EventArgs) Handles openFile.Click
+    Private Sub openFile_Click(sender As Object, e As EventArgs) Handles openFile.Click, Button2.Click
         Try
             Dim openThisPath As String = ThesisTableAdapter1.getFilePath(ThesisTableAdapter1.selectThesisID(reviewList.SelectedValue))
             If File.Exists(openThisPath) Then
@@ -184,6 +184,7 @@ Public Class Form3
 
     End Sub
 
+    ' dapat 
     Private Sub usersDataGrid_RowHeaderMouseDoubleClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles usersDataGrid.RowHeaderMouseDoubleClick
         Dim index As Integer = e.RowIndex
         Dim selectedRow As DataGridViewRow = usersDataGrid.Rows(index)

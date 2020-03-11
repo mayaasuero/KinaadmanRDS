@@ -24,15 +24,13 @@ Partial Class Form2
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form2))
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.feedback_btn = New System.Windows.Forms.Button()
         Me.receive_btn = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
@@ -47,11 +45,13 @@ Partial Class Form2
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.AxAcroPDF1 = New AxAcroPDFLib.AxAcroPDF()
         Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.FilterLabel = New System.Windows.Forms.Label()
         Me.filterComboBox = New System.Windows.Forms.ComboBox()
         Me.refresh = New System.Windows.Forms.Button()
         Me.search_Btn = New System.Windows.Forms.Button()
@@ -69,6 +69,7 @@ Partial Class Form2
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.FeedbackTableAdapter = New MidtermProj.Database1DataSetTableAdapters.FeedbackTableAdapter()
         Me.ThesisTableAdapter = New MidtermProj.Database1DataSetTableAdapters.ThesisTableAdapter()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -87,10 +88,10 @@ Partial Class Form2
         Me.Panel1.Controls.Add(Me.feedback_btn)
         Me.Panel1.Controls.Add(Me.receive_btn)
         Me.Panel1.Controls.Add(Me.Button1)
-        Me.Panel1.Location = New System.Drawing.Point(-4, -18)
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(153, 472)
+        Me.Panel1.Size = New System.Drawing.Size(162, 472)
         Me.Panel1.TabIndex = 0
         '
         'feedback_btn
@@ -134,47 +135,22 @@ Partial Class Form2
         '
         'Panel2
         '
-        Me.Panel2.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel2.BackColor = System.Drawing.SystemColors.Control
+        Me.Panel2.Controls.Add(Me.Panel3)
         Me.Panel2.Controls.Add(Me.Button5)
         Me.Panel2.Controls.Add(Me.Button3)
-        Me.Panel2.Controls.Add(Me.Panel3)
         Me.Panel2.Controls.Add(Me.AxAcroPDF1)
-        Me.Panel2.Location = New System.Drawing.Point(153, 2)
+        Me.Panel2.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Panel2.Location = New System.Drawing.Point(159, 2)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(854, 450)
+        Me.Panel2.Size = New System.Drawing.Size(910, 449)
         Me.Panel2.TabIndex = 1
         Me.Panel2.Visible = False
         '
-        'Button5
-        '
-        Me.Button5.BackColor = System.Drawing.Color.LightBlue
-        Me.Button5.BackgroundImage = CType(resources.GetObject("Button5.BackgroundImage"), System.Drawing.Image)
-        Me.Button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Button5.Location = New System.Drawing.Point(19, 229)
-        Me.Button5.Margin = New System.Windows.Forms.Padding(2)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(90, 41)
-        Me.Button5.TabIndex = 0
-        Me.Button5.UseVisualStyleBackColor = False
-        '
-        'Button3
-        '
-        Me.Button3.BackColor = System.Drawing.Color.LightBlue
-        Me.Button3.BackgroundImage = CType(resources.GetObject("Button3.BackgroundImage"), System.Drawing.Image)
-        Me.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Button3.Location = New System.Drawing.Point(19, 160)
-        Me.Button3.Margin = New System.Windows.Forms.Padding(2)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(90, 64)
-        Me.Button3.TabIndex = 0
-        Me.Button3.Text = " "
-        Me.Button3.UseVisualStyleBackColor = False
-        '
         'Panel3
         '
-        Me.Panel3.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Panel3.BackColor = System.Drawing.SystemColors.Control
         Me.Panel3.Controls.Add(Me.PictureBox1)
         Me.Panel3.Controls.Add(Me.DateTimePicker1)
         Me.Panel3.Controls.Add(Me.TextBox4)
@@ -188,12 +164,13 @@ Partial Class Form2
         Me.Panel3.Controls.Add(Me.Label6)
         Me.Panel3.Controls.Add(Me.Label3)
         Me.Panel3.Controls.Add(Me.Label7)
+        Me.Panel3.Controls.Add(Me.Label8)
         Me.Panel3.Controls.Add(Me.Label2)
         Me.Panel3.Controls.Add(Me.Label1)
-        Me.Panel3.Location = New System.Drawing.Point(136, -1)
+        Me.Panel3.Location = New System.Drawing.Point(154, 2)
         Me.Panel3.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(694, 440)
+        Me.Panel3.Size = New System.Drawing.Size(694, 475)
         Me.Panel3.TabIndex = 4
         Me.Panel3.Visible = False
         '
@@ -201,7 +178,7 @@ Partial Class Form2
         '
         Me.PictureBox1.BackgroundImage = CType(resources.GetObject("PictureBox1.BackgroundImage"), System.Drawing.Image)
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox1.Location = New System.Drawing.Point(494, 47)
+        Me.PictureBox1.Location = New System.Drawing.Point(456, 71)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(163, 179)
@@ -210,7 +187,7 @@ Partial Class Form2
         '
         'DateTimePicker1
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(289, 370)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(456, 275)
         Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(2)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(151, 20)
@@ -219,7 +196,7 @@ Partial Class Form2
         'TextBox4
         '
         Me.TextBox4.Font = New System.Drawing.Font("Times New Roman", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox4.Location = New System.Drawing.Point(40, 223)
+        Me.TextBox4.Location = New System.Drawing.Point(37, 232)
         Me.TextBox4.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox4.Multiline = True
         Me.TextBox4.Name = "TextBox4"
@@ -229,7 +206,7 @@ Partial Class Form2
         'TextBox5
         '
         Me.TextBox5.Font = New System.Drawing.Font("Times New Roman", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox5.Location = New System.Drawing.Point(40, 174)
+        Me.TextBox5.Location = New System.Drawing.Point(37, 172)
         Me.TextBox5.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox5.Name = "TextBox5"
         Me.TextBox5.Size = New System.Drawing.Size(372, 24)
@@ -238,46 +215,48 @@ Partial Class Form2
         'TextBox3
         '
         Me.TextBox3.Font = New System.Drawing.Font("Times New Roman", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox3.Location = New System.Drawing.Point(40, 124)
+        Me.TextBox3.Location = New System.Drawing.Point(323, 114)
         Me.TextBox3.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(67, 24)
+        Me.TextBox3.Size = New System.Drawing.Size(86, 24)
         Me.TextBox3.TabIndex = 4
         '
         'TextBox2
         '
         Me.TextBox2.Font = New System.Drawing.Font("Times New Roman", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(40, 76)
+        Me.TextBox2.Location = New System.Drawing.Point(37, 114)
         Me.TextBox2.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(177, 24)
+        Me.TextBox2.Size = New System.Drawing.Size(259, 24)
         Me.TextBox2.TabIndex = 4
         '
         'Button4
         '
-        Me.Button4.BackColor = System.Drawing.Color.LightBlue
-        Me.Button4.BackgroundImage = CType(resources.GetObject("Button4.BackgroundImage"), System.Drawing.Image)
+        Me.Button4.BackColor = System.Drawing.Color.DarkSlateBlue
         Me.Button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Button4.Location = New System.Drawing.Point(579, 354)
+        Me.Button4.Font = New System.Drawing.Font("Microsoft Tai Le", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button4.ForeColor = System.Drawing.SystemColors.Control
+        Me.Button4.Location = New System.Drawing.Point(263, 370)
         Me.Button4.Margin = New System.Windows.Forms.Padding(2)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(91, 47)
+        Me.Button4.Size = New System.Drawing.Size(146, 47)
         Me.Button4.TabIndex = 0
+        Me.Button4.Text = "Submit to Director"
         Me.Button4.UseVisualStyleBackColor = False
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(453, 369)
+        Me.TextBox1.Location = New System.Drawing.Point(456, 328)
         Me.TextBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(113, 20)
+        Me.TextBox1.Size = New System.Drawing.Size(151, 20)
         Me.TextBox1.TabIndex = 2
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(40, 204)
+        Me.Label5.Location = New System.Drawing.Point(34, 218)
         Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(88, 13)
@@ -287,7 +266,7 @@ Partial Class Form2
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(40, 158)
+        Me.Label4.Location = New System.Drawing.Point(34, 158)
         Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(87, 13)
@@ -297,7 +276,7 @@ Partial Class Form2
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(286, 354)
+        Me.Label6.Location = New System.Drawing.Point(453, 259)
         Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(79, 13)
@@ -307,7 +286,7 @@ Partial Class Form2
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(40, 105)
+        Me.Label3.Location = New System.Drawing.Point(320, 100)
         Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(58, 13)
@@ -317,17 +296,28 @@ Partial Class Form2
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(549, 31)
+        Me.Label7.Location = New System.Drawing.Point(511, 55)
         Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(53, 13)
         Me.Label7.TabIndex = 3
         Me.Label7.Text = "Time now"
         '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Tai Le", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(32, 51)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(258, 27)
+        Me.Label8.TabIndex = 3
+        Me.Label8.Text = "Information of the Paper" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(40, 58)
+        Me.Label2.Location = New System.Drawing.Point(34, 100)
         Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(54, 13)
@@ -337,17 +327,45 @@ Partial Class Form2
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(454, 350)
+        Me.Label1.Location = New System.Drawing.Point(453, 313)
         Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(70, 13)
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Received by:"
         '
+        'Button5
+        '
+        Me.Button5.BackColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button5.ForeColor = System.Drawing.SystemColors.Control
+        Me.Button5.Location = New System.Drawing.Point(29, 210)
+        Me.Button5.Margin = New System.Windows.Forms.Padding(2)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(90, 49)
+        Me.Button5.TabIndex = 0
+        Me.Button5.Text = "Add Information"
+        Me.Button5.UseVisualStyleBackColor = False
+        '
+        'Button3
+        '
+        Me.Button3.BackColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Button3.Font = New System.Drawing.Font("Microsoft Tai Le", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button3.ForeColor = System.Drawing.SystemColors.Control
+        Me.Button3.Location = New System.Drawing.Point(29, 154)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(2)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(90, 51)
+        Me.Button3.TabIndex = 0
+        Me.Button3.Text = " Attach a file"
+        Me.Button3.UseVisualStyleBackColor = False
+        '
         'AxAcroPDF1
         '
         Me.AxAcroPDF1.Enabled = True
-        Me.AxAcroPDF1.Location = New System.Drawing.Point(163, -1)
+        Me.AxAcroPDF1.Location = New System.Drawing.Point(194, 4)
         Me.AxAcroPDF1.Margin = New System.Windows.Forms.Padding(2)
         Me.AxAcroPDF1.Name = "AxAcroPDF1"
         Me.AxAcroPDF1.OcxState = CType(resources.GetObject("AxAcroPDF1.OcxState"), System.Windows.Forms.AxHost.State)
@@ -359,29 +377,18 @@ Partial Class Form2
         Me.Panel4.BackColor = System.Drawing.Color.Snow
         Me.Panel4.BackgroundImage = CType(resources.GetObject("Panel4.BackgroundImage"), System.Drawing.Image)
         Me.Panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Panel4.Controls.Add(Me.FilterLabel)
         Me.Panel4.Controls.Add(Me.filterComboBox)
         Me.Panel4.Controls.Add(Me.refresh)
         Me.Panel4.Controls.Add(Me.search_Btn)
         Me.Panel4.Controls.Add(Me.Label9)
         Me.Panel4.Controls.Add(Me.searchBox)
         Me.Panel4.Controls.Add(Me.feedbackDataGrid)
-        Me.Panel4.Location = New System.Drawing.Point(171, 0)
+        Me.Panel4.Location = New System.Drawing.Point(161, 0)
         Me.Panel4.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(884, 446)
+        Me.Panel4.Size = New System.Drawing.Size(910, 446)
         Me.Panel4.TabIndex = 5
         Me.Panel4.Visible = False
-        '
-        'FilterLabel
-        '
-        Me.FilterLabel.AutoSize = True
-        Me.FilterLabel.BackColor = System.Drawing.Color.Transparent
-        Me.FilterLabel.Location = New System.Drawing.Point(274, 26)
-        Me.FilterLabel.Name = "FilterLabel"
-        Me.FilterLabel.Size = New System.Drawing.Size(29, 13)
-        Me.FilterLabel.TabIndex = 9
-        Me.FilterLabel.Text = "Filter"
         '
         'filterComboBox
         '
@@ -431,21 +438,21 @@ Partial Class Form2
         '
         Me.feedbackDataGrid.AllowUserToAddRows = False
         Me.feedbackDataGrid.AllowUserToDeleteRows = False
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.feedbackDataGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.feedbackDataGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.feedbackDataGrid.AutoGenerateColumns = False
         Me.feedbackDataGrid.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.feedbackDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.feedbackDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.feedbackDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.Indigo
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 10.5!)
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.SeaShell
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.feedbackDataGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.Indigo
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 10.5!)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.SeaShell
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.feedbackDataGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.feedbackDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.feedbackDataGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ThesisNumberDataGridViewTextBoxColumn, Me.TitleDataGridViewTextBoxColumn, Me.AuthorsDataGridViewTextBoxColumn, Me.status, Me.message})
         Me.feedbackDataGrid.DataSource = Me.FeedbackBindingSource
@@ -522,14 +529,18 @@ Partial Class Form2
         '
         Me.ThesisTableAdapter.ClearBeforeFill = True
         '
+        'Timer1
+        '
+        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1051, 453)
+        Me.ClientSize = New System.Drawing.Size(1026, 453)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel4)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "Form2"
@@ -586,11 +597,12 @@ Partial Class Form2
     Friend WithEvents Label9 As Label
     Friend WithEvents searchBox As TextBox
     Friend WithEvents refresh As Button
-    Friend WithEvents FilterLabel As Label
     Friend WithEvents filterComboBox As ComboBox
     Friend WithEvents ThesisNumberDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents TitleDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents AuthorsDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents status As DataGridViewTextBoxColumn
     Friend WithEvents message As DataGridViewTextBoxColumn
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Timer1 As Timer
 End Class

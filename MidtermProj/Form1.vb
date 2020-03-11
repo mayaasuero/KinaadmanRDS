@@ -77,4 +77,11 @@
             MsgBox("User not recognized. Please check the username and password. Contact the office for further assistance.")
         End If
     End Sub
+
+    Private Sub contri_btn_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles contri_btn.LinkClicked
+        Timer2.Start()
+        Me.Hide()
+        SubmissionForm.Show()
+        'open window for submission only
+    End Sub
 End Class

@@ -5,8 +5,6 @@ Public Class Form2
 
     Dim filelocation As String
     Dim pdffile, pdffilename, fullpath, destination, received As String
-    Public feedbacksList As String = ""
-    Public nextAvailable As Integer = 0
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Login.Show()
@@ -21,7 +19,7 @@ Public Class Form2
 
 
     Private Sub Panel3_Paint(sender As Object, e As PaintEventArgs) Handles Panel3.Paint
-        Label7.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")
+        Timer1.Start()
     End Sub
 
 
@@ -78,14 +76,6 @@ Public Class Form2
         Panel3.Visible = True
     End Sub
 
-    Private Sub Label8_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
-
-    End Sub
-
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles receive_btn.Click
         Panel4.Visible = False
         Panel2.Visible = True
@@ -129,11 +119,11 @@ Public Class Form2
                 File.Move(destination, newname)
                 File.Delete(fullpath)
                 'ADD INSERT
-                If ThesisTableAdapter.insertNewThesis(CInt(finalID), TextBox2.Text, CInt(TextBox3.Text), TextBox4.Text, DateTimePicker1.Value.ToShortDateString, TextBox1.Text, TextBox5.Text, "Pending", newname) = 1 Then
-                    MsgBox("File successfully added!")
-                Else
-                    MsgBox("Not uploaded.")
-                End If
+                'If ThesisTableAdapter.insertNewThesis(CInt(finalID), TextBox2.Text, CInt(TextBox3.Text), TextBox4.Text, DateTimePicker1.Value.ToShortDateString, TextBox1.Text, TextBox5.Text, "Pending", newname) = 1 Then
+                ' MsgBox("File successfully added!")
+                'Else
+                '  MsgBox("Not uploaded.")
+                '  End If
 
                 TextBox5.Text = ""
                 TextBox2.Text = ""
@@ -155,5 +145,9 @@ Public Class Form2
     Private Sub searchBox_TextChanged(sender As Object, e As EventArgs) Handles searchBox.TextChanged
 
 
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Label7.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm")
     End Sub
 End Class
