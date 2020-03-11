@@ -73,13 +73,6 @@ Public Class Form2
         Panel3.Visible = True
     End Sub
 
-    Private Sub Label8_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
-
-    End Sub
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles receive_btn.Click
         Panel4.Visible = False
         Panel2.Visible = True
@@ -106,46 +99,49 @@ Public Class Form2
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles sendToDirector_Btn.Click
-        Try
-            pdffile = Path.GetDirectoryName(OpenFileDialog1.FileName)
-            pdffilename = Path.GetFileName(OpenFileDialog1.FileName)
-            fullpath = pdffile & "\" & pdffilename
+        If CheckBox1.CheckState = 1 Then
+            Try
+                pdffile = Path.GetDirectoryName(OpenFileDialog1.FileName)
+                pdffilename = Path.GetFileName(OpenFileDialog1.FileName)
+                fullpath = pdffile & "\" & pdffilename
 
-            Dim newname As String = destination & " (" & received & ").pdf"
-            Dim id As Integer = CInt(ThesisTableAdapter.countThesis()) + 1
-            Dim finalID As String = id & Date.Today.Year
+                Dim newname As String = destination & " (" & received & ").pdf"
+                Dim id As Integer = CInt(ThesisTableAdapter.countThesis()) + 1
+                Dim finalID As String = id & Date.Today.Year
 
-            Dim fs As FileStream
-            fs = New FileStream(fullpath, FileMode.Open, FileAccess.Read)
-            Dim docByte As Byte() = New Byte(CInt(fs.Length - 1)) {}
-            fs.Read(docByte, 0, System.Convert.ToInt32(fs.Length))
-            fs.Close()
+                Dim fs As FileStream
+                fs = New FileStream(fullpath, FileMode.Open, FileAccess.Read)
+                Dim docByte As Byte() = New Byte(CInt(fs.Length - 1)) {}
+                fs.Read(docByte, 0, System.Convert.ToInt32(fs.Length))
+                fs.Close()
 
-            If ThesisTableAdapter.insertNewThesis(CInt(finalID), TextBox2.Text, CInt(TextBox3.Text), TextBox4.Text, DateTimePicker1.Value.ToShortDateString, TextBox1.Text, TextBox5.Text, "Pending", docByte, pdffilename) = 1 Then
-                MsgBox("File successfully added!")
-            Else
-                MsgBox("Not uploaded.")
-            End If
+                If CInt(Me.ThesisTableAdapter.findExistingFile(docByte)) = 0 And ThesisTableAdapter.insertNewThesis(CInt(finalID), TextBox2.Text, CInt(TextBox3.Text), TextBox4.Text, DateTimePicker1.Value.ToShortDateString, TextBox1.Text, TextBox5.Text, "Pending", docByte, pdffilename) = 1 Then
+                    MsgBox("File successfully added!")
+                    TextBox5.Text = ""
+                    TextBox2.Text = ""
+                    pdffilename = ""
+                    TextBox4.Text = ""
+                    TextBox3.Text = ""
+                    CheckBox1.CheckState = 0
+                Else
+                    MsgBox("File not uploaded. Make sure it is not a duplicate submission.")
+                End If
 
-            TextBox5.Text = ""
-            TextBox2.Text = ""
-            pdffilename = ""
-            TextBox4.Text = ""
-            TextBox3.Text = ""
-            MsgBox("Can't upload file. Duplicate file detected.")
+                TextBox5.Text = ""
+                TextBox2.Text = ""
+                pdffilename = ""
+                TextBox4.Text = ""
+                TextBox3.Text = ""
 
-        Catch ex As Exception
-            MsgBox("Error detected. Try again.")
-        End Try
+            Catch ex As Exception
+                MsgBox("Error detected. Try again.")
+            End Try
 
-        'My.Computer.Network.DownloadFile(fullpath, "C:\Users\admiral\source\repos\MidtermProj\MidtermProj\bin\downloadfiles")
+            'My.Computer.Network.DownloadFile(fullpath, "C:\Users\admiral\source\repos\MidtermProj\MidtermProj\bin\downloadfiles")
+        Else
+            MsgBox("Please check the certification.")
+        End If
     End Sub
-
-    Private Sub searchBox_TextChanged(sender As Object, e As EventArgs) Handles searchBox.TextChanged
-
-
-    End Sub
-
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Label7.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")
     End Sub

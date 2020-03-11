@@ -34,6 +34,7 @@ Partial Class Form2
         Me.addInfo_btn = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.attach_btn = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.sendToDirector_Btn = New Bunifu.Framework.UI.BunifuThinButton2()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
@@ -117,10 +118,10 @@ Partial Class Form2
         Me.home_btn.IdleFillColor = System.Drawing.Color.White
         Me.home_btn.IdleForecolor = System.Drawing.Color.Indigo
         Me.home_btn.IdleLineColor = System.Drawing.Color.Indigo
-        Me.home_btn.Location = New System.Drawing.Point(14, 228)
+        Me.home_btn.Location = New System.Drawing.Point(14, 229)
         Me.home_btn.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.home_btn.Name = "home_btn"
-        Me.home_btn.Size = New System.Drawing.Size(133, 40)
+        Me.home_btn.Size = New System.Drawing.Size(133, 45)
         Me.home_btn.TabIndex = 5
         Me.home_btn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -145,7 +146,7 @@ Partial Class Form2
         Me.feedback_btn.Location = New System.Drawing.Point(14, 189)
         Me.feedback_btn.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.feedback_btn.Name = "feedback_btn"
-        Me.feedback_btn.Size = New System.Drawing.Size(133, 40)
+        Me.feedback_btn.Size = New System.Drawing.Size(133, 45)
         Me.feedback_btn.TabIndex = 5
         Me.feedback_btn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -167,10 +168,10 @@ Partial Class Form2
         Me.receive_btn.IdleFillColor = System.Drawing.Color.White
         Me.receive_btn.IdleForecolor = System.Drawing.Color.Indigo
         Me.receive_btn.IdleLineColor = System.Drawing.Color.Indigo
-        Me.receive_btn.Location = New System.Drawing.Point(14, 150)
+        Me.receive_btn.Location = New System.Drawing.Point(14, 149)
         Me.receive_btn.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.receive_btn.Name = "receive_btn"
-        Me.receive_btn.Size = New System.Drawing.Size(133, 40)
+        Me.receive_btn.Size = New System.Drawing.Size(133, 45)
         Me.receive_btn.TabIndex = 5
         Me.receive_btn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -241,6 +242,7 @@ Partial Class Form2
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Panel3.Controls.Add(Me.CheckBox1)
         Me.Panel3.Controls.Add(Me.PictureBox1)
         Me.Panel3.Controls.Add(Me.sendToDirector_Btn)
         Me.Panel3.Controls.Add(Me.DateTimePicker1)
@@ -263,6 +265,17 @@ Partial Class Form2
         Me.Panel3.Size = New System.Drawing.Size(679, 440)
         Me.Panel3.TabIndex = 4
         Me.Panel3.Visible = False
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(41, 334)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(410, 17)
+        Me.CheckBox1.TabIndex = 7
+        Me.CheckBox1.Text = "I hereby certify that all information is true and correct to the best of my knowl" &
+    "edge."
+        Me.CheckBox1.UseVisualStyleBackColor = True
         '
         'PictureBox1
         '
@@ -293,7 +306,7 @@ Partial Class Form2
         Me.sendToDirector_Btn.IdleFillColor = System.Drawing.Color.Indigo
         Me.sendToDirector_Btn.IdleForecolor = System.Drawing.Color.White
         Me.sendToDirector_Btn.IdleLineColor = System.Drawing.Color.Indigo
-        Me.sendToDirector_Btn.Location = New System.Drawing.Point(286, 351)
+        Me.sendToDirector_Btn.Location = New System.Drawing.Point(269, 364)
         Me.sendToDirector_Btn.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.sendToDirector_Btn.Name = "sendToDirector_Btn"
         Me.sendToDirector_Btn.Size = New System.Drawing.Size(144, 40)
@@ -642,8 +655,8 @@ Partial Class Form2
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(973, 453)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Panel2)
+        Me.Controls.Add(Me.Panel4)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(2)
@@ -715,4 +728,5 @@ Partial Class Form2
     Friend WithEvents window_Elipse As Bunifu.Framework.UI.BunifuElipse
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Label8 As Label
+    Friend WithEvents CheckBox1 As CheckBox
 End Class

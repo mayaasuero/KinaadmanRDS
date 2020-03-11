@@ -97,7 +97,6 @@ Partial Class Form3
         Me.collection_Elipse = New Bunifu.Framework.UI.BunifuElipse(Me.components)
         Me.backToHome_Elipse = New Bunifu.Framework.UI.BunifuElipse(Me.components)
         Me.form_Elipse = New Bunifu.Framework.UI.BunifuElipse(Me.components)
-        Me.HelpProvider1 = New System.Windows.Forms.HelpProvider()
         Me.directorMenu.SuspendLayout()
         Me.manageUsers_Panel.SuspendLayout()
         CType(Me.usersDataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -144,10 +143,10 @@ Partial Class Form3
         Me.backToHome_btn.IdleFillColor = System.Drawing.Color.White
         Me.backToHome_btn.IdleForecolor = System.Drawing.Color.Indigo
         Me.backToHome_btn.IdleLineColor = System.Drawing.Color.Indigo
-        Me.backToHome_btn.Location = New System.Drawing.Point(10, 219)
+        Me.backToHome_btn.Location = New System.Drawing.Point(10, 216)
         Me.backToHome_btn.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.backToHome_btn.Name = "backToHome_btn"
-        Me.backToHome_btn.Size = New System.Drawing.Size(133, 35)
+        Me.backToHome_btn.Size = New System.Drawing.Size(133, 43)
         Me.backToHome_btn.TabIndex = 9
         Me.backToHome_btn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -169,10 +168,10 @@ Partial Class Form3
         Me.collection_btn.IdleFillColor = System.Drawing.Color.White
         Me.collection_btn.IdleForecolor = System.Drawing.Color.Indigo
         Me.collection_btn.IdleLineColor = System.Drawing.Color.Indigo
-        Me.collection_btn.Location = New System.Drawing.Point(10, 183)
+        Me.collection_btn.Location = New System.Drawing.Point(10, 178)
         Me.collection_btn.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.collection_btn.Name = "collection_btn"
-        Me.collection_btn.Size = New System.Drawing.Size(133, 35)
+        Me.collection_btn.Size = New System.Drawing.Size(133, 43)
         Me.collection_btn.TabIndex = 9
         Me.collection_btn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -194,10 +193,10 @@ Partial Class Form3
         Me.review_btn.IdleFillColor = System.Drawing.Color.White
         Me.review_btn.IdleForecolor = System.Drawing.Color.Indigo
         Me.review_btn.IdleLineColor = System.Drawing.Color.Indigo
-        Me.review_btn.Location = New System.Drawing.Point(10, 143)
+        Me.review_btn.Location = New System.Drawing.Point(10, 137)
         Me.review_btn.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.review_btn.Name = "review_btn"
-        Me.review_btn.Size = New System.Drawing.Size(133, 37)
+        Me.review_btn.Size = New System.Drawing.Size(133, 45)
         Me.review_btn.TabIndex = 9
         Me.review_btn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -219,10 +218,10 @@ Partial Class Form3
         Me.manageUsers_btn.IdleFillColor = System.Drawing.Color.White
         Me.manageUsers_btn.IdleForecolor = System.Drawing.Color.Indigo
         Me.manageUsers_btn.IdleLineColor = System.Drawing.Color.Indigo
-        Me.manageUsers_btn.Location = New System.Drawing.Point(10, 106)
+        Me.manageUsers_btn.Location = New System.Drawing.Point(10, 99)
         Me.manageUsers_btn.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.manageUsers_btn.Name = "manageUsers_btn"
-        Me.manageUsers_btn.Size = New System.Drawing.Size(133, 35)
+        Me.manageUsers_btn.Size = New System.Drawing.Size(133, 43)
         Me.manageUsers_btn.TabIndex = 9
         Me.manageUsers_btn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -278,10 +277,8 @@ Partial Class Form3
         'updateUser
         '
         Me.updateUser.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.HelpProvider1.SetHelpString(Me.updateUser, "Select a row to change a user's access")
         Me.updateUser.Location = New System.Drawing.Point(375, 270)
         Me.updateUser.Name = "updateUser"
-        Me.HelpProvider1.SetShowHelp(Me.updateUser, True)
         Me.updateUser.Size = New System.Drawing.Size(149, 27)
         Me.updateUser.TabIndex = 11
         Me.updateUser.Text = "Change Access"
@@ -594,9 +591,9 @@ Partial Class Form3
         '
         Me.openFile.Location = New System.Drawing.Point(510, 108)
         Me.openFile.Name = "openFile"
-        Me.openFile.Size = New System.Drawing.Size(75, 23)
+        Me.openFile.Size = New System.Drawing.Size(75, 39)
         Me.openFile.TabIndex = 7
-        Me.openFile.Text = "Open File"
+        Me.openFile.Text = "Save and View File"
         Me.openFile.UseVisualStyleBackColor = True
         '
         'reject
@@ -786,6 +783,10 @@ Partial Class Form3
         '
         Me.FeedbackTableAdapter.ClearBeforeFill = True
         '
+        'FolderBrowserDialog1
+        '
+        Me.FolderBrowserDialog1.Description = "Select folder to save copy of thesis"
+        '
         'manageUsers_elipse
         '
         Me.manageUsers_elipse.ElipseRadius = 20
@@ -817,9 +818,9 @@ Partial Class Form3
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(804, 369)
         Me.Controls.Add(Me.directorMenu)
-        Me.Controls.Add(Me.manageUsers_Panel)
         Me.Controls.Add(Me.forReviewPanel)
         Me.Controls.Add(Me.collectionPanel)
+        Me.Controls.Add(Me.manageUsers_Panel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(2)
@@ -910,5 +911,4 @@ Partial Class Form3
     Friend WithEvents collection_Elipse As Bunifu.Framework.UI.BunifuElipse
     Friend WithEvents backToHome_Elipse As Bunifu.Framework.UI.BunifuElipse
     Friend WithEvents form_Elipse As Bunifu.Framework.UI.BunifuElipse
-    Friend WithEvents HelpProvider1 As HelpProvider
 End Class
