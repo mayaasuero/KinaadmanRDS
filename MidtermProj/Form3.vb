@@ -1,11 +1,16 @@
 ﻿Imports System.IO
+Imports System.Data.SqlClient
+
 Public Class Form3
     Dim nameToUpdate As String = ""
-    Private Sub toReview_Click(sender As Object, e As EventArgs) Handles toReview.Click
+    Dim tempPath As String = ""
+
+    Private Sub toReview_Click(sender As Object, e As EventArgs) Handles review_btn.Click
         welcomePanel.Visible = False
         forReviewPanel.Visible = True
-        manageUsers_Panel.Visible = False
-        collectionPanel.Visible = False
+        manageUsers_Panel.Visible = True
+        collectionPanel.Visible = True
+        forReviewPanel.BringToFront()
 
         Dim newFeedbackAdapter As New Database1DataSetTableAdapters.ThesisTableAdapter
         Dim newFeedbackDataset As New Database1DataSet.ThesisDataTable
@@ -22,15 +27,15 @@ Public Class Form3
         Me.TableTableAdapter.Fill(Me.Database1DataSet.Table)
         Me.ThesisTableAdapter1.Fill(Me.Database1DataSet.Thesis)
         welcomePanel.Visible = True
-        forReviewPanel.Visible = False
-        collectionPanel.Visible = False
-        manageUsers_Panel.Visible = False
+        forReviewPanel.Visible = True
+        collectionPanel.Visible = True
+        manageUsers_Panel.Visible = True
+        welcomePanel.BringToFront()
     End Sub
 
-    Private Sub collection_Click(sender As Object, e As EventArgs) Handles collection.Click
+    Private Sub collection_Click(sender As Object, e As EventArgs) Handles collection_btn.Click
         welcomePanel.Visible = False
-        collectionPanel.Visible = True
-        forReviewPanel.Visible = False
+        collectionPanel.BringToFront()
 
         Dim newFeedbackAdapter As New Database1DataSetTableAdapters.ThesisTableAdapter
         Dim newFeedbackDataset As New Database1DataSet.ThesisDataTable
@@ -38,13 +43,14 @@ Public Class Form3
         approvedThesis.DataSource = newFeedbackDataset
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles backToHome_btn.Click
         Login.Show()
         Me.Hide()
-        manageUsers_Panel.Visible = False
         welcomePanel.Visible = True
-        forReviewPanel.Visible = False
-        collectionPanel.Visible = False
+        forReviewPanel.Visible = True
+        manageUsers_Panel.Visible = True
+        collectionPanel.Visible = True
+        welcomePanel.BringToFront()
     End Sub
 
 
@@ -81,6 +87,7 @@ Public Class Form3
             newDataset = newFeedbackAdapter.getThesisTitleBasedOnStatus("Pending")
             reviewList.DataSource = newDataset
             reviewList.Update()
+            tempPath = ""
         Catch
             MsgBox("Error detected. Try Again.")
         End Try
@@ -104,16 +111,16 @@ Public Class Form3
             newDataset = newFeedbackAdapter.getThesisTitleBasedOnStatus("Pending")
             reviewList.DataSource = newDataset
             reviewList.Update()
+            File.Delete(tempPath)
+            tempPath = ""
         Catch
             MsgBox("Error detected. Try Again.")
         End Try
     End Sub
 
-    Private Sub addStaff_btn_Click(sender As Object, e As EventArgs) Handles manageUsers.Click
-        manageUsers_Panel.Visible = True
+    Private Sub addStaff_btn_Click(sender As Object, e As EventArgs) Handles manageUsers_btn.Click
+        manageUsers_Panel.BringToFront()
         welcomePanel.Visible = False
-        collectionPanel.Visible = False
-        forReviewPanel.Visible = False
 
         Dim newTableAdapter As New Database1DataSetTableAdapters.TableTableAdapter
         Dim newDataset As New Database1DataSet.TableDataTable
@@ -174,19 +181,41 @@ Public Class Form3
 
     Private Sub openFile_Click(sender As Object, e As EventArgs) Handles openFile.Click
         Try
-            Dim openThisPath As String = ThesisTableAdapter1.getFilePath(ThesisTableAdapter1.selectThesisID(reviewList.SelectedValue))
-            If File.Exists(openThisPath) Then
-                Process.Start(openThisPath)
+            Dim location As String = ""
+            If FolderBrowserDialog1.ShowDialog() = DialogResult.OK Then
+                location = FolderBrowserDialog1.SelectedPath
+                MsgBox(location)
             End If
-        Catch ex As Exception
-            MsgBox("Eroor detected. Try Again.")
-        End Try
 
+            Dim filename As String = ThesisTableAdapter1.getFileName(ThesisTableAdapter1.selectThesisID(reviewList.SelectedValue))
+            Dim open As Byte() = ThesisTableAdapter1.getFile(ThesisTableAdapter1.selectThesisID(reviewList.SelectedValue))
+            Dim pathSave As String = location & "\" & filename
+            Dim fs As FileStream = New FileStream(pathSave, System.IO.FileMode.Create)
+            fs.Write(open, 0, open.Length)
+            fs.Close()
+            tempPath = pathSave
+
+            If System.IO.File.Exists(pathSave) = True Then
+                Process.Start(pathSave)
+            Else
+                MsgBox("File Does Not Exist")
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.StackTrace)
+            MsgBox("Error detected. Try Again.")
+        End Try
     End Sub
 
     Private Sub usersDataGrid_RowHeaderMouseDoubleClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles usersDataGrid.RowHeaderMouseDoubleClick
         Dim index As Integer = e.RowIndex
         Dim selectedRow As DataGridViewRow = usersDataGrid.Rows(index)
         nameToUpdate = selectedRow.Cells(0).Value.ToString
+        newUsername.Text = selectedRow.Cells(0).Value.ToString
+        newPassword.Text = selectedRow.Cells(0).Value.ToString
+        retypeNewPassword.Text = selectedRow.Cells(0).Value.ToString
+        newPosition.SelectedItem = selectedRow.Cells(1).Value.ToString
+        enableAccess.SelectedItem = selectedRow.Cells(2).Value.ToString
     End Sub
+
 End Class

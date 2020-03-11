@@ -8,6 +8,8 @@
 End Class
 
 Namespace Database1DataSetTableAdapters
+    Partial Public Class ThesisTableAdapter
+    End Class
 
     Partial Public Class TableTableAdapter
     End Class

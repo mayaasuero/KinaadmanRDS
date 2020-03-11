@@ -8,7 +8,7 @@ Public Class Form2
     Public feedbacksList As String = ""
     Public nextAvailable As Integer = 0
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles home_btn.Click
         Login.Show()
         Me.Close()
         TextBox5.Text = ""
@@ -18,12 +18,6 @@ Public Class Form2
         TextBox3.Text = ""
         Login.user = ""
     End Sub
-
-
-    Private Sub Panel3_Paint(sender As Object, e As PaintEventArgs) Handles Panel3.Paint
-        Label7.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")
-    End Sub
-
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles feedback_btn.Click
         Panel4.Visible = True
@@ -35,6 +29,7 @@ Public Class Form2
         Panel4.Visible = True
         Me.Visible = True
         TextBox1.Text = Login.user
+        Timer1.Start()
         Me.Show()
     End Sub
 
@@ -73,7 +68,7 @@ Public Class Form2
         End Try
     End Sub
 
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles addInfo_btn.Click
         AxAcroPDF1.Visible = False
         Panel3.Visible = True
     End Sub
@@ -85,13 +80,12 @@ Public Class Form2
     Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
 
     End Sub
-
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles receive_btn.Click
         Panel4.Visible = False
         Panel2.Visible = True
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles attach_btn.Click
         Try
             Panel3.Visible = False
             AxAcroPDF1.Visible = True
@@ -111,40 +105,35 @@ Public Class Form2
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles sendToDirector_Btn.Click
         Try
             pdffile = Path.GetDirectoryName(OpenFileDialog1.FileName)
             pdffilename = Path.GetFileName(OpenFileDialog1.FileName)
             fullpath = pdffile & "\" & pdffilename
-            received = "Received by " & TextBox1.Text
-            destination = "C:\Users\Maya Asuero\source\repos\MidtermProj\MidtermProj\MidtermProj\bin\DirectorFiles\Pending\" & pdffilename 'e change lang ni kung asa nimo e butang
-            'forReview = forReview & pdffilename & " submitted by " & TextBox2.Text & "." & vbCrLf & "(fileName: " & pdffilename & ")" & vbCrLf & vbCrLf
 
             Dim newname As String = destination & " (" & received & ").pdf"
             Dim id As Integer = CInt(ThesisTableAdapter.countThesis()) + 1
             Dim finalID As String = id & Date.Today.Year
 
-            If File.Exists(fullpath) And Not File.Exists(destination) Then
-                File.Copy(fullpath, destination)
-                File.Move(destination, newname)
-                File.Delete(fullpath)
-                'ADD INSERT
-                If ThesisTableAdapter.insertNewThesis(CInt(finalID), TextBox2.Text, CInt(TextBox3.Text), TextBox4.Text, DateTimePicker1.Value.ToShortDateString, TextBox1.Text, TextBox5.Text, "Pending", newname) = 1 Then
-                    MsgBox("File successfully added!")
-                Else
-                    MsgBox("Not uploaded.")
-                End If
+            Dim fs As FileStream
+            fs = New FileStream(fullpath, FileMode.Open, FileAccess.Read)
+            Dim docByte As Byte() = New Byte(CInt(fs.Length - 1)) {}
+            fs.Read(docByte, 0, System.Convert.ToInt32(fs.Length))
+            fs.Close()
 
-                TextBox5.Text = ""
-                TextBox2.Text = ""
-                pdffilename = ""
-                TextBox4.Text = ""
-                TextBox3.Text = ""
-
+            If ThesisTableAdapter.insertNewThesis(CInt(finalID), TextBox2.Text, CInt(TextBox3.Text), TextBox4.Text, DateTimePicker1.Value.ToShortDateString, TextBox1.Text, TextBox5.Text, "Pending", docByte, pdffilename) = 1 Then
+                MsgBox("File successfully added!")
             Else
-                MsgBox("Can't upload file. Duplicate file detected.")
-
+                MsgBox("Not uploaded.")
             End If
+
+            TextBox5.Text = ""
+            TextBox2.Text = ""
+            pdffilename = ""
+            TextBox4.Text = ""
+            TextBox3.Text = ""
+            MsgBox("Can't upload file. Duplicate file detected.")
+
         Catch ex As Exception
             MsgBox("Error detected. Try again.")
         End Try
@@ -155,5 +144,9 @@ Public Class Form2
     Private Sub searchBox_TextChanged(sender As Object, e As EventArgs) Handles searchBox.TextChanged
 
 
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Label7.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")
     End Sub
 End Class

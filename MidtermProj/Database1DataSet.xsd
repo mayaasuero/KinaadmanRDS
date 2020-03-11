@@ -2,10 +2,11 @@
 <xs:schema id="Database1DataSet" targetNamespace="http://tempuri.org/Database1DataSet.xsd" xmlns:mstns="http://tempuri.org/Database1DataSet.xsd" xmlns="http://tempuri.org/Database1DataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="2" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="login" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="login (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.MidtermProj.My.MySettings.GlobalReference.Default.login" Provider="System.Data.SqlClient" />
           <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="Database1ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Database1ConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.MidtermProj.My.MySettings.GlobalReference.Default.Database1ConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="Database1ConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Database1ConnectionString1 (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.MidtermProj.My.MySettings.GlobalReference.Default.Database1ConnectionString1" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TableTableAdapter" GeneratorDataComponentClassName="TableTableAdapter" Name="Table" UserDataComponentName="TableTableAdapter">
@@ -266,8 +267,7 @@ SELECT feedbackID, thesisNumber, title, authors, message, status FROM Feedback W
               <DbSource ConnectionRef="login (MySettings)" DbObjectName="dbo.Thesis" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        thesisNumber, author, yearLvl, description, dateReceived, receivedBy, title, status, filePath
-FROM            Thesis</CommandText>
+                    <CommandText>SELECT thesisNumber, author, yearLvl, description, dateReceived, receivedBy, title, status, fileBytes, fileName FROM Thesis</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -282,7 +282,8 @@ FROM            Thesis</CommandText>
               <Mapping SourceColumn="title" DataSetColumn="title" />
               <Mapping SourceColumn="status" DataSetColumn="status" />
               <Mapping SourceColumn="thesisNumber" DataSetColumn="thesisNumber" />
-              <Mapping SourceColumn="filePath" DataSetColumn="filePath" />
+              <Mapping SourceColumn="fileName" DataSetColumn="fileName" />
+              <Mapping SourceColumn="fileBytes" DataSetColumn="fileBytes" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="Database1ConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="countThesis" Modifier="Public" Name="countThesis" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="countThesis">
@@ -296,9 +297,7 @@ FROM            Thesis</CommandText>
               <DbSource ConnectionRef="Database1ConnectionString (MySettings)" DbObjectName="dbo.Thesis" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="getAuthor" Modifier="Public" Name="getAuthor" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="getAuthor">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        author
-FROM            Thesis
-WHERE        title= @title</CommandText>
+                    <CommandText>SELECT author FROM Thesis WHERE (title = @title)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="title" ColumnName="title" DataSourceName="[C:\USERS\MAYA ASUERO\SOURCE\REPOS\MIDTERMPROJ\MIDTERMPROJ\MIDTERMPROJ\DATABASE1.MDF].dbo.Thesis" DataTypeServer="varchar(MAX)" DbType="AnsiString" Direction="Input" ParameterName="@title" Precision="0" ProviderType="VarChar" Scale="0" Size="2147483647" SourceColumn="title" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -308,19 +307,27 @@ WHERE        title= @title</CommandText>
               <DbSource ConnectionRef="Database1ConnectionString (MySettings)" DbObjectName="dbo.Thesis" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="getDescription" Modifier="Public" Name="getDescription" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="getDescription">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT description FROM Thesis Where title= @title</CommandText>
+                    <CommandText>SELECT description FROM Thesis WHERE (title = @title)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="title" ColumnName="title" DataSourceName="[C:\USERS\MAYA ASUERO\SOURCE\REPOS\MIDTERMPROJ\MIDTERMPROJ\MIDTERMPROJ\DATABASE1.MDF].dbo.Thesis" DataTypeServer="varchar(MAX)" DbType="AnsiString" Direction="Input" ParameterName="@title" Precision="0" ProviderType="VarChar" Scale="0" Size="2147483647" SourceColumn="title" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="login (MySettings)" DbObjectName="dbo.Thesis" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="getFilePath" Modifier="Public" Name="getFilePath" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="getFilePath">
+              <DbSource ConnectionRef="login (MySettings)" DbObjectName="dbo.Thesis" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="getFile" Modifier="Public" Name="getFile" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="getFile">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        filePath
-FROM            Thesis
-WHERE        (thesisNumber = @thesisNumber)</CommandText>
+                    <CommandText>SELECT fileBytes FROM Thesis WHERE (thesisNumber = @thesisNumber)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="thesisNumber" ColumnName="thesisNumber" DataSourceName="[C:\USERS\MAYA ASUERO\SOURCE\REPOS\MIDTERMPROJ\MIDTERMPROJ\MIDTERMPROJ\DATABASE1.MDF].dbo.Thesis" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@thesisNumber" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="thesisNumber" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="login (MySettings)" DbObjectName="dbo.Thesis" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="getFileName" Modifier="Public" Name="getFileName" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy9" UserSourceName="getFileName">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT fileName FROM Thesis WHERE (thesisNumber = @thesisNumber)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="thesisNumber" ColumnName="thesisNumber" DataSourceName="[C:\USERS\MAYA ASUERO\SOURCE\REPOS\MIDTERMPROJ\MIDTERMPROJ\MIDTERMPROJ\DATABASE1.MDF].dbo.Thesis" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@thesisNumber" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="thesisNumber" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -330,7 +337,7 @@ WHERE        (thesisNumber = @thesisNumber)</CommandText>
               <DbSource ConnectionRef="Database1ConnectionString (MySettings)" DbObjectName="dbo.Thesis" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="getStatus" Modifier="Public" Name="getStatus" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="getStatus">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT status FROM Thesis WHERE title = @title</CommandText>
+                    <CommandText>SELECT status FROM Thesis WHERE (title = @title)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="title" ColumnName="title" DataSourceName="[C:\USERS\MAYA ASUERO\SOURCE\REPOS\MIDTERMPROJ\MIDTERMPROJ\MIDTERMPROJ\DATABASE1.MDF].dbo.Thesis" DataTypeServer="varchar(MAX)" DbType="AnsiString" Direction="Input" ParameterName="@title" Precision="0" ProviderType="VarChar" Scale="0" Size="2147483647" SourceColumn="title" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -340,7 +347,7 @@ WHERE        (thesisNumber = @thesisNumber)</CommandText>
               <DbSource ConnectionRef="Database1ConnectionString (MySettings)" DbObjectName="dbo.Thesis" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="getThesisTitle" Modifier="Public" Name="getThesisTitle" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="getThesisTitle">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT title FROM Thesis Where title= @title</CommandText>
+                    <CommandText>SELECT title FROM Thesis WHERE (title = @title)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="title" ColumnName="title" DataSourceName="[C:\USERS\MAYA ASUERO\SOURCE\REPOS\MIDTERMPROJ\MIDTERMPROJ\MIDTERMPROJ\DATABASE1.MDF].dbo.Thesis" DataTypeServer="varchar(MAX)" DbType="AnsiString" Direction="Input" ParameterName="@title" Precision="0" ProviderType="VarChar" Scale="0" Size="2147483647" SourceColumn="title" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -350,7 +357,7 @@ WHERE        (thesisNumber = @thesisNumber)</CommandText>
               <DbSource ConnectionRef="Database1ConnectionString (MySettings)" DbObjectName="dbo.Thesis" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="getThesisTitleBasedOnStatus" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="getThesisTitleBasedOnStatus" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="getThesisTitleBasedOnStatus" UserSourceName="getThesisTitleBasedOnStatus">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT author, dateReceived, description, filePath, receivedBy, status, thesisNumber, title, yearLvl FROM Thesis WHERE (status = @status)</CommandText>
+                    <CommandText>SELECT author, dateReceived, description, fileBytes, fileName, receivedBy, status, thesisNumber, title, yearLvl FROM Thesis WHERE (status = @status)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="status" ColumnName="status" DataSourceName="[C:\USERS\MAYA ASUERO\SOURCE\REPOS\MIDTERMPROJ\MIDTERMPROJ\MIDTERMPROJ\DATABASE1.MDF].dbo.Thesis" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@status" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="status" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -360,8 +367,8 @@ WHERE        (thesisNumber = @thesisNumber)</CommandText>
               <DbSource ConnectionRef="Database1ConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="insertNewThesis" Modifier="Public" Name="insertNewThesis" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="insertNewThesis">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>INSERT INTO [dbo].[Thesis] ([thesisNumber], [author], [yearLvl], [description], [dateReceived], [receivedBy], [title], [status], [filePath]) VALUES (@thesisNumber, @author, @yearLvl, @description, @dateReceived, @receivedBy, @title, @status, @file);
-SELECT thesisNumber, author, yearLvl, description, dateReceived, receivedBy, title, status FROM Thesis WHERE (thesisNumber = @thesisNumber)</CommandText>
+                    <CommandText>INSERT INTO [dbo].[Thesis] ([thesisNumber], [author], [yearLvl], [description], [dateReceived], [receivedBy], [title], [status], [fileBytes], [fileName]) VALUES (@thesisNumber, @author, @yearLvl, @description, @dateReceived, @receivedBy, @title, @status, @fileBytes, @fileName);
+</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="thesisNumber" ColumnName="thesisNumber" DataSourceName="[C:\USERS\MAYA ASUERO\SOURCE\REPOS\MIDTERMPROJ\MIDTERMPROJ\MIDTERMPROJ\DATABASE1.MDF].dbo.Thesis" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@thesisNumber" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="thesisNumber" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="author" ColumnName="author" DataSourceName="[C:\USERS\MAYA ASUERO\SOURCE\REPOS\MIDTERMPROJ\MIDTERMPROJ\MIDTERMPROJ\DATABASE1.MDF].dbo.Thesis" DataTypeServer="varchar(MAX)" DbType="AnsiString" Direction="Input" ParameterName="@author" Precision="0" ProviderType="VarChar" Scale="0" Size="2147483647" SourceColumn="author" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -371,7 +378,8 @@ SELECT thesisNumber, author, yearLvl, description, dateReceived, receivedBy, tit
                       <Parameter AllowDbNull="false" AutogeneratedName="receivedBy" ColumnName="receivedBy" DataSourceName="[C:\USERS\MAYA ASUERO\SOURCE\REPOS\MIDTERMPROJ\MIDTERMPROJ\MIDTERMPROJ\DATABASE1.MDF].dbo.Thesis" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@receivedBy" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="receivedBy" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="title" ColumnName="title" DataSourceName="[C:\USERS\MAYA ASUERO\SOURCE\REPOS\MIDTERMPROJ\MIDTERMPROJ\MIDTERMPROJ\DATABASE1.MDF].dbo.Thesis" DataTypeServer="varchar(MAX)" DbType="AnsiString" Direction="Input" ParameterName="@title" Precision="0" ProviderType="VarChar" Scale="0" Size="2147483647" SourceColumn="title" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="status" ColumnName="status" DataSourceName="[C:\USERS\MAYA ASUERO\SOURCE\REPOS\MIDTERMPROJ\MIDTERMPROJ\MIDTERMPROJ\DATABASE1.MDF].dbo.Thesis" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@status" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="status" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="file" ColumnName="filePath" DataSourceName="[C:\USERS\MAYA ASUERO\SOURCE\REPOS\MIDTERMPROJ\MIDTERMPROJ\MIDTERMPROJ\DATABASE1.MDF].dbo.Thesis" DataTypeServer="varchar(MAX)" DbType="AnsiString" Direction="Input" ParameterName="@file" Precision="0" ProviderType="VarChar" Scale="0" Size="2147483647" SourceColumn="filePath" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="fileBytes" ColumnName="fileBytes" DataSourceName="[C:\USERS\MAYA ASUERO\SOURCE\REPOS\MIDTERMPROJ\MIDTERMPROJ\MIDTERMPROJ\DATABASE1.MDF].dbo.Thesis" DataTypeServer="varbinary(MAX)" DbType="Binary" Direction="Input" ParameterName="@fileBytes" Precision="0" ProviderType="VarBinary" Scale="0" Size="2147483647" SourceColumn="fileBytes" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="fileName" ColumnName="fileName" DataSourceName="[C:\USERS\MAYA ASUERO\SOURCE\REPOS\MIDTERMPROJ\MIDTERMPROJ\MIDTERMPROJ\DATABASE1.MDF].dbo.Thesis" DataTypeServer="varchar(MAX)" DbType="AnsiString" Direction="Input" ParameterName="@fileName" Precision="0" ProviderType="VarChar" Scale="0" Size="2147483647" SourceColumn="fileName" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
@@ -379,8 +387,7 @@ SELECT thesisNumber, author, yearLvl, description, dateReceived, receivedBy, tit
               <DbSource ConnectionRef="Database1ConnectionString (MySettings)" DbObjectName="dbo.Thesis" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="selectThesisID" Modifier="Public" Name="selectThesisID" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy7" UserSourceName="selectThesisID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT thesisNumber 
-FROM Thesis WHERE title = @title</CommandText>
+                    <CommandText>SELECT thesisNumber FROM Thesis WHERE (title = @title)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="title" ColumnName="title" DataSourceName="[C:\USERS\MAYA ASUERO\SOURCE\REPOS\MIDTERMPROJ\MIDTERMPROJ\MIDTERMPROJ\DATABASE1.MDF].dbo.Thesis" DataTypeServer="varchar(MAX)" DbType="AnsiString" Direction="Input" ParameterName="@title" Precision="0" ProviderType="VarChar" Scale="0" Size="2147483647" SourceColumn="title" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -514,8 +521,15 @@ WHERE        (title = @Original_title)</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="filePath" msprop:Generator_ColumnVarNameInTable="columnfilePath" msprop:Generator_ColumnPropNameInRow="filePath" msprop:Generator_ColumnPropNameInTable="filePathColumn" msprop:Generator_UserColumnName="filePath" type="xs:string" />
               <xs:element name="thesisNumber" msprop:Generator_ColumnVarNameInTable="columnthesisNumber" msprop:Generator_ColumnPropNameInRow="thesisNumber" msprop:Generator_ColumnPropNameInTable="thesisNumberColumn" msprop:Generator_UserColumnName="thesisNumber" type="xs:int" />
+              <xs:element name="fileName" msprop:Generator_ColumnVarNameInTable="columnfileName" msprop:Generator_ColumnPropNameInRow="fileName" msprop:Generator_ColumnPropNameInTable="fileNameColumn" msprop:Generator_UserColumnName="fileName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="fileBytes" msprop:Generator_ColumnVarNameInTable="columnfileBytes" msprop:Generator_ColumnPropNameInRow="fileBytes" msprop:Generator_ColumnPropNameInTable="fileBytesColumn" msprop:Generator_UserColumnName="fileBytes" type="xs:base64Binary" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

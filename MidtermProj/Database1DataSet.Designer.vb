@@ -811,7 +811,7 @@ Partial Public Class Database1DataSet
             Dim rowFeedbackRow As FeedbackRow = CType(Me.NewRow,FeedbackRow)
             Dim columnValuesArray() As Object = New Object() {feedbackID, Nothing, title, authors, message, status}
             If (Not (parentThesisRowByhas) Is Nothing) Then
-                columnValuesArray(1) = parentThesisRowByhas(8)
+                columnValuesArray(1) = parentThesisRowByhas(7)
             End If
             rowFeedbackRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowFeedbackRow)
@@ -1026,9 +1026,11 @@ Partial Public Class Database1DataSet
         
         Private columnstatus As Global.System.Data.DataColumn
         
-        Private columnfilePath As Global.System.Data.DataColumn
-        
         Private columnthesisNumber As Global.System.Data.DataColumn
+        
+        Private columnfileName As Global.System.Data.DataColumn
+        
+        Private columnfileBytes As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
@@ -1123,17 +1125,25 @@ Partial Public Class Database1DataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property filePathColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property thesisNumberColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnfilePath
+                Return Me.columnthesisNumber
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property thesisNumberColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property fileNameColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnthesisNumber
+                Return Me.columnfileName
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property fileBytesColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnfileBytes
             End Get
         End Property
         
@@ -1174,9 +1184,9 @@ Partial Public Class Database1DataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddThesisRow(ByVal author As String, ByVal yearLvl As Integer, ByVal description As String, ByVal dateReceived As Date, ByVal parentTableRowByadd As TableRow, ByVal title As String, ByVal status As String, ByVal filePath As String, ByVal thesisNumber As Integer) As ThesisRow
+        Public Overloads Function AddThesisRow(ByVal author As String, ByVal yearLvl As Integer, ByVal description As String, ByVal dateReceived As Date, ByVal parentTableRowByadd As TableRow, ByVal title As String, ByVal status As String, ByVal thesisNumber As Integer, ByVal fileName As String, ByVal fileBytes() As Byte) As ThesisRow
             Dim rowThesisRow As ThesisRow = CType(Me.NewRow,ThesisRow)
-            Dim columnValuesArray() As Object = New Object() {author, yearLvl, description, dateReceived, Nothing, title, status, filePath, thesisNumber}
+            Dim columnValuesArray() As Object = New Object() {author, yearLvl, description, dateReceived, Nothing, title, status, thesisNumber, fileName, fileBytes}
             If (Not (parentTableRowByadd) Is Nothing) Then
                 columnValuesArray(4) = parentTableRowByadd(0)
             End If
@@ -1215,8 +1225,9 @@ Partial Public Class Database1DataSet
             Me.columnreceivedBy = MyBase.Columns("receivedBy")
             Me.columntitle = MyBase.Columns("title")
             Me.columnstatus = MyBase.Columns("status")
-            Me.columnfilePath = MyBase.Columns("filePath")
             Me.columnthesisNumber = MyBase.Columns("thesisNumber")
+            Me.columnfileName = MyBase.Columns("fileName")
+            Me.columnfileBytes = MyBase.Columns("fileBytes")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1236,10 +1247,12 @@ Partial Public Class Database1DataSet
             MyBase.Columns.Add(Me.columntitle)
             Me.columnstatus = New Global.System.Data.DataColumn("status", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnstatus)
-            Me.columnfilePath = New Global.System.Data.DataColumn("filePath", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnfilePath)
             Me.columnthesisNumber = New Global.System.Data.DataColumn("thesisNumber", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnthesisNumber)
+            Me.columnfileName = New Global.System.Data.DataColumn("fileName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnfileName)
+            Me.columnfileBytes = New Global.System.Data.DataColumn("fileBytes", GetType(Byte()), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnfileBytes)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnthesisNumber}, true))
             Me.columnauthor.AllowDBNull = false
             Me.columnauthor.MaxLength = 2147483647
@@ -1253,9 +1266,11 @@ Partial Public Class Database1DataSet
             Me.columntitle.MaxLength = 2147483647
             Me.columnstatus.AllowDBNull = false
             Me.columnstatus.MaxLength = 50
-            Me.columnfilePath.AllowDBNull = false
             Me.columnthesisNumber.AllowDBNull = false
             Me.columnthesisNumber.Unique = true
+            Me.columnfileName.AllowDBNull = false
+            Me.columnfileName.MaxLength = 2147483647
+            Me.columnfileBytes.AllowDBNull = false
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1674,23 +1689,34 @@ Partial Public Class Database1DataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property filePath() As String
-            Get
-                Return CType(Me(Me.tableThesis.filePathColumn),String)
-            End Get
-            Set
-                Me(Me.tableThesis.filePathColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property thesisNumber() As Integer
             Get
                 Return CType(Me(Me.tableThesis.thesisNumberColumn),Integer)
             End Get
             Set
                 Me(Me.tableThesis.thesisNumberColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property fileName() As String
+            Get
+                Return CType(Me(Me.tableThesis.fileNameColumn),String)
+            End Get
+            Set
+                Me(Me.tableThesis.fileNameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property fileBytes() As Byte()
+            Get
+                Return CType(Me(Me.tableThesis.fileBytesColumn),Byte())
+            End Get
+            Set
+                Me(Me.tableThesis.fileBytesColumn) = value
             End Set
         End Property
         
@@ -3170,7 +3196,8 @@ Namespace Database1DataSetTableAdapters
             tableMapping.ColumnMappings.Add("title", "title")
             tableMapping.ColumnMappings.Add("status", "status")
             tableMapping.ColumnMappings.Add("thesisNumber", "thesisNumber")
-            tableMapping.ColumnMappings.Add("filePath", "filePath")
+            tableMapping.ColumnMappings.Add("fileName", "fileName")
+            tableMapping.ColumnMappings.Add("fileBytes", "fileBytes")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -3184,11 +3211,11 @@ Namespace Database1DataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(10) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(11) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        thesisNumber, author, yearLvl, description, dateReceived, receivedB"& _ 
-                "y, title, status, filePath"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Thesis"
+            Me._commandCollection(0).CommandText = "SELECT thesisNumber, author, yearLvl, description, dateReceived, receivedBy, titl"& _ 
+                "e, status, fileBytes, fileName FROM Thesis"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.MidtermProj.My.MySettings.Default.Database1ConnectionString)
@@ -3196,65 +3223,69 @@ Namespace Database1DataSetTableAdapters
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.MidtermProj.My.MySettings.Default.Database1ConnectionString)
-            Me._commandCollection(2).CommandText = "SELECT        author"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Thesis"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        title= @title"
+            Me._commandCollection(2).CommandText = "SELECT author FROM Thesis WHERE (title = @title)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@title", Global.System.Data.SqlDbType.VarChar, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "title", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(3).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.MidtermProj.My.MySettings.Default.Database1ConnectionString)
-            Me._commandCollection(3).CommandText = "SELECT description FROM Thesis Where title= @title"
+            Me._commandCollection(3).CommandText = "SELECT description FROM Thesis WHERE (title = @title)"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@title", Global.System.Data.SqlDbType.VarChar, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "title", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(4).Connection = Me.Connection
-            Me._commandCollection(4).CommandText = "SELECT        filePath"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Thesis"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (thesisNumber = @the"& _ 
-                "sisNumber)"
+            Me._commandCollection(4).CommandText = "SELECT fileBytes FROM Thesis WHERE (thesisNumber = @thesisNumber)"
             Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@thesisNumber", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "thesisNumber", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(5).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.MidtermProj.My.MySettings.Default.Database1ConnectionString)
-            Me._commandCollection(5).CommandText = "SELECT status FROM Thesis WHERE title = @title"
+            Me._commandCollection(5).Connection = Me.Connection
+            Me._commandCollection(5).CommandText = "SELECT fileName FROM Thesis WHERE (thesisNumber = @thesisNumber)"
             Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@title", Global.System.Data.SqlDbType.VarChar, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "title", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@thesisNumber", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "thesisNumber", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(6) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(6).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.MidtermProj.My.MySettings.Default.Database1ConnectionString)
-            Me._commandCollection(6).CommandText = "SELECT title FROM Thesis Where title= @title"
+            Me._commandCollection(6).CommandText = "SELECT status FROM Thesis WHERE (title = @title)"
             Me._commandCollection(6).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@title", Global.System.Data.SqlDbType.VarChar, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "title", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(7) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(7).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.MidtermProj.My.MySettings.Default.Database1ConnectionString)
-            Me._commandCollection(7).CommandText = "SELECT author, dateReceived, description, filePath, receivedBy, status, thesisNum"& _ 
-                "ber, title, yearLvl FROM Thesis WHERE (status = @status)"
+            Me._commandCollection(7).CommandText = "SELECT title FROM Thesis WHERE (title = @title)"
             Me._commandCollection(7).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@status", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "status", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@title", Global.System.Data.SqlDbType.VarChar, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "title", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(8) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(8).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.MidtermProj.My.MySettings.Default.Database1ConnectionString)
-            Me._commandCollection(8).CommandText = "INSERT INTO [dbo].[Thesis] ([thesisNumber], [author], [yearLvl], [description], ["& _ 
-                "dateReceived], [receivedBy], [title], [status], [filePath]) VALUES (@thesisNumbe"& _ 
-                "r, @author, @yearLvl, @description, @dateReceived, @receivedBy, @title, @status,"& _ 
-                " @file);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT thesisNumber, author, yearLvl, description, dateReceived, recei"& _ 
-                "vedBy, title, status FROM Thesis WHERE (thesisNumber = @thesisNumber)"
+            Me._commandCollection(8).CommandText = "SELECT author, dateReceived, description, fileBytes, fileName, receivedBy, status"& _ 
+                ", thesisNumber, title, yearLvl FROM Thesis WHERE (status = @status)"
             Me._commandCollection(8).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@thesisNumber", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "thesisNumber", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@author", Global.System.Data.SqlDbType.VarChar, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "author", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@yearLvl", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "yearLvl", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@description", Global.System.Data.SqlDbType.VarChar, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "description", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@dateReceived", Global.System.Data.SqlDbType.[Date], 3, Global.System.Data.ParameterDirection.Input, 0, 0, "dateReceived", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@receivedBy", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "receivedBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@title", Global.System.Data.SqlDbType.VarChar, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "title", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@status", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "status", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@file", Global.System.Data.SqlDbType.VarChar, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "filePath", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(9) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(9).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.MidtermProj.My.MySettings.Default.Database1ConnectionString)
-            Me._commandCollection(9).CommandText = "SELECT thesisNumber "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM Thesis WHERE title = @title"
+            Me._commandCollection(9).CommandText = "INSERT INTO [dbo].[Thesis] ([thesisNumber], [author], [yearLvl], [description], ["& _ 
+                "dateReceived], [receivedBy], [title], [status], [fileBytes], [fileName]) VALUES "& _ 
+                "(@thesisNumber, @author, @yearLvl, @description, @dateReceived, @receivedBy, @ti"& _ 
+                "tle, @status, @fileBytes, @fileName);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)
             Me._commandCollection(9).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(9).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@thesisNumber", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "thesisNumber", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(9).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@author", Global.System.Data.SqlDbType.VarChar, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "author", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(9).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@yearLvl", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "yearLvl", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(9).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@description", Global.System.Data.SqlDbType.VarChar, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "description", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(9).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@dateReceived", Global.System.Data.SqlDbType.[Date], 3, Global.System.Data.ParameterDirection.Input, 0, 0, "dateReceived", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(9).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@receivedBy", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "receivedBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(9).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@title", Global.System.Data.SqlDbType.VarChar, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "title", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(9).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@status", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "status", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(9).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fileBytes", Global.System.Data.SqlDbType.VarBinary, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "fileBytes", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(9).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fileName", Global.System.Data.SqlDbType.VarChar, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "fileName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(10) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(10).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.MidtermProj.My.MySettings.Default.Database1ConnectionString)
-            Me._commandCollection(10).CommandText = "UPDATE       Thesis"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                status = @status"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (title = @"& _ 
-                "Original_title)"
+            Me._commandCollection(10).CommandText = "SELECT thesisNumber FROM Thesis WHERE (title = @title)"
             Me._commandCollection(10).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(10).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@status", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "status", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(10).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_title", Global.System.Data.SqlDbType.VarChar, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "title", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(10).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@title", Global.System.Data.SqlDbType.VarChar, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "title", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(11) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(11).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.MidtermProj.My.MySettings.Default.Database1ConnectionString)
+            Me._commandCollection(11).CommandText = "UPDATE       Thesis"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                status = @status"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (title = @"& _ 
+                "Original_title)"
+            Me._commandCollection(11).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(11).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@status", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "status", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(11).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_title", Global.System.Data.SqlDbType.VarChar, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "title", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3286,7 +3317,7 @@ Namespace Database1DataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function getThesisTitleBasedOnStatus(ByVal status As String) As Database1DataSet.ThesisDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(7)
+            Me.Adapter.SelectCommand = Me.CommandCollection(8)
             If (status Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("status")
             Else
@@ -3388,7 +3419,7 @@ Namespace Database1DataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function getFilePath(ByVal thesisNumber As Integer) As Object
+        Public Overloads Overridable Function getFile(ByVal thesisNumber As Integer) As Object
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(4)
             command.Parameters(0).Value = CType(thesisNumber,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
@@ -3415,8 +3446,35 @@ Namespace Database1DataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function getStatus(ByVal title As String) As String
+        Public Overloads Overridable Function getFileName(ByVal thesisNumber As Integer) As String
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(5)
+            command.Parameters(0).Value = CType(thesisNumber,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return Nothing
+            Else
+                Return CType(returnValue,String)
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function getStatus(ByVal title As String) As String
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(6)
             If (title Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("title")
             Else
@@ -3447,7 +3505,7 @@ Namespace Database1DataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function getThesisTitle(ByVal title As String) As Object
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(6)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(7)
             If (title Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("title")
             Else
@@ -3478,8 +3536,8 @@ Namespace Database1DataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, false)>  _
-        Public Overloads Overridable Function insertNewThesis(ByVal thesisNumber As Integer, ByVal author As String, ByVal yearLvl As Integer, ByVal description As String, ByVal dateReceived As String, ByVal receivedBy As String, ByVal title As String, ByVal status As String, ByVal file As String) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(8)
+        Public Overloads Overridable Function insertNewThesis(ByVal thesisNumber As Integer, ByVal author As String, ByVal yearLvl As Integer, ByVal description As String, ByVal dateReceived As String, ByVal receivedBy As String, ByVal title As String, ByVal status As String, ByVal fileBytes() As Byte, ByVal fileName As String) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(9)
             command.Parameters(0).Value = CType(thesisNumber,Integer)
             If (author Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("author")
@@ -3512,10 +3570,15 @@ Namespace Database1DataSetTableAdapters
             Else
                 command.Parameters(7).Value = CType(status,String)
             End If
-            If (file Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("file")
+            If (fileBytes Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("fileBytes")
             Else
-                command.Parameters(8).Value = CType(file,String)
+                command.Parameters(8).Value = CType(fileBytes,Byte())
+            End If
+            If (fileName Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("fileName")
+            Else
+                command.Parameters(9).Value = CType(fileName,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -3537,7 +3600,7 @@ Namespace Database1DataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function selectThesisID(ByVal title As String) As Object
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(9)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(10)
             If (title Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("title")
             Else
@@ -3569,7 +3632,7 @@ Namespace Database1DataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
         Public Overloads Overridable Function UpdateStatus(ByVal status As String, ByVal Original_title As String) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(10)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(11)
             If (status Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("status")
             Else

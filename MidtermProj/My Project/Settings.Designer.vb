@@ -68,11 +68,22 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf"& _ 
-            ";Integrated Security=True")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\USERS\MAYA ASUERO\SOURCE\R"& _ 
+            "EPOS\MIDTERMPROJ\MIDTERMPROJ\MIDTERMPROJ\DATABASE1.MDF;Integrated Security=True")>  _
         Public ReadOnly Property Database1ConnectionString() As String
             Get
                 Return CType(Me("Database1ConnectionString"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf"& _ 
+            ";Integrated Security=True")>  _
+        Public ReadOnly Property Database1ConnectionString1() As String
+            Get
+                Return CType(Me("Database1ConnectionString1"),String)
             End Get
         End Property
     End Class
