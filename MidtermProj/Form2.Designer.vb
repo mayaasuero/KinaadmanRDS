@@ -109,7 +109,7 @@ Partial Class Form2
         Me.home_btn.ActiveLineColor = System.Drawing.Color.Indigo
         Me.home_btn.BackColor = System.Drawing.Color.Transparent
         Me.home_btn.BackgroundImage = CType(resources.GetObject("home_btn.BackgroundImage"), System.Drawing.Image)
-        Me.home_btn.ButtonText = "Home"
+        Me.home_btn.ButtonText = "Back to Home"
         Me.home_btn.Cursor = System.Windows.Forms.Cursors.Hand
         Me.home_btn.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.home_btn.ForeColor = System.Drawing.Color.Indigo
