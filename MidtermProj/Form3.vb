@@ -213,4 +213,7 @@ Public Class Form3
         enableAccess.SelectedItem = selectedRow.Cells(2).Value.ToString
     End Sub
 
+    Private Sub directorMenu_Paint(sender As Object, e As PaintEventArgs) Handles directorMenu.Paint
+
+    End Sub
 End Class
