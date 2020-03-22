@@ -51,7 +51,6 @@ Partial Class Form2
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.AxAcroPDF1 = New AxAcroPDFLib.AxAcroPDF()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.FilterLabel = New System.Windows.Forms.Label()
         Me.filterComboBox = New System.Windows.Forms.ComboBox()
@@ -60,36 +59,38 @@ Partial Class Form2
         Me.Label9 = New System.Windows.Forms.Label()
         Me.searchBox = New System.Windows.Forms.TextBox()
         Me.feedbackDataGrid = New Bunifu.Framework.UI.BunifuCustomDataGrid()
-        Me.ThesisNumberDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TitleDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AuthorsDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.status = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.message = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FeedbackBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Database1DataSet = New MidtermProj.Database1DataSet()
         Me.HasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.FeedbackTableAdapter = New MidtermProj.Database1DataSetTableAdapters.FeedbackTableAdapter()
-        Me.ThesisTableAdapter = New MidtermProj.Database1DataSetTableAdapters.ThesisTableAdapter()
         Me.receive_Elipse = New Bunifu.Framework.UI.BunifuElipse(Me.components)
         Me.feedback_elipse = New Bunifu.Framework.UI.BunifuElipse(Me.components)
         Me.home_elipse = New Bunifu.Framework.UI.BunifuElipse(Me.components)
         Me.window_Elipse = New Bunifu.Framework.UI.BunifuElipse(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.ThesisNumberDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TitleDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AuthorsDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FeedbackBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Database1DataSet = New MidtermProj.Database1DataSet()
+        Me.FeedbackTableAdapter = New MidtermProj.Database1DataSetTableAdapters.FeedbackTableAdapter()
+        Me.ThesisTableAdapter = New MidtermProj.Database1DataSetTableAdapters.ThesisTableAdapter()
+        Me.AxAcroPDF1 = New AxAcroPDFLib.AxAcroPDF()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AxAcroPDF1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel4.SuspendLayout()
         CType(Me.feedbackDataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.HasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FeedbackBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Database1DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.HasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AxAcroPDF1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
         '
+        Me.Panel1.BackColor = System.Drawing.Color.Transparent
         Me.Panel1.BackgroundImage = CType(resources.GetObject("Panel1.BackgroundImage"), System.Drawing.Image)
         Me.Panel1.Controls.Add(Me.home_btn)
         Me.Panel1.Controls.Add(Me.feedback_btn)
@@ -448,16 +449,6 @@ Partial Class Form2
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Received by:"
         '
-        'AxAcroPDF1
-        '
-        Me.AxAcroPDF1.Enabled = True
-        Me.AxAcroPDF1.Location = New System.Drawing.Point(163, -1)
-        Me.AxAcroPDF1.Margin = New System.Windows.Forms.Padding(2)
-        Me.AxAcroPDF1.Name = "AxAcroPDF1"
-        Me.AxAcroPDF1.OcxState = CType(resources.GetObject("AxAcroPDF1.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.AxAcroPDF1.Size = New System.Drawing.Size(619, 437)
-        Me.AxAcroPDF1.TabIndex = 1
-        '
         'Panel4
         '
         Me.Panel4.BackColor = System.Drawing.Color.Snow
@@ -564,30 +555,6 @@ Partial Class Form2
         Me.feedbackDataGrid.Size = New System.Drawing.Size(793, 327)
         Me.feedbackDataGrid.TabIndex = 4
         '
-        'ThesisNumberDataGridViewTextBoxColumn
-        '
-        Me.ThesisNumberDataGridViewTextBoxColumn.DataPropertyName = "thesisNumber"
-        Me.ThesisNumberDataGridViewTextBoxColumn.HeaderText = "Thesis ID"
-        Me.ThesisNumberDataGridViewTextBoxColumn.Name = "ThesisNumberDataGridViewTextBoxColumn"
-        Me.ThesisNumberDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ThesisNumberDataGridViewTextBoxColumn.Width = 90
-        '
-        'TitleDataGridViewTextBoxColumn
-        '
-        Me.TitleDataGridViewTextBoxColumn.DataPropertyName = "title"
-        Me.TitleDataGridViewTextBoxColumn.HeaderText = "Title"
-        Me.TitleDataGridViewTextBoxColumn.Name = "TitleDataGridViewTextBoxColumn"
-        Me.TitleDataGridViewTextBoxColumn.ReadOnly = True
-        Me.TitleDataGridViewTextBoxColumn.Width = 280
-        '
-        'AuthorsDataGridViewTextBoxColumn
-        '
-        Me.AuthorsDataGridViewTextBoxColumn.DataPropertyName = "authors"
-        Me.AuthorsDataGridViewTextBoxColumn.HeaderText = "Author"
-        Me.AuthorsDataGridViewTextBoxColumn.Name = "AuthorsDataGridViewTextBoxColumn"
-        Me.AuthorsDataGridViewTextBoxColumn.ReadOnly = True
-        Me.AuthorsDataGridViewTextBoxColumn.Width = 175
-        '
         'status
         '
         Me.status.DataPropertyName = "status"
@@ -603,28 +570,9 @@ Partial Class Form2
         Me.message.ReadOnly = True
         Me.message.Width = 105
         '
-        'FeedbackBindingSource
-        '
-        Me.FeedbackBindingSource.DataMember = "Feedback"
-        Me.FeedbackBindingSource.DataSource = Me.Database1DataSet
-        '
-        'Database1DataSet
-        '
-        Me.Database1DataSet.DataSetName = "Database1DataSet"
-        Me.Database1DataSet.EnforceConstraints = False
-        Me.Database1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
-        '
-        'FeedbackTableAdapter
-        '
-        Me.FeedbackTableAdapter.ClearBeforeFill = True
-        '
-        'ThesisTableAdapter
-        '
-        Me.ThesisTableAdapter.ClearBeforeFill = True
         '
         'receive_Elipse
         '
@@ -649,6 +597,59 @@ Partial Class Form2
         'Timer1
         '
         '
+        'ThesisNumberDataGridViewTextBoxColumn
+        '
+        Me.ThesisNumberDataGridViewTextBoxColumn.DataPropertyName = "thesisNumber"
+        Me.ThesisNumberDataGridViewTextBoxColumn.HeaderText = "Thesis ID"
+        Me.ThesisNumberDataGridViewTextBoxColumn.Name = "ThesisNumberDataGridViewTextBoxColumn"
+        Me.ThesisNumberDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ThesisNumberDataGridViewTextBoxColumn.Width = 90
+        '
+        'TitleDataGridViewTextBoxColumn
+        '
+        Me.TitleDataGridViewTextBoxColumn.DataPropertyName = "title"
+        Me.TitleDataGridViewTextBoxColumn.HeaderText = "Title"
+        Me.TitleDataGridViewTextBoxColumn.Name = "TitleDataGridViewTextBoxColumn"
+        Me.TitleDataGridViewTextBoxColumn.ReadOnly = True
+        Me.TitleDataGridViewTextBoxColumn.Width = 280
+        '
+        'AuthorsDataGridViewTextBoxColumn
+        '
+        Me.AuthorsDataGridViewTextBoxColumn.DataPropertyName = "authors"
+        Me.AuthorsDataGridViewTextBoxColumn.HeaderText = "Author"
+        Me.AuthorsDataGridViewTextBoxColumn.Name = "AuthorsDataGridViewTextBoxColumn"
+        Me.AuthorsDataGridViewTextBoxColumn.ReadOnly = True
+        Me.AuthorsDataGridViewTextBoxColumn.Width = 175
+        '
+        'FeedbackBindingSource
+        '
+        Me.FeedbackBindingSource.DataMember = "Feedback"
+        Me.FeedbackBindingSource.DataSource = Me.Database1DataSet
+        '
+        'Database1DataSet
+        '
+        Me.Database1DataSet.DataSetName = "Database1DataSet"
+        Me.Database1DataSet.EnforceConstraints = False
+        Me.Database1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'FeedbackTableAdapter
+        '
+        Me.FeedbackTableAdapter.ClearBeforeFill = True
+        '
+        'ThesisTableAdapter
+        '
+        Me.ThesisTableAdapter.ClearBeforeFill = True
+        '
+        'AxAcroPDF1
+        '
+        Me.AxAcroPDF1.Enabled = True
+        Me.AxAcroPDF1.Location = New System.Drawing.Point(163, -1)
+        Me.AxAcroPDF1.Margin = New System.Windows.Forms.Padding(2)
+        Me.AxAcroPDF1.Name = "AxAcroPDF1"
+        Me.AxAcroPDF1.OcxState = CType(resources.GetObject("AxAcroPDF1.OcxState"), System.Windows.Forms.AxHost.State)
+        Me.AxAcroPDF1.Size = New System.Drawing.Size(619, 437)
+        Me.AxAcroPDF1.TabIndex = 1
+        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -668,13 +669,13 @@ Partial Class Form2
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AxAcroPDF1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         CType(Me.feedbackDataGrid, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.HasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FeedbackBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Database1DataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.HasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AxAcroPDF1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
