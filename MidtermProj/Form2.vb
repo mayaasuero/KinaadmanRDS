@@ -33,7 +33,7 @@ Public Class Form2
         Me.Show()
     End Sub
 
-    Private Sub refresh_Click(sender As Object, e As EventArgs) Handles refresh.Click
+    Private Sub refresh_Click(sender As Object, e As EventArgs) Handles refresh_btn.Click
         feedbackDataGrid.DataSource = Me.FeedbackTableAdapter.Fill(Me.Database1DataSet.Feedback)
         feedbackDataGrid.Update()
         searchBox.Text = ""

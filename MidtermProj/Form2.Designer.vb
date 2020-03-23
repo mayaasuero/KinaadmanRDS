@@ -55,7 +55,7 @@ Partial Class Form2
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.FilterLabel = New System.Windows.Forms.Label()
         Me.filterComboBox = New System.Windows.Forms.ComboBox()
-        Me.refresh = New System.Windows.Forms.Button()
+        Me.refresh_btn = New System.Windows.Forms.Button()
         Me.search_Btn = New System.Windows.Forms.Button()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.searchBox = New System.Windows.Forms.TextBox()
@@ -466,7 +466,7 @@ Partial Class Form2
         Me.Panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Panel4.Controls.Add(Me.FilterLabel)
         Me.Panel4.Controls.Add(Me.filterComboBox)
-        Me.Panel4.Controls.Add(Me.refresh)
+        Me.Panel4.Controls.Add(Me.refresh_btn)
         Me.Panel4.Controls.Add(Me.search_Btn)
         Me.Panel4.Controls.Add(Me.Label9)
         Me.Panel4.Controls.Add(Me.searchBox)
@@ -497,14 +497,14 @@ Partial Class Form2
         Me.filterComboBox.Size = New System.Drawing.Size(144, 21)
         Me.filterComboBox.TabIndex = 8
         '
-        'refresh
+        'refresh_btn
         '
-        Me.refresh.Location = New System.Drawing.Point(726, 38)
-        Me.refresh.Name = "refresh"
-        Me.refresh.Size = New System.Drawing.Size(75, 23)
-        Me.refresh.TabIndex = 7
-        Me.refresh.Text = "Refresh"
-        Me.refresh.UseVisualStyleBackColor = True
+        Me.refresh_btn.Location = New System.Drawing.Point(726, 38)
+        Me.refresh_btn.Name = "refresh_btn"
+        Me.refresh_btn.Size = New System.Drawing.Size(75, 23)
+        Me.refresh_btn.TabIndex = 7
+        Me.refresh_btn.Text = "Refresh"
+        Me.refresh_btn.UseVisualStyleBackColor = True
         '
         'search_Btn
         '
@@ -656,8 +656,8 @@ Partial Class Form2
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(973, 453)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel4)
+        Me.Controls.Add(Me.Panel2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(2)
@@ -709,7 +709,7 @@ Partial Class Form2
     Friend WithEvents search_Btn As Button
     Friend WithEvents Label9 As Label
     Friend WithEvents searchBox As TextBox
-    Friend WithEvents refresh As Button
+    Friend WithEvents refresh_btn As Button
     Friend WithEvents FilterLabel As Label
     Friend WithEvents filterComboBox As ComboBox
     Friend WithEvents ThesisNumberDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
